@@ -127,14 +127,20 @@ Pretendard font files are NOT bundled - font config removed from pubspec.yaml.
 App falls back to system font. To use Pretendard: add TTF files to `assets/fonts/`
 and restore the fonts section in pubspec.yaml.
 
-### ARM64 build environment (e.g. Apple Silicon Linux VM)
-AGP 8.3.2 bundles an x86_64-only AAPT2 daemon. On ARM64:
-1. `apt-get install -y libc6:amd64` (provides x86_64 dynamic linker)
-2. Compile an ARM64 wrapper: `gcc -o /usr/local/bin/aapt2 aapt2_wrap.c` where
-   `aapt2_wrap.c` exec's `qemu-x86_64 /opt/android-sdk-linux/build-tools/34.0.0/aapt2`
-3. Add to `/root/.gradle/gradle.properties`:
-   `android.aapt2FromMavenOverride=/usr/local/bin/aapt2`
-   (filename MUST end in `aapt2` - AGP validates this with `endsWith`)
+### AAPT2 Daemon Startup Failure Fix
+AGP 8.3.2 bundles its own AAPT2 daemon binary (`aapt2-8.3.2-10880808-linux`) which
+fails to start in certain containerised Linux environments with:
+  `AAPT2 aapt2-8.3.2-10880808-linux Daemon #N: Daemon startup failed`
+
+**Fix applied** (in `android/gradle.properties`):
+```
+android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2
+```
+This tells AGP to use the standalone AAPT2 from the installed SDK build-tools
+instead of its bundled daemon. The build-tools/34.0.0 AAPT2 works correctly.
+
+Note: on ARM64 hosts the build-tools AAPT2 may also be x86_64-only — in that case
+install `libc6:amd64` and use a qemu wrapper script at a path ending in `aapt2`.
 
 ## Important Notes
 - Anthropic API key is entered by user in Settings and stored in SharedPreferences
