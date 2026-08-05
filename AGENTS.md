@@ -101,16 +101,49 @@ Key fields per exercise:
 - Both prompts: Korean language, explicit EXCLUDED_TAGS list, no free text
 - JSON extraction: strips markdown fences, finds first `{...}` block
 
+## Android Build Configuration (after QA fix)
+
+### Gradle / AGP versions
+| Config | Value | Reason |
+|--------|-------|--------|
+| Gradle wrapper | 8.6 | Java 21 support (8.0 fails with class file version 65) |
+| AGP | 8.3.2 | Java 21 + `sourceCompatibility = VERSION_1_8` fix (needs >=8.2.1) |
+| Kotlin | 1.9.22 | Compatible with AGP 8.3.x |
+
+### settings.gradle format
+Uses new declarative `pluginManagement {}` + `plugins {}` format (NOT the old
+`apply from: ".../app_plugin_loader.gradle"` which caused "plugin not found" errors).
+
+### Desugaring dependency
+Correct artifact: `com.android.tools:desugar_jdk_libs:2.0.4`  
+(Wrong: `com.android.tools.build:desugaring:2.0.4`)
+
+### App icons
+mipmap-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/ic_launcher.png must exist (created as
+solid #1DB954 green placeholders; replace with actual RecoveryFit branding).
+
+### Font config
+Pretendard font files are NOT bundled - font config removed from pubspec.yaml.
+App falls back to system font. To use Pretendard: add TTF files to `assets/fonts/`
+and restore the fonts section in pubspec.yaml.
+
+### ARM64 build environment (e.g. Apple Silicon Linux VM)
+AGP 8.3.2 bundles an x86_64-only AAPT2 daemon. On ARM64:
+1. `apt-get install -y libc6:amd64` (provides x86_64 dynamic linker)
+2. Compile an ARM64 wrapper: `gcc -o /usr/local/bin/aapt2 aapt2_wrap.c` where
+   `aapt2_wrap.c` exec's `qemu-x86_64 /opt/android-sdk-linux/build-tools/34.0.0/aapt2`
+3. Add to `/root/.gradle/gradle.properties`:
+   `android.aapt2FromMavenOverride=/usr/local/bin/aapt2`
+   (filename MUST end in `aapt2` - AGP validates this with `endsWith`)
+
 ## Important Notes
-- Flutter is NOT installed in this environment; project was created manually.
-  To run: install Flutter SDK, then `flutter pub get && flutter run`.
-- `assets/fonts/` directory is referenced in pubspec.yaml but font files are not
-  bundled (add Pretendard TTF files or remove font config to use system font).
 - Anthropic API key is entered by user in Settings and stored in SharedPreferences
   (never sent to any server other than api.anthropic.com).
 - Medical disclaimer (`AppConstants.disclaimer`) must appear on onboarding last step,
   home screen, and subscription page per Korean health app guidelines.
 - Android `minSdkVersion = 21` (Android 5.0+); in_app_purchase requires billing permission.
+- `local.properties` is NOT tracked by git (machine-specific). QA must set:
+  `sdk.dir=<android-sdk-path>` and `flutter.sdk=<flutter-sdk-path>`.
 
 ## Testing
 No automated tests yet. Manual QA checklist:
