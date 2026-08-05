@@ -1,0 +1,1355 @@
+{
+  "version": "1.0.0",
+  "exercises": [
+    {
+      "id": "ex001", "name": "Wall Sit", "name_ko": "월 싯",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["calves"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Back flat against wall, slide down until thighs are parallel. Hold 30–60s.",
+      "image_url": null, "video_url": "dQw4w9WgXcQ"
+    },
+    {
+      "id": "ex002", "name": "Seated Leg Extension (Light)", "name_ko": "시티드 레그 익스텐션 (경량)",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Light resistance only. Full ROM with slow tempo. Do NOT lock knee at top.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex003", "name": "Straight-Leg Raise", "name_ko": "스트레이트 레그 레이즈",
+      "muscle_groups": ["quadriceps", "hip_flexors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Lie on back, lock knee straight, raise 45°. Great for knee rehab without joint stress.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex004", "name": "Terminal Knee Extension (TKE)", "name_ko": "터미널 니 익스텐션",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Band behind knee, extend from 30° to full extension. VMO activation focus.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex005", "name": "Step-Up (Low Box)", "name_ko": "스텝업 (낮은 박스)",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Step onto a 20cm box. Control descent. Great for knee rehab proprioception.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex006", "name": "Goblet Squat (Shallow)", "name_ko": "고블렛 스쿼트 (얕게)",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["core"],
+      "equipment": ["dumbbell", "kettlebell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Hold dumbbell at chest, squat to 60°–70° only. Upright torso cue.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex007", "name": "Split Squat (Rear-foot elevated)", "name_ko": "불가리안 스플릿 스쿼트",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["dumbbell", "bodyweight"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["lunge"],
+      "description": "Rear foot on bench. Front knee tracks over toes. Not suitable for active knee injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex008", "name": "Leg Press (Moderate)", "name_ko": "레그 프레스 (중강도)",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["leg_press_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Feet hip-width, 90° knee angle limit. Avoid for deep knee pain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex009", "name": "Romanian Deadlift (Dumbbell)", "name_ko": "루마니안 데드리프트 (덤벨)",
+      "muscle_groups": ["hamstrings", "glutes"], "secondary_muscles": ["lower_back"],
+      "equipment": ["dumbbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deadlift", "spine_flexion_loaded"],
+      "description": "Hip hinge with neutral spine. Keep DBs close to legs. Not for acute lower-back.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex010", "name": "Nordic Hamstring Curl", "name_ko": "노르딕 햄스트링 컬",
+      "muscle_groups": ["hamstrings"], "secondary_muscles": ["glutes"],
+      "equipment": ["bodyweight"], "difficulty": "advanced",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["nordic_curl", "hamstring"],
+      "description": "Eccentric hamstring exercise. Very high load — avoid in acute hamstring strain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex011", "name": "Lying Leg Curl", "name_ko": "라잉 레그 컬",
+      "muscle_groups": ["hamstrings"], "secondary_muscles": [],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Full ROM leg curl. Avoid heavy loads for acute hamstring injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex012", "name": "Hip Thrust (Bodyweight)", "name_ko": "힙 쓰러스트 (맨몸)",
+      "muscle_groups": ["glutes"], "secondary_muscles": ["hamstrings", "core"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Shoulders on bench edge, drive hips up. Excellent for glute activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex013", "name": "Hip Thrust (Barbell)", "name_ko": "힙 쓰러스트 (바벨)",
+      "muscle_groups": ["glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["hip_thrust_heavy"],
+      "description": "Loaded hip thrust. Avoid for acute hip flexor or SI joint pain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex014", "name": "Clamshell", "name_ko": "클램쉘",
+      "muscle_groups": ["glutes", "hip_abductors"], "secondary_muscles": [],
+      "equipment": ["resistance_band", "bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Side-lying hip abduction with band. Essential glute medius rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex015", "name": "Band Walk (Lateral)", "name_ko": "밴드 레터럴 워크",
+      "muscle_groups": ["glutes", "hip_abductors"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Band around ankles, side-step keeping slight squat. Hip stabilizer activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex016", "name": "Barbell Back Squat", "name_ko": "바벨 백 스쿼트",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings", "core"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deep_squat", "squat_jump"],
+      "description": "High-bar or low-bar squat. Avoid for knee or hip injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex017", "name": "Conventional Deadlift", "name_ko": "컨벤셔널 데드리프트",
+      "muscle_groups": ["hamstrings", "glutes", "lower_back"], "secondary_muscles": ["traps", "core"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deadlift", "spine_flexion_loaded", "stiff_leg_deadlift"],
+      "description": "Full-body pull. Neutral spine essential. Contraindicated for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex018", "name": "Lunge (Walking)", "name_ko": "워킹 런지",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["bodyweight", "dumbbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["lunge", "deep_squat"],
+      "description": "Dynamic lunge. Avoid for knee or hip injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex019", "name": "Box Jump", "name_ko": "박스 점프",
+      "muscle_groups": ["quadriceps", "glutes", "calves"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "advanced",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": ["jump", "box_jump", "lateral_bound"],
+      "description": "Plyometric power exercise. Contraindicated for knee, ankle, hip injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex020", "name": "Standing Calf Raise", "name_ko": "스탠딩 카프 레이즈",
+      "muscle_groups": ["calves"], "secondary_muscles": [],
+      "equipment": ["bodyweight", "machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["calf_raise", "single_leg_calf_raise"],
+      "description": "Full ROM plantar flexion. Avoid for calf strain or Achilles issues.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex021", "name": "Seated Calf Raise", "name_ko": "시티드 카프 레이즈",
+      "muscle_groups": ["soleus"], "secondary_muscles": ["calves"],
+      "equipment": ["machine", "dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["calf_raise"],
+      "description": "Targets soleus. Less stress on Achilles than standing version.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex022", "name": "Ankle Alphabet", "name_ko": "앵클 알파벳",
+      "muscle_groups": ["calves", "ankles"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Trace alphabet with toes in air. Ankle ROM and proprioception rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex023", "name": "Single-Leg Balance", "name_ko": "외발 서기",
+      "muscle_groups": ["calves", "ankles", "glutes"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Balance 30–60s each leg. Progress to eyes closed. Ankle/knee proprioception.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex024", "name": "Bench Press (Barbell)", "name_ko": "벤치 프레스 (바벨)",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["bench_press", "chest_compression"],
+      "description": "Flat bench press. Avoid for shoulder impingement or rib injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex025", "name": "Dumbbell Bench Press", "name_ko": "덤벨 벤치 프레스",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["bench_press", "chest_compression"],
+      "description": "Allows more natural wrist alignment than barbell. Less shoulder stress.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex026", "name": "Incline Dumbbell Press", "name_ko": "인클라인 덤벨 프레스",
+      "muscle_groups": ["upper_chest", "triceps"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["dumbbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["bench_press", "chest_compression"],
+      "description": "30–45° incline. Upper chest focus. Avoid for shoulder pain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex027", "name": "Cable Fly", "name_ko": "케이블 플라이",
+      "muscle_groups": ["chest"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["cable"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["cable_fly", "dumbbell_fly", "chest_compression"],
+      "description": "Constant tension fly. Avoid for rib or shoulder injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex028", "name": "Push-Up", "name_ko": "푸시업",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": ["core", "anterior_deltoid"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["push_up", "wrist_loaded", "chest_compression"],
+      "description": "Classic push-up. Avoid for wrist or chest/rib injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex029", "name": "Wall Push-Up", "name_ko": "월 푸시업",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab", "warmup"],
+      "safety_tags": [],
+      "description": "Standing push against wall. Very low load — suitable early in rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex030", "name": "Dip (Chest)", "name_ko": "딥스 (가슴)",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["bodyweight", "pull_up_bar"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["dip", "shoulder_impingement_risk", "chest_compression"],
+      "description": "High shoulder demand. Contraindicated for shoulder or rib injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex031", "name": "Overhead Press (Barbell)", "name_ko": "오버헤드 프레스 (바벨)",
+      "muscle_groups": ["deltoids", "triceps"], "secondary_muscles": ["upper_traps", "core"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["overhead_press", "behind_neck_press", "cervical_compression"],
+      "description": "Strict military press. Contraindicated for shoulder, neck, or wrist injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex032", "name": "Dumbbell Lateral Raise", "name_ko": "덤벨 레터럴 레이즈",
+      "muscle_groups": ["medial_deltoid"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Raise arms to shoulder height, slight elbow bend. Avoid impingement range (>90°).",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex033", "name": "Cable Lateral Raise", "name_ko": "케이블 레터럴 레이즈",
+      "muscle_groups": ["medial_deltoid"], "secondary_muscles": [],
+      "equipment": ["cable"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Constant tension. More controlled than dumbbell version.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex034", "name": "Face Pull", "name_ko": "페이스 풀",
+      "muscle_groups": ["rear_deltoid", "rotator_cuff"], "secondary_muscles": ["traps"],
+      "equipment": ["cable", "resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab", "main"],
+      "safety_tags": [],
+      "description": "Pull to face with external rotation. Essential for shoulder health.",
+      "image_url": null, "video_url": "YHnRZWi5HMo"
+    },
+    {
+      "id": "ex035", "name": "Band External Rotation", "name_ko": "밴드 외회전",
+      "muscle_groups": ["rotator_cuff"], "secondary_muscles": ["rear_deltoid"],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Elbow at side, rotate arm outward against band. Rotator cuff strengthening.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex036", "name": "Pendulum (Codman) Exercise", "name_ko": "코드만 진자 운동",
+      "muscle_groups": ["shoulder"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Lean forward, let arm hang and swing in circles. Post-surgery shoulder rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex037", "name": "Seated Dumbbell Press", "name_ko": "시티드 덤벨 프레스",
+      "muscle_groups": ["deltoids", "triceps"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["overhead_press"],
+      "description": "Seated for stability. Avoid for shoulder impingement or neck pain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex038", "name": "Pull-Up", "name_ko": "풀업",
+      "muscle_groups": ["lats", "biceps"], "secondary_muscles": ["rear_deltoid", "core"],
+      "equipment": ["pull_up_bar"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Overhand grip pull-up. Full ROM. Avoid if shoulder is inflamed.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex039", "name": "Chin-Up", "name_ko": "친업",
+      "muscle_groups": ["lats", "biceps"], "secondary_muscles": ["chest"],
+      "equipment": ["pull_up_bar"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Underhand grip. More bicep involvement. Elbow-friendly variant.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex040", "name": "Lat Pulldown (Neutral Grip)", "name_ko": "랫 풀다운 (뉴트럴 그립)",
+      "muscle_groups": ["lats", "biceps"], "secondary_muscles": ["rear_deltoid"],
+      "equipment": ["cable", "lat_pulldown_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Palms facing each other. Shoulder-friendly variant. Avoid wide-grip for shoulder.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex041", "name": "Lat Pulldown (Wide Grip)", "name_ko": "랫 풀다운 (와이드 그립)",
+      "muscle_groups": ["lats"], "secondary_muscles": ["biceps", "rear_deltoid"],
+      "equipment": ["lat_pulldown_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["lat_pulldown_wide_grip", "shoulder_impingement_risk"],
+      "description": "Avoid for shoulder impingement. Neutral grip preferred.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex042", "name": "Seated Cable Row", "name_ko": "시티드 케이블 로우",
+      "muscle_groups": ["lats", "rhomboids", "biceps"], "secondary_muscles": ["rear_deltoid"],
+      "equipment": ["cable", "seated_row_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Keep chest up, row to lower sternum. Safe for most back conditions.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex043", "name": "Dumbbell Row (Single-arm)", "name_ko": "덤벨 원암 로우",
+      "muscle_groups": ["lats", "rhomboids", "biceps"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Knee on bench, pull DB to hip. Neutral spine throughout.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex044", "name": "Bent-Over Row (Barbell)", "name_ko": "바벨 벤트오버 로우",
+      "muscle_groups": ["lats", "rhomboids", "biceps"], "secondary_muscles": ["lower_back"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["bent_over_row", "spine_flexion_loaded"],
+      "description": "High lower-back demand. Avoid for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex045", "name": "Band Pull-Apart", "name_ko": "밴드 풀 어파트",
+      "muscle_groups": ["rear_deltoid", "rhomboids"], "secondary_muscles": ["rotator_cuff"],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Pull band apart at chest height. Upper back and shoulder health.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex046", "name": "Superman", "name_ko": "슈퍼맨",
+      "muscle_groups": ["erector_spinae", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Prone back extension with arm lift. Low-load spinal extensor activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex047", "name": "Bird-Dog", "name_ko": "버드독",
+      "muscle_groups": ["core", "glutes", "erector_spinae"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Opposite arm-leg raise from quadruped. Core stability without spinal load.",
+      "image_url": null, "video_url": "wiFNA3ovhCk"
+    },
+    {
+      "id": "ex048", "name": "Dead Bug", "name_ko": "데드 버그",
+      "muscle_groups": ["core"], "secondary_muscles": ["hip_flexors"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Supine opposite arm-leg extension. Safe for lower-back rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex049", "name": "McGill Big Three: Curl-Up", "name_ko": "맥길 컬업",
+      "muscle_groups": ["core"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Minimal spinal flexion curl-up. Preferred over sit-ups for lower-back rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex050", "name": "McGill Big Three: Side Plank", "name_ko": "사이드 플랭크",
+      "muscle_groups": ["obliques", "core"], "secondary_muscles": ["glutes"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Lateral core stability. One of McGill's evidence-based back exercises.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex051", "name": "Plank", "name_ko": "플랭크",
+      "muscle_groups": ["core", "chest"], "secondary_muscles": ["shoulders"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["plank", "wrist_loaded"],
+      "description": "Hold rigid position. Avoid for wrist injury; use forearm plank instead.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex052", "name": "Forearm Plank", "name_ko": "포어암 플랭크",
+      "muscle_groups": ["core"], "secondary_muscles": ["shoulders"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Wrist-friendly plank variant. Elbows on ground.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex053", "name": "Hollow Body Hold", "name_ko": "할로우 바디 홀드",
+      "muscle_groups": ["core"], "secondary_muscles": ["hip_flexors"],
+      "equipment": ["bodyweight"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Press lower back into floor, arms and legs hover. Deep core tension.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex054", "name": "Sit-Up", "name_ko": "싯업",
+      "muscle_groups": ["rectus_abdominis", "hip_flexors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["sit_up", "spine_flexion_loaded"],
+      "description": "Full sit-up with spinal flexion. Avoid for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex055", "name": "Hanging Leg Raise", "name_ko": "행잉 레그 레이즈",
+      "muscle_groups": ["rectus_abdominis", "hip_flexors"], "secondary_muscles": [],
+      "equipment": ["pull_up_bar"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["leg_raise_hanging"],
+      "description": "High spinal flexion load. Avoid for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex056", "name": "Barbell Bicep Curl", "name_ko": "바벨 바이셉 컬",
+      "muscle_groups": ["biceps"], "secondary_muscles": ["forearms"],
+      "equipment": ["barbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["barbell_curl", "wrist_loaded", "elbow_flexion_heavy"],
+      "description": "Standard curl. Avoid for wrist or elbow injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex057", "name": "Dumbbell Bicep Curl", "name_ko": "덤벨 바이셉 컬",
+      "muscle_groups": ["biceps"], "secondary_muscles": ["forearms"],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Natural wrist alignment. Hammer or supination curl variations.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex058", "name": "Hammer Curl", "name_ko": "해머 컬",
+      "muscle_groups": ["biceps", "brachialis"], "secondary_muscles": ["forearms"],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Neutral grip curl. Reduced wrist stress vs. supinated curl.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex059", "name": "Cable Bicep Curl", "name_ko": "케이블 바이셉 컬",
+      "muscle_groups": ["biceps"], "secondary_muscles": [],
+      "equipment": ["cable"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Constant tension curl. Use rope or bar attachment.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex060", "name": "Preacher Curl", "name_ko": "프리처 컬",
+      "muscle_groups": ["biceps"], "secondary_muscles": [],
+      "equipment": ["barbell", "dumbbell", "preacher_curl_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["preacher_curl", "elbow_flexion_heavy"],
+      "description": "High elbow stress at full extension. Avoid for elbow injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex061", "name": "Tricep Pushdown (Cable)", "name_ko": "케이블 트라이셉 푸시다운",
+      "muscle_groups": ["triceps"], "secondary_muscles": [],
+      "equipment": ["cable"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Elbow stays fixed. Rope or bar attachment. Safe for most conditions.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex062", "name": "Overhead Tricep Extension (Dumbbell)", "name_ko": "덤벨 오버헤드 트라이셉 익스텐션",
+      "muscle_groups": ["triceps"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["overhead_tricep_extension", "elbow_flexion_heavy"],
+      "description": "Long head emphasis. Avoid for elbow or shoulder injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex063", "name": "Skull Crusher", "name_ko": "스컬 크러셔",
+      "muscle_groups": ["triceps"], "secondary_muscles": [],
+      "equipment": ["barbell", "dumbbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["close_grip_bench", "elbow_flexion_heavy"],
+      "description": "Lying EZ-bar extension. High elbow stress. Avoid for elbow tendinitis.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex064", "name": "Tricep Dip (Bench)", "name_ko": "트라이셉 딥 (벤치)",
+      "muscle_groups": ["triceps", "chest"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["tricep_dip", "shoulder_impingement_risk", "chest_compression"],
+      "description": "Hands on bench behind body. High shoulder demand. Avoid for shoulder/elbow.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex065", "name": "Barbell Shrug", "name_ko": "바벨 슈러그",
+      "muscle_groups": ["upper_traps"], "secondary_muscles": [],
+      "equipment": ["barbell", "dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["shrug_heavy", "cervical_compression"],
+      "description": "Avoid heavy loads for neck injury. Light DB shrugs safer option.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex066", "name": "Upright Row", "name_ko": "업라이트 로우",
+      "muscle_groups": ["upper_traps", "deltoids"], "secondary_muscles": [],
+      "equipment": ["barbell", "dumbbell", "cable"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["upright_row", "shoulder_impingement_risk"],
+      "description": "High shoulder impingement risk. Generally avoided for shoulder issues.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex067", "name": "Neck Flexion/Extension (Isometric)", "name_ko": "목 등척성 운동",
+      "muscle_groups": ["cervical_flexors", "cervical_extensors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Press hand against head, resist without movement. Cervical stabilizer activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex068", "name": "Neck Stretch (Levator Scapulae)", "name_ko": "목 스트레칭",
+      "muscle_groups": ["neck"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "cooldown", "rehab"],
+      "safety_tags": [],
+      "description": "Gentle neck stretch. Hold 30s each side. No loaded movements.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex069", "name": "Chin Tuck", "name_ko": "턱 당기기",
+      "muscle_groups": ["deep_cervical_flexors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Retract chin to make double chin. Deep neck flexor activation. Safe.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex070", "name": "Wrist Flexor Stretch", "name_ko": "손목 굴근 스트레칭",
+      "muscle_groups": ["wrist_flexors", "forearms"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "cooldown", "rehab"],
+      "safety_tags": [],
+      "description": "Extend arm, pull fingers back gently. Forearm and wrist mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex071", "name": "Wrist Extension (Light)", "name_ko": "손목 익스텐션 (경량)",
+      "muscle_groups": ["wrist_extensors"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Very light DB wrist extension. For golfer's elbow or wrist rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex072", "name": "Reverse Curl (Light)", "name_ko": "리버스 컬 (경량)",
+      "muscle_groups": ["brachioradialis", "wrist_extensors"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": ["reverse_curl_heavy"],
+      "description": "Pronated grip curl. Elbow and forearm extensor rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex073", "name": "Elbow Flexion (Isometric)", "name_ko": "팔꿈치 등척성 굴곡",
+      "muscle_groups": ["biceps", "brachialis"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Press hand against fixed surface, no movement. Tendinitis-safe activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex074", "name": "Foam Roll (Quads)", "name_ko": "폼롤 (대퇴사두근)",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["foam_roller"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Roll quads for 60–90s. Reduces DOMS and improves tissue quality.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex075", "name": "Foam Roll (IT Band)", "name_ko": "폼롤 (IT 밴드)",
+      "muscle_groups": ["it_band", "vastus_lateralis"], "secondary_muscles": [],
+      "equipment": ["foam_roller"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Side-lying roll from hip to knee. IT band and lateral quad mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex076", "name": "Foam Roll (Thoracic Spine)", "name_ko": "폼롤 (흉추)",
+      "muscle_groups": ["erector_spinae", "rhomboids"], "secondary_muscles": [],
+      "equipment": ["foam_roller"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Thoracic extension over roller. Improves posture and shoulder mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex077", "name": "Hip Flexor Stretch (Kneeling)", "name_ko": "힙 플렉서 스트레칭",
+      "muscle_groups": ["hip_flexors", "psoas"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Half-kneeling stretch. Hold 30–60s. Essential for desk workers.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex078", "name": "Pigeon Stretch", "name_ko": "피전 스트레칭",
+      "muscle_groups": ["glutes", "hip_external_rotators"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Hip external rotation stretch. Floor or standing variant.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex079", "name": "Cat-Cow Stretch", "name_ko": "캣-카우 스트레칭",
+      "muscle_groups": ["erector_spinae", "core"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Quadruped spinal flexion-extension. Safe warm-up for the spine.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex080", "name": "World's Greatest Stretch", "name_ko": "월드 그레이티스트 스트레칭",
+      "muscle_groups": ["hip_flexors", "glutes", "thoracic_spine"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Dynamic lunge + thoracic rotation. Full-body warm-up movement.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex081", "name": "90/90 Hip Stretch", "name_ko": "9090 힙 스트레칭",
+      "muscle_groups": ["hip_external_rotators", "hip_internal_rotators"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Seated 90/90 position. Hip mobility in both internal and external rotation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex082", "name": "Jefferson Curl", "name_ko": "제퍼슨 컬",
+      "muscle_groups": ["erector_spinae", "hamstrings"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "advanced",
+      "category": "mobility", "phase_tags": ["main"],
+      "safety_tags": ["jefferson_curl", "spine_flexion_loaded"],
+      "description": "Loaded spinal flexion mobility. Contraindicated for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex083", "name": "Glute Bridge", "name_ko": "글루트 브리지",
+      "muscle_groups": ["glutes", "hamstrings"], "secondary_muscles": ["core"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab", "main"],
+      "safety_tags": [],
+      "description": "Supine hip extension. Safe activation for glutes without knee stress.",
+      "image_url": null, "video_url": "OUgsJ8-Vi0E"
+    },
+    {
+      "id": "ex084", "name": "Single-Leg Glute Bridge", "name_ko": "싱글레그 글루트 브리지",
+      "muscle_groups": ["glutes", "hamstrings"], "secondary_muscles": ["core"],
+      "equipment": ["bodyweight"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Unilateral glute bridge. Increases difficulty and hip stability demand.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex085", "name": "Good Morning", "name_ko": "굿모닝",
+      "muscle_groups": ["erector_spinae", "hamstrings", "glutes"], "secondary_muscles": [],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["good_morning", "deadlift", "spine_flexion_loaded"],
+      "description": "Hip hinge with bar on shoulders. High spinal load. Avoid for lower-back.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex086", "name": "Hyperextension (Back Extension)", "name_ko": "백 익스텐션",
+      "muscle_groups": ["erector_spinae", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["hyperextension_loaded"],
+      "description": "45° back extension. Avoid loaded version for acute lower-back pain.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex087", "name": "Cable Woodchop (Low to High)", "name_ko": "케이블 우드쵸프",
+      "muscle_groups": ["obliques", "core"], "secondary_muscles": ["shoulders"],
+      "equipment": ["cable"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Rotational core exercise. Keep back neutral. Good for functional core.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex088", "name": "Pallof Press", "name_ko": "팰로프 프레스",
+      "muscle_groups": ["core", "obliques"], "secondary_muscles": [],
+      "equipment": ["cable", "resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Anti-rotation core exercise. Excellent for lower-back rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex089", "name": "Farmer's Carry", "name_ko": "파머스 캐리",
+      "muscle_groups": ["traps", "forearms", "core"], "secondary_muscles": ["glutes"],
+      "equipment": ["dumbbell", "kettlebell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["farmer_carry_heavy"],
+      "description": "Walk with heavy objects. Full-body stability. Avoid heavy loads for wrist.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex090", "name": "Turkish Get-Up", "name_ko": "터키시 겟업",
+      "muscle_groups": ["core", "shoulders", "glutes"], "secondary_muscles": [],
+      "equipment": ["kettlebell", "dumbbell"], "difficulty": "advanced",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Complex multi-joint movement. Overhead stability and mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex091", "name": "Kettlebell Swing", "name_ko": "케틀벨 스윙",
+      "muscle_groups": ["glutes", "hamstrings", "core"], "secondary_muscles": ["lower_back"],
+      "equipment": ["kettlebell"], "difficulty": "intermediate",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": ["deadlift"],
+      "description": "Hip hinge-powered swing. High power output. Avoid for lower-back injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex092", "name": "Battle Ropes", "name_ko": "배틀 로프",
+      "muscle_groups": ["shoulders", "core", "arms"], "secondary_muscles": [],
+      "equipment": ["machine"], "difficulty": "intermediate",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Upper-body HIIT. Various wave, slam, circle patterns.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex093", "name": "Rowing Machine", "name_ko": "로잉 머신",
+      "muscle_groups": ["lats", "glutes", "hamstrings"], "secondary_muscles": ["biceps", "core"],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["warmup", "main"],
+      "safety_tags": [],
+      "description": "Full-body low-impact cardio. Excellent for lower-body injury as substitute.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex094", "name": "Stationary Bike", "name_ko": "고정식 자전거",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["warmup", "main"],
+      "safety_tags": [],
+      "description": "Low-impact cardio. Safe for knee rehab at moderate resistance.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex095", "name": "Elliptical Trainer", "name_ko": "일립티컬",
+      "muscle_groups": ["quadriceps", "glutes", "hamstrings"], "secondary_muscles": [],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["warmup", "main"],
+      "safety_tags": [],
+      "description": "No-impact cardio. Very safe for knee, hip, and ankle recovery.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex096", "name": "Swimming (Freestyle)", "name_ko": "수영 (자유형)",
+      "muscle_groups": ["lats", "shoulders", "core"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Zero-impact full-body cardio. Excellent for most injury conditions.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex097", "name": "Incline Walk (Treadmill)", "name_ko": "인클라인 워킹",
+      "muscle_groups": ["glutes", "calves"], "secondary_muscles": ["hamstrings"],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["warmup", "main"],
+      "safety_tags": [],
+      "description": "Walking at 10–15% incline. Low-impact glute and cardio activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex098", "name": "Running", "name_ko": "달리기",
+      "muscle_groups": ["quadriceps", "hamstrings", "glutes", "calves"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": ["running", "sprint"],
+      "description": "High-impact. Contraindicated for knee, ankle, and calf injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex099", "name": "Jumping Jack", "name_ko": "점핑 잭",
+      "muscle_groups": ["calves", "deltoids"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["warmup"],
+      "safety_tags": ["jump", "lateral_bound"],
+      "description": "Classic warm-up. Avoid for knee, ankle, or hip injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex100", "name": "Mountain Climber", "name_ko": "마운틴 클라이머",
+      "muscle_groups": ["core", "hip_flexors"], "secondary_muscles": ["chest", "shoulders"],
+      "equipment": ["bodyweight"], "difficulty": "intermediate",
+      "category": "cardio", "phase_tags": ["warmup", "main"],
+      "safety_tags": ["wrist_loaded"],
+      "description": "Running knees to chest from plank. Core and cardio combo.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex101", "name": "Burpee", "name_ko": "버피",
+      "muscle_groups": ["full_body"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "intermediate",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": ["jump", "push_up", "wrist_loaded", "chest_compression"],
+      "description": "High-intensity full-body. Multiple contraindications — avoid for injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex102", "name": "Stair Climber Machine", "name_ko": "스테어 클라이머",
+      "muscle_groups": ["glutes", "quadriceps"], "secondary_muscles": ["calves"],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "cardio", "phase_tags": ["main"],
+      "safety_tags": ["stair_climb_loaded"],
+      "description": "Step-based cardio. Moderate knee stress. Use for low-level knee rehab only.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex103", "name": "Dumbbell Goblet Squat (Full Depth)", "name_ko": "고블렛 딥 스쿼트",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": ["core"],
+      "equipment": ["dumbbell", "kettlebell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deep_squat"],
+      "description": "Full depth squat. Avoid for knee injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex104", "name": "Hack Squat Machine", "name_ko": "핵 스쿼트 머신",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": [],
+      "equipment": ["hack_squat_machine"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deep_squat", "leg_press_deep"],
+      "description": "Machine squat with back support. Avoid deep knee flexion for injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex105", "name": "Pec Deck Machine", "name_ko": "펙덱 머신",
+      "muscle_groups": ["chest"], "secondary_muscles": ["anterior_deltoid"],
+      "equipment": ["pec_deck"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["dumbbell_fly", "chest_compression"],
+      "description": "Chest fly machine. Avoid for shoulder or rib injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex106", "name": "Smith Machine Squat", "name_ko": "스미스 머신 스쿼트",
+      "muscle_groups": ["quadriceps", "glutes"], "secondary_muscles": [],
+      "equipment": ["smith_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deep_squat"],
+      "description": "Guided squat. More stable than free barbell. Avoid deep for knee.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex107", "name": "Smith Machine Bench Press", "name_ko": "스미스 머신 벤치 프레스",
+      "muscle_groups": ["chest", "triceps"], "secondary_muscles": [],
+      "equipment": ["smith_machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["bench_press", "chest_compression"],
+      "description": "Guided bench. Useful when training alone. Same shoulder cautions apply.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex108", "name": "Prone Hip Extension", "name_ko": "엎드린 힙 익스텐션",
+      "muscle_groups": ["glutes", "hamstrings"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Prone position, lift one leg slightly off floor. Glute activation without load.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex109", "name": "Seated Hip Abduction (Machine)", "name_ko": "시티드 힙 어덕션 머신",
+      "muscle_groups": ["hip_abductors", "glutes"], "secondary_muscles": [],
+      "equipment": ["machine"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["rehab", "main"],
+      "safety_tags": [],
+      "description": "Machine hip abduction. Safe for most conditions including knee rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex110", "name": "Standing Hip Abduction (Band)", "name_ko": "스탠딩 힙 어브덕션 (밴드)",
+      "muscle_groups": ["hip_abductors", "glutes"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["warmup", "rehab", "main"],
+      "safety_tags": [],
+      "description": "Stand with band around ankles, raise leg outward. Glute medius.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex111", "name": "Hip Internal Rotation (Band)", "name_ko": "힙 내회전 밴드 운동",
+      "muscle_groups": ["hip_internal_rotators", "glutes"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Seated or standing hip IR with band resistance. Hip stability.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex112", "name": "Prone Plank to Downward Dog", "name_ko": "플랭크 to 다운워드 독",
+      "muscle_groups": ["core", "hamstrings", "calves"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": ["wrist_loaded"],
+      "description": "Flow between plank and pike. Full-body mobility warm-up.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex113", "name": "Deep Squat Hold (Goblet Assist)", "name_ko": "딥 스쿼트 홀드",
+      "muscle_groups": ["glutes", "hip_flexors", "ankles"], "secondary_muscles": [],
+      "equipment": ["bodyweight", "dumbbell"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": ["deep_squat"],
+      "description": "Hold bottom of squat for 2–3 min. Mobility only, no knee injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex114", "name": "Lateral Band Walk (Squatted)", "name_ko": "스쿼트 자세 밴드 사이드 스텝",
+      "muscle_groups": ["hip_abductors", "glutes", "quadriceps"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Squat position lateral walk. Hip abductor and glute medius activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex115", "name": "Sissy Squat", "name_ko": "시시 스쿼트",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "advanced",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["deep_squat", "knee"],
+      "description": "Extreme quad isolation. High knee stress. Avoid for any knee condition.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex116", "name": "Wall Angel", "name_ko": "월 엔젤",
+      "muscle_groups": ["rhomboids", "lower_traps"], "secondary_muscles": ["rotator_cuff"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Stand against wall, slide arms up-down. Shoulder posture correction.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex117", "name": "Sleeper Stretch", "name_ko": "슬리퍼 스트레칭",
+      "muscle_groups": ["posterior_shoulder_capsule"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "cooldown", "rehab"],
+      "safety_tags": [],
+      "description": "Side-lying internal rotation stretch. Posterior shoulder tightness rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex118", "name": "YTWL Exercise (Band)", "name_ko": "YTWL 운동",
+      "muscle_groups": ["lower_traps", "rhomboids", "rotator_cuff"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Four positions targeting scapular stabilizers. Essential shoulder rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex119", "name": "Thoracic Rotation Stretch", "name_ko": "흉추 회전 스트레칭",
+      "muscle_groups": ["thoracic_spine", "obliques"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup", "cooldown"],
+      "safety_tags": [],
+      "description": "Seated or quadruped thoracic rotation. Improves upper-back mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex120", "name": "Hip 90/90 Internal Rotation (Active)", "name_ko": "9090 내회전 능동 스트레칭",
+      "muscle_groups": ["hip_internal_rotators"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Active hip IR in 90/90. Improves hip mobility for squat patterns.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex121", "name": "Scapular Push-Up", "name_ko": "견갑골 푸시업",
+      "muscle_groups": ["serratus_anterior", "lower_traps"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Only scapular protraction, no elbow bend. Serratus activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex122", "name": "Chest-Supported Row (Dumbbell)", "name_ko": "체스트 서포티드 덤벨 로우",
+      "muscle_groups": ["lats", "rhomboids", "rear_deltoid"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Prone on incline bench. Removes lower-back from equation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex123", "name": "Meadows Row (Landmine)", "name_ko": "메도우스 로우",
+      "muscle_groups": ["lats", "rhomboids"], "secondary_muscles": ["biceps"],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Unilateral landmine row. Less lower-back stress than bent-over row.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex124", "name": "Close-Grip Bench Press", "name_ko": "클로즈 그립 벤치 프레스",
+      "muscle_groups": ["triceps", "chest"], "secondary_muscles": [],
+      "equipment": ["barbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["close_grip_bench", "elbow_flexion_heavy", "wrist_loaded"],
+      "description": "Tricep-focused bench. Elbow stress at lockout. Avoid for elbow injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex125", "name": "Arnold Press", "name_ko": "아놀드 프레스",
+      "muscle_groups": ["deltoids", "triceps"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "intermediate",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": ["overhead_press"],
+      "description": "Rotating shoulder press. High ROM demand. Avoid for shoulder injury.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex126", "name": "Rear Delt Fly (Dumbbell)", "name_ko": "리어 델트 플라이",
+      "muscle_groups": ["rear_deltoid"], "secondary_muscles": ["rhomboids"],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Bent-over lateral raise. Rear delt isolation. Safe for most.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex127", "name": "Ankle Dorsiflexion Mobilization", "name_ko": "발목 배측굴곡 모빌리제이션",
+      "muscle_groups": ["ankles", "calves"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Band-assisted ankle dorsiflexion. Essential pre-squat and ankle rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex128", "name": "Towel Toe Curls", "name_ko": "타월 토우 컬",
+      "muscle_groups": ["foot_intrinsics"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Curl towel with toes. Foot intrinsic strengthening for plantar fasciitis.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex129", "name": "Side-Lying Hip External Rotation", "name_ko": "사이드 라잉 힙 외회전",
+      "muscle_groups": ["hip_external_rotators", "glutes"], "secondary_muscles": [],
+      "equipment": ["bodyweight", "resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Hip ER in side-lying. Piriformis and deep hip rotator activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex130", "name": "Quadruped Hip Extension with Knee Bend", "name_ko": "네발 자세 힙 익스텐션",
+      "muscle_groups": ["glutes", "hamstrings"], "secondary_muscles": ["core"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "All-fours hip kick back with 90° knee. Glute isolation, minimal knee stress.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex131", "name": "Wall Hip Flexor Mobilization", "name_ko": "월 힙 플렉서 모빌리제이션",
+      "muscle_groups": ["hip_flexors", "psoas"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Lunge with back foot on wall. Deep hip flexor stretch and activation.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex132", "name": "Incline Dumbbell Curl", "name_ko": "인클라인 덤벨 컬",
+      "muscle_groups": ["biceps"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "strength", "phase_tags": ["main"],
+      "safety_tags": [],
+      "description": "Seated on incline, arms hang. Full bicep stretch at bottom.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex133", "name": "Cable Face Pull with External Rotation", "name_ko": "케이블 페이스 풀 + 외회전",
+      "muscle_groups": ["rotator_cuff", "rear_deltoid"], "secondary_muscles": ["traps"],
+      "equipment": ["cable"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab", "main"],
+      "safety_tags": [],
+      "description": "End of face pull with ER. Comprehensive rotator cuff rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex134", "name": "Standing Hip Circle (Mobility)", "name_ko": "스탠딩 힙 서클",
+      "muscle_groups": ["hip_flexors", "glutes", "hip_abductors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Standing large hip circles. Hip joint lubrication warm-up.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex135", "name": "Leg Swings (Forward/Back)", "name_ko": "레그 스윙 (앞뒤)",
+      "muscle_groups": ["hip_flexors", "hamstrings"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Dynamic hamstring and hip flexor warm-up.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex136", "name": "Leg Swings (Lateral)", "name_ko": "레그 스윙 (좌우)",
+      "muscle_groups": ["hip_abductors", "hip_adductors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Dynamic hip abductor and adductor warm-up.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex137", "name": "Arm Circle", "name_ko": "팔 돌리기",
+      "muscle_groups": ["deltoids", "rotator_cuff"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Forward and backward arm circles. Shoulder warm-up.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex138", "name": "Neck Rotation (Gentle)", "name_ko": "목 회전 (부드럽게)",
+      "muscle_groups": ["neck"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Slow chin to shoulder rotation. Never force range of motion.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex139", "name": "Wrist Circles", "name_ko": "손목 돌리기",
+      "muscle_groups": ["wrist_flexors", "wrist_extensors"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Full wrist circumduction. Pre-workout wrist mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex140", "name": "Ankle Circles", "name_ko": "발목 돌리기",
+      "muscle_groups": ["ankles"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["warmup"],
+      "safety_tags": [],
+      "description": "Full ankle circumduction. Pre-workout ankle mobility.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex141", "name": "Child's Pose", "name_ko": "차일드 포즈",
+      "muscle_groups": ["lower_back", "glutes", "lats"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Knees wide, arms extended forward. Full-body cool-down stretch.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex142", "name": "Seated Hamstring Stretch", "name_ko": "시티드 햄스트링 스트레칭",
+      "muscle_groups": ["hamstrings"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Long sit with forward lean. Hold 30–60s.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex143", "name": "Standing Quad Stretch", "name_ko": "스탠딩 대퇴사두근 스트레칭",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Hold ankle behind, stand on one leg. Quad stretch.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex144", "name": "Doorway Chest Stretch", "name_ko": "도어웨이 가슴 스트레칭",
+      "muscle_groups": ["chest", "anterior_deltoid"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Hands on doorframe, lean forward gently. Chest and shoulder opener.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex145", "name": "Tricep Overhead Stretch", "name_ko": "트라이셉 오버헤드 스트레칭",
+      "muscle_groups": ["triceps"], "secondary_muscles": ["lats"],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Reach behind head with one arm. Tricep and lat stretch.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex146", "name": "Cross-Body Shoulder Stretch", "name_ko": "크로스바디 어깨 스트레칭",
+      "muscle_groups": ["rear_deltoid", "rhomboids"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Pull arm across body. Posterior shoulder stretch.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex147", "name": "Calf Stretch (Wall)", "name_ko": "벽 카프 스트레칭",
+      "muscle_groups": ["calves", "soleus"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "mobility", "phase_tags": ["cooldown"],
+      "safety_tags": [],
+      "description": "Heel on floor, lean into wall. Gastrocnemius and soleus stretch.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex148", "name": "Wrist Flexor Curl (Rehab)", "name_ko": "손목 굴근 컬 (재활)",
+      "muscle_groups": ["wrist_flexors"], "secondary_muscles": [],
+      "equipment": ["dumbbell"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Very light DB wrist curl. For tennis elbow (reverse) and carpal tunnel rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex149", "name": "Finger Extension (Band)", "name_ko": "핑거 익스텐션 (밴드)",
+      "muscle_groups": ["finger_extensors", "forearms"], "secondary_muscles": [],
+      "equipment": ["resistance_band"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["rehab"],
+      "safety_tags": [],
+      "description": "Wrap band around fingers, open hand against resistance. Hand/wrist rehab.",
+      "image_url": null, "video_url": null
+    },
+    {
+      "id": "ex150", "name": "Isometric Quad Set", "name_ko": "아이소메트릭 쿼드 세트",
+      "muscle_groups": ["quadriceps"], "secondary_muscles": [],
+      "equipment": ["bodyweight"], "difficulty": "beginner",
+      "category": "rehab", "phase_tags": ["warmup", "rehab"],
+      "safety_tags": [],
+      "description": "Seated or supine. Tighten quad without movement. Post-surgery activation.",
+      "image_url": null, "video_url": null
+    }
+  ]
+}
