@@ -127,20 +127,41 @@ Pretendard font files are NOT bundled - font config removed from pubspec.yaml.
 App falls back to system font. To use Pretendard: add TTF files to `assets/fonts/`
 and restore the fonts section in pubspec.yaml.
 
-### AAPT2 Daemon Startup Failure Fix
-AGP 8.3.2 bundles its own AAPT2 daemon binary (`aapt2-8.3.2-10880808-linux`) which
-fails to start in certain containerised Linux environments with:
-  `AAPT2 aapt2-8.3.2-10880808-linux Daemon #N: Daemon startup failed`
+### AAPT2 Daemon Startup Failure Fix (ARM64 Container)
+This project runs in an **ARM64 Linux container on Apple Silicon macOS** (Docker Desktop).
+All Android SDK binaries (`aapt2`, NDK `clang`, etc.) ship as x86-64 ELF files.
+macOS Rosetta 2 can translate them **if** x86-64 glibc is installed in the container.
 
-**Fix applied** (in `android/gradle.properties`):
+**One-time setup** (run once per fresh container; survives apt cache clears):
+```sh
+# 1. Download & extract libc6 (x86-64 glibc + dynamic linker)
+cd /tmp
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8_amd64.deb" -o libc6.deb
+dpkg-deb -x libc6.deb libc6_extract
+mkdir -p /lib64 /usr/lib/x86_64-linux-gnu
+cp /tmp/libc6_extract/usr/lib/x86_64-linux-gnu/lib*.so* /usr/lib/x86_64-linux-gnu/
+cp /tmp/libc6_extract/usr/lib64/ld-linux-x86-64.so.2 /lib64/
+
+# 2. libgcc_s + libstdc++ (needed by aapt2 and clang)
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libgcc-s1_14-20240412-0ubuntu1_amd64.deb" -o libgcc.deb
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libstdc++6_14-20240412-0ubuntu1_amd64.deb" -o libstdcpp.deb
+dpkg-deb -x libgcc.deb libgcc_extract && dpkg-deb -x libstdcpp.deb libstdcpp_extract
+find /tmp/libgcc_extract /tmp/libstdcpp_extract -name "*.so*" | xargs -I{} cp {} /usr/lib/x86_64-linux-gnu/
+
+# 3. zlib1g (needed by NDK clang)
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.3.dfsg-3.1ubuntu2_amd64.deb" -o zlib1g.deb
+dpkg-deb -x zlib1g.deb zlib1g_extract
+cp /tmp/zlib1g_extract/usr/lib/x86_64-linux-gnu/libz.so.1* /usr/lib/x86_64-linux-gnu/
+```
+
+**`android/gradle.properties` override** (already in file):
 ```
 android.aapt2FromMavenOverride=/opt/android-sdk-linux/build-tools/34.0.0/aapt2
 ```
-This tells AGP to use the standalone AAPT2 from the installed SDK build-tools
-instead of its bundled daemon. The build-tools/34.0.0 AAPT2 works correctly.
+This points AGP to the standalone SDK AAPT2 (which now runs via Rosetta) instead
+of the bundled Maven AAPT2 daemon which also fails.
 
-Note: on ARM64 hosts the build-tools AAPT2 may also be x86_64-only — in that case
-install `libc6:amd64` and use a qemu wrapper script at a path ending in `aapt2`.
+After the one-time setup above, `flutter build apk --debug` succeeds.
 
 ## Important Notes
 - Anthropic API key is entered by user in Settings and stored in SharedPreferences
