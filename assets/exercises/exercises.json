@@ -1,0 +1,2101 @@
+{
+  "exercises": [
+    {
+      "id": "ex001",
+      "name": "Cat-Cow Stretch",
+      "name_ko": "고양이-소 스트레칭",
+      "muscle_groups": [
+        "spine",
+        "core"
+      ],
+      "secondary_muscles": [
+        "neck"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup",
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "네발 기기 자세에서 척추를 둥글게 말았다 펴는 동작. 허리 유연성과 코어 활성화."
+    },
+    {
+      "id": "ex002",
+      "name": "Hip Circle",
+      "name_ko": "고관절 원 돌리기",
+      "muscle_groups": [
+        "hip_flexors",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "lower_back"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "서서 고관절을 원을 그리며 돌려 관절 가동 범위를 넓힘."
+    },
+    {
+      "id": "ex003",
+      "name": "Arm Circle",
+      "name_ko": "팔 원 돌리기",
+      "muscle_groups": [
+        "shoulder",
+        "rotator_cuff"
+      ],
+      "secondary_muscles": [
+        "upper_back"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "양팔을 앞뒤로 크게 원을 그리며 어깨 관절을 풀어줌."
+    },
+    {
+      "id": "ex004",
+      "name": "Leg Swing",
+      "name_ko": "다리 스윙",
+      "muscle_groups": [
+        "hip_flexors",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "glutes"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "벽을 잡고 서서 한 다리를 앞뒤로 스윙. 고관절 유연성 증가."
+    },
+    {
+      "id": "ex005",
+      "name": "Thoracic Rotation",
+      "name_ko": "흉추 회전",
+      "muscle_groups": [
+        "upper_back",
+        "spine"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "옆으로 누워 팔을 뻗어 흉추를 회전. 상부 척추 가동성 개선."
+    },
+    {
+      "id": "ex006",
+      "name": "World's Greatest Stretch",
+      "name_ko": "월드 그레이티스트 스트레치",
+      "muscle_groups": [
+        "hip_flexors",
+        "glutes",
+        "shoulder"
+      ],
+      "secondary_muscles": [
+        "hamstring",
+        "spine"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "런지 자세에서 상체를 회전하는 복합 스트레칭. 전신 가동성 향상."
+    },
+    {
+      "id": "ex007",
+      "name": "Ankle Circles",
+      "name_ko": "발목 원 돌리기",
+      "muscle_groups": [
+        "calf",
+        "ankle"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "앉아서 발목을 원을 그리며 돌려 발목 관절 가동성 증가."
+    },
+    {
+      "id": "ex008",
+      "name": "Wrist Rotation",
+      "name_ko": "손목 원 돌리기",
+      "muscle_groups": [
+        "forearm"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "손목을 천천히 원을 그리며 돌려 손목 관절 유연성 확보."
+    },
+    {
+      "id": "ex009",
+      "name": "Neck Side Tilt",
+      "name_ko": "목 측면 스트레칭",
+      "muscle_groups": [
+        "neck",
+        "trapezius"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "warmup",
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "목을 좌우로 천천히 기울여 경부 근육을 스트레칭."
+    },
+    {
+      "id": "ex010",
+      "name": "Hip Flexor Stretch",
+      "name_ko": "고관절 굴근 스트레칭",
+      "muscle_groups": [
+        "hip_flexors",
+        "psoas"
+      ],
+      "secondary_muscles": [
+        "quadriceps"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "한쪽 무릎을 바닥에 대고 골반을 앞으로 밀어 고관절 굴근 스트레칭."
+    },
+    {
+      "id": "ex011",
+      "name": "Clamshell",
+      "name_ko": "클램쉘",
+      "muscle_groups": [
+        "glutes",
+        "hip_abductors"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight",
+        "resistance_band",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "옆으로 누워 무릎을 열고 닫는 동작. 둔근 및 고관절 외전근 활성화."
+    },
+    {
+      "id": "ex012",
+      "name": "Glute Bridge",
+      "name_ko": "글루트 브리지",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "core",
+        "lower_back"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "등을 대고 누워 골반을 들어올리는 동작. 둔근 강화와 요통 예방에 효과적."
+    },
+    {
+      "id": "ex013",
+      "name": "Bird Dog",
+      "name_ko": "버드독",
+      "muscle_groups": [
+        "core",
+        "lower_back",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "네발 기기 자세에서 반대 팔다리를 뻗는 동작. 코어 안정성 향상."
+    },
+    {
+      "id": "ex014",
+      "name": "Dead Bug",
+      "name_ko": "데드버그",
+      "muscle_groups": [
+        "core",
+        "transverse_abdominis"
+      ],
+      "secondary_muscles": [
+        "lower_back"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "천장을 보고 누워 반대 팔다리를 내리는 코어 안정화 운동."
+    },
+    {
+      "id": "ex015",
+      "name": "Side-Lying Hip Abduction",
+      "name_ko": "사이드 라잉 고관절 외전",
+      "muscle_groups": [
+        "hip_abductors",
+        "glutes"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight",
+        "resistance_band",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "옆으로 누워 위쪽 다리를 천천히 들어올리는 재활 운동."
+    },
+    {
+      "id": "ex016",
+      "name": "Terminal Knee Extension",
+      "name_ko": "터미널 무릎 신전",
+      "muscle_groups": [
+        "quadriceps"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "resistance_band"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "밴드를 무릎 뒤에 걸고 무릎을 완전히 펴는 동작. 무릎 재활의 기본."
+    },
+    {
+      "id": "ex017",
+      "name": "Shoulder External Rotation",
+      "name_ko": "어깨 외회전",
+      "muscle_groups": [
+        "rotator_cuff"
+      ],
+      "secondary_muscles": [
+        "upper_back"
+      ],
+      "equipment": [
+        "resistance_band"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "밴드를 이용해 팔꿈치를 90도로 구부리고 외회전. 회전근개 강화."
+    },
+    {
+      "id": "ex018",
+      "name": "Wall Slide",
+      "name_ko": "월 슬라이드",
+      "muscle_groups": [
+        "shoulder",
+        "rotator_cuff",
+        "upper_back"
+      ],
+      "secondary_muscles": [
+        "trapezius"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "벽에 등을 대고 팔을 위아래로 슬라이드. 견갑골 안정화 훈련."
+    },
+    {
+      "id": "ex019",
+      "name": "Prone Hip Extension",
+      "name_ko": "엎드려 고관절 신전",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "lower_back"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "엎드려 한 다리를 번갈아 들어올리는 동작. 둔근 활성화."
+    },
+    {
+      "id": "ex020",
+      "name": "Seated Ankle Dorsiflexion",
+      "name_ko": "앉아서 발목 배측굴곡",
+      "muscle_groups": [
+        "tibialis_anterior"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "앉아서 발목을 위로 당기는 동작. 발목 재활 및 경골근 강화."
+    },
+    {
+      "id": "ex021",
+      "name": "Squat",
+      "name_ko": "스쿼트",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring",
+        "core"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deep_squat"
+      ],
+      "description": "발을 어깨 너비로 벌리고 무릎을 90도까지 구부리는 기본 스쿼트."
+    },
+    {
+      "id": "ex022",
+      "name": "Wall Sit",
+      "name_ko": "월 싯",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "벽에 등을 기대고 무릎 90도로 앉는 등척성 운동. 무릎 재활에 적합."
+    },
+    {
+      "id": "ex023",
+      "name": "Step-Up",
+      "name_ko": "스텝업",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "낮은 단차에 한 발씩 올라서는 기능적 운동."
+    },
+    {
+      "id": "ex024",
+      "name": "Lunge",
+      "name_ko": "런지",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring",
+        "core"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "lunge"
+      ],
+      "description": "앞으로 발을 내딛어 무릎을 구부리는 단방향 운동."
+    },
+    {
+      "id": "ex025",
+      "name": "Reverse Lunge",
+      "name_ko": "리버스 런지",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "뒤로 발을 내딛는 런지. 무릎 부하가 일반 런지보다 적음."
+    },
+    {
+      "id": "ex026",
+      "name": "Push-Up",
+      "name_ko": "푸시업",
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "shoulder",
+        "core"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "push_up",
+        "wrist_loaded"
+      ],
+      "description": "전통적인 팔굽혀펴기. 가슴, 삼두, 어깨 전면을 강화."
+    },
+    {
+      "id": "ex027",
+      "name": "Incline Push-Up",
+      "name_ko": "인클라인 푸시업",
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [
+        "push_up"
+      ],
+      "description": "손을 높은 곳에 올려 수행하는 초급 푸시업."
+    },
+    {
+      "id": "ex028",
+      "name": "Forearm Plank",
+      "name_ko": "팔꿈치 플랭크",
+      "muscle_groups": [
+        "core",
+        "transverse_abdominis"
+      ],
+      "secondary_muscles": [
+        "glutes"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "팔꿈치로 지지하는 플랭크. 손목 부담 없이 코어를 강화."
+    },
+    {
+      "id": "ex029",
+      "name": "Side Plank",
+      "name_ko": "사이드 플랭크",
+      "muscle_groups": [
+        "obliques",
+        "core"
+      ],
+      "secondary_muscles": [
+        "glutes",
+        "hip_abductors"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "옆으로 누워 팔꿈치로 몸을 지지하는 측면 코어 운동."
+    },
+    {
+      "id": "ex030",
+      "name": "Superman",
+      "name_ko": "슈퍼맨",
+      "muscle_groups": [
+        "lower_back",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring",
+        "upper_back"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "엎드려 팔다리를 들어올리는 동작. 허리 신근 강화."
+    },
+    {
+      "id": "ex031",
+      "name": "Hip Thrust Bodyweight",
+      "name_ko": "바디웨이트 힙 쓰러스트",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "core"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "등을 벤치에 대고 골반을 위로 밀어올리는 둔근 강화 운동."
+    },
+    {
+      "id": "ex032",
+      "name": "Single Leg Glute Bridge",
+      "name_ko": "한발 글루트 브리지",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "core"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "한 발로 수행하는 글루트 브리지. 둔근 불균형 교정에 효과적."
+    },
+    {
+      "id": "ex033",
+      "name": "Inverted Row",
+      "name_ko": "인버티드 로우",
+      "muscle_groups": [
+        "upper_back",
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "core"
+      ],
+      "equipment": [
+        "pull_up_bar",
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "낮은 바에 매달려 누워서 가슴을 당기는 등 근력 운동."
+    },
+    {
+      "id": "ex034",
+      "name": "Dumbbell Goblet Squat",
+      "name_ko": "덤벨 고블릿 스쿼트",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "core",
+        "upper_back"
+      ],
+      "equipment": [
+        "dumbbell",
+        "kettlebell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deep_squat"
+      ],
+      "description": "덤벨을 가슴 앞에 들고 수행하는 스쿼트."
+    },
+    {
+      "id": "ex035",
+      "name": "Dumbbell Romanian Deadlift",
+      "name_ko": "덤벨 루마니안 데드리프트",
+      "muscle_groups": [
+        "hamstring",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "lower_back",
+        "core"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "무릎을 약간 구부린 상태로 덤벨을 내리는 햄스트링 위주 운동."
+    },
+    {
+      "id": "ex036",
+      "name": "Dumbbell Shoulder Press",
+      "name_ko": "덤벨 숄더 프레스",
+      "muscle_groups": [
+        "shoulder",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "upper_back"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "overhead_press",
+        "shoulder_impingement_risk"
+      ],
+      "description": "덤벨을 머리 위로 밀어올리는 어깨 운동."
+    },
+    {
+      "id": "ex037",
+      "name": "Dumbbell Lateral Raise",
+      "name_ko": "덤벨 레터럴 레이즈",
+      "muscle_groups": [
+        "shoulder"
+      ],
+      "secondary_muscles": [
+        "trapezius"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "덤벨을 옆으로 들어올리는 측면 어깨 운동."
+    },
+    {
+      "id": "ex038",
+      "name": "Dumbbell Bicep Curl",
+      "name_ko": "덤벨 바이셉 컬",
+      "muscle_groups": [
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "forearm"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "덤벨을 이용한 기본 이두 컬. 이두근 발달."
+    },
+    {
+      "id": "ex039",
+      "name": "Dumbbell Hammer Curl",
+      "name_ko": "덤벨 해머 컬",
+      "muscle_groups": [
+        "biceps",
+        "brachialis"
+      ],
+      "secondary_muscles": [
+        "forearm"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "손바닥이 안쪽을 향한 채로 수행하는 컬. 이두와 완근 균형 발달."
+    },
+    {
+      "id": "ex040",
+      "name": "Dumbbell Tricep Kickback",
+      "name_ko": "덤벨 트라이셉 킥백",
+      "muscle_groups": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "상체를 숙이고 팔꿈치를 뒤로 뻗는 삼두 운동."
+    },
+    {
+      "id": "ex041",
+      "name": "Dumbbell Row",
+      "name_ko": "덤벨 로우",
+      "muscle_groups": [
+        "latissimus_dorsi",
+        "upper_back"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "rear_delt"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "한 손으로 지지하며 덤벨을 허리 옆으로 당기는 등 운동."
+    },
+    {
+      "id": "ex042",
+      "name": "Dumbbell Bench Press",
+      "name_ko": "덤벨 벤치 프레스",
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "bench_press",
+        "chest_compression"
+      ],
+      "description": "덤벨을 이용한 벤치 프레스. 가슴 근육 발달의 핵심."
+    },
+    {
+      "id": "ex043",
+      "name": "Dumbbell Step-Up",
+      "name_ko": "덤벨 스텝업",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "덤벨을 들고 박스나 계단에 올라서는 하체 운동."
+    },
+    {
+      "id": "ex044",
+      "name": "Dumbbell Reverse Lunge",
+      "name_ko": "덤벨 리버스 런지",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "덤벨을 들고 뒤로 발을 내딛는 하체 운동."
+    },
+    {
+      "id": "ex045",
+      "name": "Dumbbell Sumo Squat",
+      "name_ko": "덤벨 수모 스쿼트",
+      "muscle_groups": [
+        "glutes",
+        "inner_thigh",
+        "quadriceps"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "dumbbell",
+        "kettlebell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "발을 넓게 벌리고 덤벨을 양손에 들고 수행하는 내전근 강조 스쿼트."
+    },
+    {
+      "id": "ex046",
+      "name": "Dumbbell Calf Raise",
+      "name_ko": "덤벨 카프 레이즈",
+      "muscle_groups": [
+        "calf",
+        "gastrocnemius"
+      ],
+      "secondary_muscles": [
+        "soleus"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "calf_raise"
+      ],
+      "description": "덤벨을 들고 발뒤꿈치를 들어올리는 종아리 운동."
+    },
+    {
+      "id": "ex047",
+      "name": "Barbell Back Squat",
+      "name_ko": "바벨 백 스쿼트",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring",
+        "core",
+        "lower_back"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "advanced",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deep_squat"
+      ],
+      "description": "바벨을 등에 지고 수행하는 스쿼트. 하체 근력의 핵심 운동."
+    },
+    {
+      "id": "ex048",
+      "name": "Barbell Deadlift",
+      "name_ko": "바벨 데드리프트",
+      "muscle_groups": [
+        "hamstring",
+        "glutes",
+        "lower_back"
+      ],
+      "secondary_muscles": [
+        "upper_back",
+        "forearm"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "advanced",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deadlift",
+        "spine_flexion_loaded"
+      ],
+      "description": "바닥에서 바벨을 들어올리는 복합 전신 운동."
+    },
+    {
+      "id": "ex049",
+      "name": "Barbell Bench Press",
+      "name_ko": "바벨 벤치 프레스",
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "bench_press",
+        "chest_compression"
+      ],
+      "description": "바벨을 가슴 위에서 밀어올리는 가슴 운동의 대표."
+    },
+    {
+      "id": "ex050",
+      "name": "Barbell Row",
+      "name_ko": "바벨 로우",
+      "muscle_groups": [
+        "latissimus_dorsi",
+        "upper_back"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "rear_delt"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "bent_over_row"
+      ],
+      "description": "상체를 숙이고 바벨을 배꼽 방향으로 당기는 등 운동."
+    },
+    {
+      "id": "ex051",
+      "name": "Barbell Overhead Press",
+      "name_ko": "바벨 오버헤드 프레스",
+      "muscle_groups": [
+        "shoulder",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "upper_back",
+        "core"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "advanced",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "overhead_press",
+        "shoulder_impingement_risk"
+      ],
+      "description": "바벨을 머리 위로 밀어올리는 어깨 및 삼두 운동."
+    },
+    {
+      "id": "ex052",
+      "name": "Barbell Hip Thrust",
+      "name_ko": "바벨 힙 쓰러스트",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "core"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "hip_thrust_heavy"
+      ],
+      "description": "등을 벤치에 기대고 바벨을 골반 위에 올려 수행하는 둔근 운동."
+    },
+    {
+      "id": "ex053",
+      "name": "Barbell Romanian Deadlift",
+      "name_ko": "바벨 루마니안 데드리프트",
+      "muscle_groups": [
+        "hamstring",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "lower_back"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "stiff_leg_deadlift"
+      ],
+      "description": "바벨을 이용한 루마니안 데드리프트. 햄스트링 집중 강화."
+    },
+    {
+      "id": "ex054",
+      "name": "Leg Press",
+      "name_ko": "레그 프레스",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "leg_press_machine",
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "leg_press_deep"
+      ],
+      "description": "레그 프레스 머신에서 발판을 밀어내는 하체 운동."
+    },
+    {
+      "id": "ex055",
+      "name": "Leg Curl",
+      "name_ko": "레그 컬",
+      "muscle_groups": [
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "calf"
+      ],
+      "equipment": [
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "leg_curl_heavy"
+      ],
+      "description": "라잉 또는 시티드 자세로 다리를 구부리는 햄스트링 고립 운동."
+    },
+    {
+      "id": "ex056",
+      "name": "Leg Extension",
+      "name_ko": "레그 익스텐션",
+      "muscle_groups": [
+        "quadriceps"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [
+        "leg_extension_heavy"
+      ],
+      "description": "앉아서 무릎을 펴는 대퇴사두 고립 운동."
+    },
+    {
+      "id": "ex057",
+      "name": "Lat Pulldown",
+      "name_ko": "랫 풀다운",
+      "muscle_groups": [
+        "latissimus_dorsi"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "upper_back"
+      ],
+      "equipment": [
+        "lat_pulldown_machine",
+        "cable"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "케이블 머신에서 바를 가슴 앞으로 당기는 광배근 운동."
+    },
+    {
+      "id": "ex058",
+      "name": "Cable Row",
+      "name_ko": "케이블 로우",
+      "muscle_groups": [
+        "upper_back",
+        "latissimus_dorsi"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "equipment": [
+        "cable",
+        "seated_row_machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "케이블 머신에서 앉아 핸들을 배꼽 방향으로 당기는 등 운동."
+    },
+    {
+      "id": "ex059",
+      "name": "Cable Fly",
+      "name_ko": "케이블 플라이",
+      "muscle_groups": [
+        "chest"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "cable",
+        "cable_crossover"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "cable_fly",
+        "chest_compression"
+      ],
+      "description": "케이블을 이용해 가슴 중앙으로 모으는 가슴 운동."
+    },
+    {
+      "id": "ex060",
+      "name": "Tricep Pushdown",
+      "name_ko": "트라이셉 푸시다운",
+      "muscle_groups": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "cable"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "케이블 머신에서 로프나 바를 아래로 밀어 삼두를 고립."
+    },
+    {
+      "id": "ex061",
+      "name": "Face Pull",
+      "name_ko": "페이스 풀",
+      "muscle_groups": [
+        "rear_delt",
+        "rotator_cuff",
+        "upper_back"
+      ],
+      "secondary_muscles": [
+        "trapezius"
+      ],
+      "equipment": [
+        "cable"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "케이블 로프를 얼굴 방향으로 당기는 후면 삼각근 및 회전근개 강화 운동."
+    },
+    {
+      "id": "ex062",
+      "name": "Pallof Press",
+      "name_ko": "팔로프 프레스",
+      "muscle_groups": [
+        "core",
+        "obliques"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "cable",
+        "resistance_band"
+      ],
+      "difficulty": "intermediate",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "케이블/밴드를 옆에서 당겨 정면으로 밀어내는 코어 안정화 운동."
+    },
+    {
+      "id": "ex063",
+      "name": "Resistance Band Walk",
+      "name_ko": "밴드 사이드 워크",
+      "muscle_groups": [
+        "glutes",
+        "hip_abductors"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "resistance_band"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "warmup",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "밴드를 무릎 위에 걸고 옆으로 걷는 둔근 활성화 운동."
+    },
+    {
+      "id": "ex064",
+      "name": "Standing Hip Abduction Band",
+      "name_ko": "밴드 서서 고관절 외전",
+      "muscle_groups": [
+        "hip_abductors",
+        "glutes"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "resistance_band"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "밴드를 발목에 걸고 서서 다리를 옆으로 드는 고관절 외전근 강화."
+    },
+    {
+      "id": "ex065",
+      "name": "Smith Machine Squat",
+      "name_ko": "스미스 머신 스쿼트",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "smith_machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deep_squat"
+      ],
+      "description": "스미스 머신의 고정 가이드를 이용한 안전한 스쿼트."
+    },
+    {
+      "id": "ex066",
+      "name": "Hack Squat",
+      "name_ko": "핵 스쿼트",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "hack_squat_machine"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "deep_squat"
+      ],
+      "description": "핵 스쿼트 머신을 이용한 대퇴사두 집중 운동."
+    },
+    {
+      "id": "ex067",
+      "name": "Chest Press Machine",
+      "name_ko": "체스트 프레스 머신",
+      "muscle_groups": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "chest_press_machine",
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "bench_press",
+        "chest_compression"
+      ],
+      "description": "머신을 이용한 가슴 프레스."
+    },
+    {
+      "id": "ex068",
+      "name": "Pec Deck",
+      "name_ko": "펙 덱",
+      "muscle_groups": [
+        "chest"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "pec_deck",
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "chest_compression"
+      ],
+      "description": "패드에 팔꿈치를 올려 가슴을 모으는 가슴 고립 운동."
+    },
+    {
+      "id": "ex069",
+      "name": "Seated Row Machine",
+      "name_ko": "시티드 로우 머신",
+      "muscle_groups": [
+        "upper_back",
+        "latissimus_dorsi"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "equipment": [
+        "seated_row_machine",
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "시티드 로우 머신을 이용한 등 근력 운동."
+    },
+    {
+      "id": "ex070",
+      "name": "Child's Pose",
+      "name_ko": "차일드 포즈",
+      "muscle_groups": [
+        "lower_back",
+        "glutes",
+        "shoulder"
+      ],
+      "secondary_muscles": [
+        "hip_flexors"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "무릎을 꿇고 몸을 앞으로 숙이는 회복 스트레칭."
+    },
+    {
+      "id": "ex071",
+      "name": "Lying Hamstring Stretch",
+      "name_ko": "누워서 햄스트링 스트레칭",
+      "muscle_groups": [
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "calf"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "등을 대고 누워 다리를 들어 햄스트링을 스트레칭."
+    },
+    {
+      "id": "ex072",
+      "name": "Pigeon Pose",
+      "name_ko": "비둘기 자세",
+      "muscle_groups": [
+        "glutes",
+        "hip_flexors"
+      ],
+      "secondary_muscles": [
+        "piriformis"
+      ],
+      "equipment": [
+        "bodyweight",
+        "yoga_mat"
+      ],
+      "difficulty": "intermediate",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "고관절을 깊이 스트레칭하는 요가 자세. 둔근 긴장 이완."
+    },
+    {
+      "id": "ex073",
+      "name": "Quadriceps Stretch",
+      "name_ko": "대퇴사두 스트레칭",
+      "muscle_groups": [
+        "quadriceps",
+        "hip_flexors"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "서서 한 발을 뒤로 잡아당겨 대퇴사두를 스트레칭."
+    },
+    {
+      "id": "ex074",
+      "name": "Chest Doorway Stretch",
+      "name_ko": "문틀 가슴 스트레칭",
+      "muscle_groups": [
+        "chest",
+        "shoulder"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown"
+      ],
+      "safety_tags": [],
+      "description": "문틀에 팔을 대고 가슴과 어깨 전면을 스트레칭."
+    },
+    {
+      "id": "ex075",
+      "name": "Cross Body Shoulder Stretch",
+      "name_ko": "어깨 크로스 스트레칭",
+      "muscle_groups": [
+        "shoulder",
+        "rear_delt"
+      ],
+      "secondary_muscles": [
+        "upper_back"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "팔을 반대쪽 가슴으로 당겨 후면 삼각근과 어깨를 스트레칭."
+    },
+    {
+      "id": "ex076",
+      "name": "Calf Stretch Wall",
+      "name_ko": "벽 종아리 스트레칭",
+      "muscle_groups": [
+        "calf",
+        "gastrocnemius"
+      ],
+      "secondary_muscles": [
+        "soleus"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown",
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "벽을 잡고 발뒤꿈치를 바닥에 눌러 종아리를 스트레칭."
+    },
+    {
+      "id": "ex077",
+      "name": "Foam Roll IT Band",
+      "name_ko": "폼롤러 IT밴드",
+      "muscle_groups": [
+        "it_band",
+        "quadriceps"
+      ],
+      "secondary_muscles": [
+        "hip_abductors"
+      ],
+      "equipment": [
+        "foam_roller"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "폼롤러로 장경인대와 외측 대퇴를 마사지하는 자가근막이완."
+    },
+    {
+      "id": "ex078",
+      "name": "Foam Roll Thoracic Spine",
+      "name_ko": "폼롤러 흉추 이완",
+      "muscle_groups": [
+        "upper_back",
+        "spine"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "foam_roller"
+      ],
+      "difficulty": "beginner",
+      "category": "mobility",
+      "phase_tags": [
+        "cooldown",
+        "warmup"
+      ],
+      "safety_tags": [],
+      "description": "폼롤러를 흉추 아래에 두고 상체를 뒤로 이완."
+    },
+    {
+      "id": "ex079",
+      "name": "Reverse Wrist Curl",
+      "name_ko": "리버스 손목 컬",
+      "muscle_groups": [
+        "forearm"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab"
+      ],
+      "safety_tags": [],
+      "description": "손등이 위를 향한 채로 손목을 구부리는 전완 배측굴곡 운동."
+    },
+    {
+      "id": "ex080",
+      "name": "Box Step-Up Low",
+      "name_ko": "낮은 박스 스텝업",
+      "muscle_groups": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstring"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "낮은 박스(15-20cm)를 이용한 재활 초기 스텝업."
+    },
+    {
+      "id": "ex081",
+      "name": "Seated Hip Adduction Machine",
+      "name_ko": "시티드 고관절 내전 머신",
+      "muscle_groups": [
+        "inner_thigh",
+        "adductors"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "머신을 이용해 다리를 안으로 모으는 내전근 강화 운동."
+    },
+    {
+      "id": "ex082",
+      "name": "Seated Leg Press Low Feet",
+      "name_ko": "낮은 발 위치 레그 프레스",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "quadriceps"
+      ],
+      "equipment": [
+        "leg_press_machine"
+      ],
+      "difficulty": "beginner",
+      "category": "rehab",
+      "phase_tags": [
+        "rehab",
+        "main"
+      ],
+      "safety_tags": [],
+      "description": "발 위치를 낮게 하여 둔근을 강조한 레그 프레스."
+    },
+    {
+      "id": "ex083",
+      "name": "Pull-Up",
+      "name_ko": "풀업",
+      "muscle_groups": [
+        "latissimus_dorsi",
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "upper_back",
+        "core"
+      ],
+      "equipment": [
+        "pull_up_bar"
+      ],
+      "difficulty": "advanced",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "shoulder_impingement_risk"
+      ],
+      "description": "매달려 턱을 바 위로 당기는 등 운동의 기본."
+    },
+    {
+      "id": "ex084",
+      "name": "Dumbbell Fly",
+      "name_ko": "덤벨 플라이",
+      "muscle_groups": [
+        "chest"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "dumbbell_fly",
+        "chest_compression"
+      ],
+      "description": "덤벨을 옆으로 내렸다 가슴 위에서 모으는 가슴 스트레칭 운동."
+    },
+    {
+      "id": "ex085",
+      "name": "Preacher Curl Machine",
+      "name_ko": "프리처 컬 머신",
+      "muscle_groups": [
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "brachialis"
+      ],
+      "equipment": [
+        "preacher_curl_machine",
+        "machine"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "preacher_curl",
+        "elbow_flexion_heavy"
+      ],
+      "description": "경사면에 팔을 고정하고 이두를 고립하는 운동."
+    },
+    {
+      "id": "ex086",
+      "name": "Tricep Overhead Extension",
+      "name_ko": "오버헤드 트라이셉 익스텐션",
+      "muscle_groups": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "equipment": [
+        "dumbbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "overhead_tricep_extension",
+        "elbow_flexion_heavy"
+      ],
+      "description": "덤벨을 머리 위에서 구부려 삼두를 강화하는 운동."
+    },
+    {
+      "id": "ex087",
+      "name": "Close Grip Bench Press",
+      "name_ko": "클로즈 그립 벤치 프레스",
+      "muscle_groups": [
+        "triceps",
+        "chest"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "close_grip_bench",
+        "elbow_flexion_heavy",
+        "bench_press"
+      ],
+      "description": "손 간격을 좁혀 삼두를 강조한 벤치 프레스."
+    },
+    {
+      "id": "ex088",
+      "name": "Tricep Dip",
+      "name_ko": "트라이셉 딥",
+      "muscle_groups": [
+        "triceps",
+        "chest"
+      ],
+      "secondary_muscles": [
+        "shoulder"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "tricep_dip",
+        "dip",
+        "elbow_flexion_heavy",
+        "shoulder_impingement_risk"
+      ],
+      "description": "평행봉이나 의자를 이용한 삼두 딥."
+    },
+    {
+      "id": "ex089",
+      "name": "Barbell Hip Thrust",
+      "name_ko": "바벨 힙 쓰러스트",
+      "muscle_groups": [
+        "glutes",
+        "hamstring"
+      ],
+      "secondary_muscles": [
+        "core"
+      ],
+      "equipment": [
+        "barbell"
+      ],
+      "difficulty": "intermediate",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "hip_thrust_heavy"
+      ],
+      "description": "등을 벤치에 기대고 바벨을 골반 위에 올려 수행하는 둔근 운동."
+    },
+    {
+      "id": "ex090",
+      "name": "Standing Calf Raise",
+      "name_ko": "스탠딩 카프 레이즈",
+      "muscle_groups": [
+        "calf",
+        "gastrocnemius"
+      ],
+      "secondary_muscles": [
+        "soleus"
+      ],
+      "equipment": [
+        "bodyweight"
+      ],
+      "difficulty": "beginner",
+      "category": "strength",
+      "phase_tags": [
+        "main"
+      ],
+      "safety_tags": [
+        "calf_raise",
+        "single_leg_calf_raise"
+      ],
+      "description": "서서 발뒤꿈치를 들어올리는 종아리 운동."
+    }
+  ]
+}

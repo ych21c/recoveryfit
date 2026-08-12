@@ -1,0 +1,54 @@
+name: recovery_fit
+description: "AI-powered injury-safe workout planner."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Navigation
+  go_router: ^14.8.1
+
+  # Local persistence
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.3.3
+
+  # Networking
+  http: ^1.2.2
+
+  # Notifications
+  flutter_local_notifications: ^18.0.1
+
+  # In-app purchase
+  in_app_purchase: ^3.2.0
+
+  # Utilities
+  intl: ^0.20.1
+  uuid: ^4.5.1
+
+  # UI
+  fl_chart: ^0.70.2
+  flutter_animate: ^4.5.2
+  smooth_page_indicator: ^1.2.0+3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/exercises/exercises.json
