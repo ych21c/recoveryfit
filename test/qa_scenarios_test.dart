@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:recovery_fit/main.dart';
 
 void main() {
   group('RecoveryFit 시작 페이지 (Splash & Landing)', () {
+    setUp(() {
+      // Provide an in-memory SharedPreferences store so StorageService.init()
+      // resolves instantly in tests without real platform channels.
+      SharedPreferences.setMockInitialValues({});
+    });
+
     
     testWidgets('앱 시작 시 스플래시 스크린 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());

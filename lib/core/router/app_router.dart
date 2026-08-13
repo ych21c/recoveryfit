@@ -7,6 +7,7 @@ import '../../data/models/user_profile.dart';
 import '../../data/models/workout_plan.dart';
 import '../../presentation/landing/landing_page.dart';
 import '../../presentation/onboarding/disclaimer_page.dart';
+import '../../presentation/splash/splash_screen.dart';
 import '../../presentation/onboarding/onboarding_page.dart';
 import '../../presentation/plan/generating_page.dart';
 import '../../presentation/home/home_page.dart';
@@ -17,12 +18,12 @@ import '../../presentation/analytics/analytics_page.dart';
 import '../../presentation/weekly_report/weekly_report_page.dart';
 import '../../presentation/settings/settings_page.dart';
 import '../../presentation/settings/subscription_page.dart';
-import '../../presentation/providers/providers.dart';
 
 // ── Routes ────────────────────────────────────────────────────────────────────
 
 class AppRoutes {
   AppRoutes._();
+  static const splash = '/splash';
   static const landing = '/landing';
   static const disclaimer = '/disclaimer';
   static const onboarding = '/onboarding';
@@ -61,12 +62,15 @@ class AppRouter {
 // ── Router Provider ───────────────────────────────────────────────────────────
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final storage = ref.read(storageServiceProvider);
-
   return GoRouter(
-    initialLocation:
-        storage.onboardingDone ? AppRoutes.home : AppRoutes.landing,
+    initialLocation: AppRoutes.splash,
     routes: [
+      // ── Splash ──────────────────────────────────────────────────────────
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (_, __) => const SplashScreen(),
+      ),
+
       // ── Standalone screens (no nav bar) ─────────────────────────────────
       GoRoute(
         path: AppRoutes.landing,

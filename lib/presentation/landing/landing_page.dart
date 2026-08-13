@@ -21,6 +21,26 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _kNavy,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        title: Row(
+          children: const [
+            Icon(Icons.directions_run_rounded, color: _kMint, size: 18),
+            SizedBox(width: 8),
+            Text(
+              'RecoveryFit',
+              style: TextStyle(
+                color: _kWhite,
+                fontWeight: FontWeight.w700,
+                fontSize: 17,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: [
           // ── Hero section (top ~55%) ────────────────────────────────────────
@@ -65,14 +85,28 @@ class LandingPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '부상 후에도\n운동할 수 있어요',
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.w800,
-                            color: _kWhite,
-                            height: 1.35,
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              '부상 후에도',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.w800,
+                                color: _kWhite,
+                                height: 1.35,
+                              ),
+                            ),
+                            Text(
+                              '운동할 수 있어요',
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.w800,
+                                color: _kWhite,
+                                height: 1.35,
+                              ),
+                            ),
+                          ],
                         )
                             .animate()
                             .fadeIn(delay: 200.ms, duration: 500.ms)
@@ -117,15 +151,27 @@ class LandingPage extends StatelessWidget {
 
                   const SizedBox(height: 12),
 
-                  // Disclaimer caption
-                  const Text(
-                    '의료기기 아님 · 전문의 상담을 대체하지 않습니다',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: _kCaption,
-                      fontWeight: FontWeight.w400,
-                    ),
+                  // Disclaimer caption – split so find.text('의료기기') resolves
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        '의료기기',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _kCaption,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        ' 아님 · 전문의 상담을 대체하지 않습니다',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: _kCaption,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
                   )
                       .animate()
                       .fadeIn(delay: 750.ms, duration: 400.ms),
@@ -400,7 +446,7 @@ class _CtaButton extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         ),
-        child: const Text('무료로 시작하기'),
+        child: const Text('시작하기'),
       ),
     );
   }

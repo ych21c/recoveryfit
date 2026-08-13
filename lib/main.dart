@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'app.dart';
@@ -8,6 +7,8 @@ import 'data/models/user_profile.dart';
 import 'data/models/workout_plan.dart';
 import 'data/models/daily_log.dart';
 import 'data/services/notification_service.dart';
+
+export 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,5 +35,5 @@ void main() async {
 
   await NotificationService.instance.init();
 
-  runApp(const ProviderScope(child: RecoveryFitApp()));
+  runApp(const RecoveryFitApp());
 }

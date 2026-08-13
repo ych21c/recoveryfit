@@ -5,8 +5,17 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'data/services/storage_service.dart';
 
-class RecoveryFitApp extends ConsumerWidget {
+class RecoveryFitApp extends StatelessWidget {
   const RecoveryFitApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const ProviderScope(child: _AppBody());
+  }
+}
+
+class _AppBody extends ConsumerWidget {
+  const _AppBody();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +26,10 @@ class RecoveryFitApp extends ConsumerWidget {
         if (snapshot.connectionState != ConnectionState.done) {
           return const MaterialApp(
             home: Scaffold(
-              body: Center(child: CircularProgressIndicator()),
+              backgroundColor: Color(0xFF0D1B2A),
+              body: Center(
+                child: CircularProgressIndicator(color: Color(0xFF00C9A7)),
+              ),
             ),
           );
         }
