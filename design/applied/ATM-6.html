@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-6 | 온보딩 Step 3~5: 통증수준 → 목표설정</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+.phone{width:375px;background:#fff;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;}
+.ob-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:22px 24px 28px;color:#fff;}
+.step-row{display:flex;gap:6px;margin-bottom:14px;}
+.step-pip{height:4px;border-radius:2px;background:rgba(255,255,255,0.3);flex:1;}
+.step-pip.done{background:rgba(255,255,255,0.7);}
+.step-pip.active{background:#fff;}
+.ob-badge{display:inline-block;background:rgba(255,255,255,0.2);border-radius:99px;padding:3px 11px;font-size:11px;margin-bottom:10px;}
+.ob-header h1{font-size:21px;font-weight:700;line-height:29px;}
+.ob-header p{font-size:13px;opacity:.8;margin-top:5px;}
+.ob-body{flex:1;padding:22px 20px;overflow-y:auto;}
+.field-label{font-size:12px;font-weight:700;color:#5A7068;letter-spacing:.4px;margin-bottom:10px;}
+.btn-primary{width:100%;padding:15px;background:#2E7D6B;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;}
+.ob-footer{padding:16px 20px 28px;}
+
+/* PAIN SLIDER */
+.pain-value{text-align:center;margin:10px 0;}
+.pain-num{font-size:52px;font-weight:800;color:#F39C12;}
+.pain-desc{font-size:13px;color:#5A7068;margin-top:2px;}
+.slider-wrap{position:relative;padding:10px 0;}
+input[type=range]{width:100%;-webkit-appearance:none;height:8px;border-radius:4px;background:linear-gradient(to right,#F39C12 50%,#D4E0DB 50%);outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#F39C12;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.2);cursor:pointer;}
+.pain-labels{display:flex;justify-content:space-between;font-size:10px;color:#A0B4AE;margin-top:4px;}
+.num-chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:14px;}
+.num-chip{flex:1;min-width:28px;padding:8px 4px;text-align:center;border-radius:8px;font-size:13px;font-weight:600;border:1.5px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
+.num-chip.sel{background:#F39C12;color:#fff;border-color:#F39C12;}
+.pain-scale{display:flex;justify-content:space-between;font-size:11px;margin-top:6px;}
+.pain-scale span{display:flex;align-items:center;gap:3px;}
+
+/* GOAL CARDS */
+.goal-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1.5px solid #D4E0DB;border-radius:14px;margin-bottom:10px;cursor:pointer;background:#F8FAF9;}
+.goal-card.sel{border-color:#2E7D6B;background:#EEF7F4;}
+.goal-icon{width:46px;height:46px;border-radius:12px;background:#E0F0EB;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.goal-card.sel .goal-icon{background:#2E7D6B;}
+.goal-text h3{font-size:15px;font-weight:700;color:#1A2420;}
+.goal-text p{font-size:12px;color:#5A7068;margin-top:2px;line-height:17px;}
+.radio-row{width:20px;height:20px;border-radius:50%;border:2px solid #D4E0DB;display:flex;align-items:center;justify-content:center;margin-left:auto;flex-shrink:0;}
+.goal-card.sel .radio-row{border-color:#2E7D6B;}
+.radio-dot{width:10px;height:10px;border-radius:50%;background:#2E7D6B;display:none;}
+.goal-card.sel .radio-dot{display:block;}
+</style>
+</head>
+<body>
+
+<!-- PHONE 1: 통증 수준 선택 -->
+<div class="phone">
+  <div class="status"><span>9:43</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 3 — 통증 수준 선택 (Step 1.3)</div>
+  <div class="ob-header">
+    <div class="step-row">
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip active"></div>
+      <div class="step-pip"></div><div class="step-pip"></div><div class="step-pip"></div>
+    </div>
+    <div class="ob-badge">2 / 6 단계</div>
+    <h1>지금 통증이 얼마나 심한가요?</h1>
+    <p>NRS 척도로 현재 통증 강도를 선택해주세요</p>
+  </div>
+  <div class="ob-body">
+    <div class="pain-value">
+      <div class="pain-num">5</div>
+      <div class="pain-desc">⚡ 중등도 — 활동 시 불편하지만 참을 수 있음</div>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" min="1" max="10" value="5">
+      <div class="pain-labels"><span>1 (없음)</span><span>5 (중등도)</span><span>10 (극심)</span></div>
+    </div>
+    <div class="field-label" style="margin-top:18px;">숫자로 직접 선택</div>
+    <div class="num-chips">
+      <div class="num-chip" style="background:#27AE60;color:#fff;border-color:#27AE60;">1</div>
+      <div class="num-chip" style="background:#4CAF50;color:#fff;border-color:#4CAF50;">2</div>
+      <div class="num-chip" style="background:#8BC34A;color:#fff;border-color:#8BC34A;">3</div>
+      <div class="num-chip" style="background:#CDDC39;color:#1A2420;border-color:#CDDC39;">4</div>
+      <div class="num-chip sel">5</div>
+      <div class="num-chip" style="background:#FFC107;color:#1A2420;border-color:#FFC107;">6</div>
+      <div class="num-chip" style="background:#FF9800;color:#fff;border-color:#FF9800;">7</div>
+      <div class="num-chip" style="background:#FF5722;color:#fff;border-color:#FF5722;">8</div>
+      <div class="num-chip" style="background:#F44336;color:#fff;border-color:#F44336;">9</div>
+      <div class="num-chip" style="background:#B71C1C;color:#fff;border-color:#B71C1C;">10</div>
+    </div>
+    <div class="pain-scale" style="margin-top:8px;">
+      <span style="color:#27AE60;">🟢 경미</span>
+      <span style="color:#F39C12;">🟡 중등도</span>
+      <span style="color:#E74C3C;">🔴 심함</span>
+    </div>
+    <div style="background:#FFF8F0;border-radius:10px;padding:12px 14px;margin-top:16px;border-left:3px solid #F4A261;">
+      <div style="font-size:12px;color:#C96A00;font-weight:700;margin-bottom:3px;">기본값: 5점</div>
+      <div style="font-size:12px;color:#5A7068;">변경이 없으면 그대로 '다음'을 누르세요 (원터치 통과)</div>
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="btn-primary">다음</button>
+  </div>
+</div>
+
+<!-- PHONE 2: 단기 목표 선택 -->
+<div class="phone">
+  <div class="status"><span>9:44</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 4 — 단기 목표 선택 (Step 1.4)</div>
+  <div class="ob-header">
+    <div class="step-row">
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip done"></div><div class="step-pip active"></div>
+      <div class="step-pip"></div><div class="step-pip"></div>
+    </div>
+    <div class="ob-badge">3 / 6 단계</div>
+    <h1>지금 당장 원하는 게 뭔가요?</h1>
+    <p>단기 목표를 선택해주세요 (1개 선택)</p>
+  </div>
+  <div class="ob-body">
+    <div class="goal-card sel">
+      <div class="goal-icon">🩹</div>
+      <div class="goal-text">
+        <h3>통증 완화</h3>
+        <p>현재 통증을 줄이고 일상 생활을 편하게</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">🦵</div>
+      <div class="goal-text">
+        <h3>관절 가동성 회복</h3>
+        <p>굳어진 관절 범위를 정상으로 되돌리기</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">🔄</div>
+      <div class="goal-text">
+        <h3>부상 재활</h3>
+        <p>단계적 재활로 부상 부위 기능 회복</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div style="background:#EEF7F4;border-radius:10px;padding:10px 14px;margin-top:4px;font-size:12px;color:#2E7D6B;">
+      ✅ <strong>통증 완화</strong>가 기본 선택됩니다. 다른 목표를 탭하면 즉시 변경돼요.
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="btn-primary">다음</button>
+  </div>
+</div>
+
+<!-- PHONE 3: 장기 목표 선택 -->
+<div class="phone">
+  <div class="status"><span>9:45</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 5 — 장기 목표 선택 (Step 1.5)</div>
+  <div class="ob-header">
+    <div class="step-row">
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip active"></div><div class="step-pip"></div>
+    </div>
+    <div class="ob-badge">4 / 6 단계</div>
+    <h1>궁극적으로 원하는 변화는?</h1>
+    <p>장기 목표를 선택해주세요 (1개 선택)</p>
+  </div>
+  <div class="ob-body">
+    <div class="goal-card sel">
+      <div class="goal-icon">⚡</div>
+      <div class="goal-text">
+        <h3>스태미나 / 체력 향상</h3>
+        <p>오래 걷고 뛰어도 지치지 않는 체력 만들기</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">💪</div>
+      <div class="goal-text">
+        <h3>근육량 증가</h3>
+        <p>안전하게 근력을 키우고 체형 개선</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">⚖️</div>
+      <div class="goal-text">
+        <h3>체중 감량</h3>
+        <p>부상 없이 칼로리 소모, 체중 관리</p>
+      </div>
+      <div class="radio-row"><div class="radio-dot"></div></div>
+    </div>
+    <div style="background:#EEF7F4;border-radius:10px;padding:10px 14px;margin-top:4px;font-size:12px;color:#2E7D6B;">
+      ✅ <strong>스태미나/체력 향상</strong>이 기본 선택됩니다.
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="btn-primary">다음</button>
+  </div>
+</div>
+
+</body>
+</html>
