@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-7 | 운동환경 설정 → AI 플랜 생성</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+.phone{width:375px;background:#fff;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;}
+.ob-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:22px 24px 28px;color:#fff;}
+.step-row{display:flex;gap:6px;margin-bottom:14px;}
+.step-pip{height:4px;border-radius:2px;background:rgba(255,255,255,0.3);flex:1;}
+.step-pip.done{background:rgba(255,255,255,0.7);}
+.step-pip.active{background:#fff;}
+.ob-badge{display:inline-block;background:rgba(255,255,255,0.2);border-radius:99px;padding:3px 11px;font-size:11px;margin-bottom:10px;}
+.ob-header h1{font-size:21px;font-weight:700;line-height:29px;}
+.ob-header p{font-size:13px;opacity:.8;margin-top:5px;}
+.ob-body{flex:1;padding:22px 20px;overflow-y:auto;}
+.section-title{font-size:12px;font-weight:700;color:#5A7068;letter-spacing:.4px;margin-bottom:10px;}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.chip{padding:10px 18px;border-radius:99px;font-size:13px;font-weight:600;border:1.5px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
+.chip.sel{background:#2E7D6B;color:#fff;border-color:#2E7D6B;}
+.radio-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.radio-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1.5px solid #D4E0DB;border-radius:12px;cursor:pointer;background:#F8FAF9;}
+.radio-item.sel{border-color:#2E7D6B;background:#EEF7F4;}
+.r-dot{width:20px;height:20px;border-radius:50%;border:2px solid #D4E0DB;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.radio-item.sel .r-dot{border-color:#2E7D6B;}
+.r-inner{width:10px;height:10px;border-radius:50%;background:#2E7D6B;display:none;}
+.radio-item.sel .r-inner{display:block;}
+.radio-item span{font-size:14px;font-weight:600;color:#1A2420;}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.check-item{display:flex;align-items:center;gap:8px;padding:12px 14px;border:1.5px solid #D4E0DB;border-radius:12px;cursor:pointer;background:#F8FAF9;font-size:14px;font-weight:600;color:#1A2420;}
+.check-item.sel{border-color:#2E7D6B;background:#EEF7F4;color:#2E7D6B;}
+.check-box{width:20px;height:20px;border-radius:6px;border:2px solid #D4E0DB;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;}
+.check-item.sel .check-box{background:#2E7D6B;border-color:#2E7D6B;}
+.btn-generate{width:100%;padding:16px;background:linear-gradient(135deg,#2E7D6B,#1B5E4F);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.ob-footer{padding:16px 20px 28px;}
+
+/* GENERATING SCREEN */
+.gen-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;background:#F8FAF9;}
+.gen-icon{width:80px;height:80px;border-radius:24px;background:linear-gradient(135deg,#2E7D6B,#1B5E4F);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:24px;box-shadow:0 8px 24px rgba(46,125,107,0.3);}
+.gen-title{font-size:20px;font-weight:700;color:#1A2420;margin-bottom:8px;text-align:center;}
+.gen-sub{font-size:13px;color:#5A7068;text-align:center;line-height:20px;margin-bottom:32px;}
+.progress-steps{width:100%;}
+.progress-step{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;margin-bottom:8px;background:#fff;border:1.5px solid #D4E0DB;}
+.progress-step.done{background:#EEF7F4;border-color:#2E7D6B;}
+.progress-step.active{background:#fff;border-color:#F4A261;box-shadow:0 2px 8px rgba(244,162,97,0.2);}
+.p-icon{width:32px;height:32px;border-radius:50%;background:#D4E0DB;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.progress-step.done .p-icon{background:#2E7D6B;color:#fff;}
+.progress-step.active .p-icon{background:#F4A261;color:#fff;}
+.p-text{flex:1;}
+.p-text .p-title{font-size:13px;font-weight:600;color:#1A2420;}
+.p-text .p-sub{font-size:11px;color:#5A7068;margin-top:1px;}
+.progress-step.done .p-text .p-title{color:#2E7D6B;}
+.p-status{font-size:11px;font-weight:700;}
+.p-status.done{color:#2E7D6B;}
+.p-status.ing{color:#F4A261;}
+.prog-bar-wrap{width:100%;margin-top:24px;}
+.prog-bar-bg{width:100%;height:8px;background:#D4E0DB;border-radius:4px;overflow:hidden;}
+.prog-bar-fill{height:100%;width:65%;background:linear-gradient(90deg,#2E7D6B,#4CAF95);border-radius:4px;animation:prog 2s ease infinite alternate;}
+@keyframes prog{from{width:55%}to{width:75%}}
+.prog-pct{text-align:right;font-size:12px;color:#2E7D6B;font-weight:700;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<!-- PHONE 1: 운동 환경 & 장비 설정 -->
+<div class="phone">
+  <div class="status"><span>9:46</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 6 — 운동 환경 & 장비 설정 (Step 1.6)</div>
+  <div class="ob-header">
+    <div class="step-row">
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip done"></div><div class="step-pip done"></div>
+      <div class="step-pip done"></div><div class="step-pip active"></div>
+    </div>
+    <div class="ob-badge">5 / 6 단계</div>
+    <h1>운동 환경을 알려주세요</h1>
+    <p>기본값으로 바로 플랜 생성도 OK</p>
+  </div>
+  <div class="ob-body">
+    <div class="section-title">주당 운동 빈도</div>
+    <div class="chip-row">
+      <span class="chip">주 2회</span>
+      <span class="chip sel">주 3회</span>
+      <span class="chip">주 4회</span>
+      <span class="chip">주 5회</span>
+    </div>
+    <div class="section-title">운동 장소</div>
+    <div class="radio-group">
+      <div class="radio-item sel">
+        <div class="r-dot"><div class="r-inner"></div></div>
+        <span>🏠 집</span>
+      </div>
+      <div class="radio-item">
+        <div class="r-dot"><div class="r-inner"></div></div>
+        <span>🏋️ 헬스장</span>
+      </div>
+      <div class="radio-item">
+        <div class="r-dot"><div class="r-inner"></div></div>
+        <span>🔄 둘 다</span>
+      </div>
+    </div>
+    <div class="section-title">보유 장비 (집 선택 시)</div>
+    <div class="check-grid">
+      <div class="check-item sel"><div class="check-box">✓</div>맨몸</div>
+      <div class="check-item"><div class="check-box"></div>덤벨</div>
+      <div class="check-item"><div class="check-box"></div>밴드</div>
+      <div class="check-item"><div class="check-box"></div>철봉</div>
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="btn-generate">🤖 AI 플랜 생성하기</button>
+  </div>
+</div>
+
+<!-- PHONE 2: AI 플랜 생성 중 -->
+<div class="phone">
+  <div class="status"><span>9:47</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 7 — AI 플랜 생성 중 (Step 2)</div>
+  <div class="gen-body">
+    <div class="gen-icon">🤖</div>
+    <div class="gen-title">AI가 맞춤 플랜을 만들고 있어요</div>
+    <div class="gen-sub">무릎 부상 안전 규칙 검증 및<br>4주 재활 운동 플랜을 생성합니다</div>
+    <div class="progress-steps">
+      <div class="progress-step done">
+        <div class="p-icon">✓</div>
+        <div class="p-text"><div class="p-title">부상 데이터 분석</div><div class="p-sub">무릎 인대 손상 패턴 분석 완료</div></div>
+        <span class="p-status done">완료</span>
+      </div>
+      <div class="progress-step done">
+        <div class="p-icon">✓</div>
+        <div class="p-text"><div class="p-title">안전 규칙 검증 (1차)</div><div class="p-sub">프롬프트 레벨 안전 제약 적용</div></div>
+        <span class="p-status done">완료</span>
+      </div>
+      <div class="progress-step active">
+        <div class="p-icon">⚙</div>
+        <div class="p-text"><div class="p-title">안전 규칙 검증 (2차)</div><div class="p-sub">서버 사이드 10개 규칙 검증 중...</div></div>
+        <span class="p-status ing">진행 중</span>
+      </div>
+      <div class="progress-step">
+        <div class="p-icon">📋</div>
+        <div class="p-text"><div class="p-title">4주 플랜 생성</div><div class="p-sub">개인화 루틴 JSON 작성</div></div>
+        <span class="p-status" style="color:#A0B4AE;">대기</span>
+      </div>
+    </div>
+    <div class="prog-bar-wrap">
+      <div class="prog-bar-bg"><div class="prog-bar-fill"></div></div>
+      <div class="prog-pct">65% 완료</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

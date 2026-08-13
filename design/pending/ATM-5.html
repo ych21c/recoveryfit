@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-5 | 온보딩 Step 1~2: 면책동의 → 부상입력</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo',sans-serif;background:#e8ede b;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;background:#E8F0EE;}
+.phone{width:375px;min-height:700px;background:#fff;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;position:relative;display:flex;flex-direction:column;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;flex-shrink:0;}
+
+/* DISCLAIMER */
+.disc-bg{flex:1;background:linear-gradient(160deg,#2E7D6B 0%,#1B5E4F 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0;}
+.disc-sheet{background:#fff;border-radius:28px 28px 0 0;padding:28px 24px 36px;width:100%;}
+.handle{width:40px;height:4px;border-radius:2px;background:#D4E0DB;margin:0 auto 20px;}
+.disc-icon{width:56px;height:56px;border-radius:16px;background:#EEF7F4;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:16px;}
+.disc-sheet h2{font-size:19px;font-weight:700;color:#1A2420;margin-bottom:10px;}
+.disc-sheet p{font-size:13px;color:#5A7068;line-height:21px;margin-bottom:14px;}
+.warn-box{background:#FFF8F0;border:1.5px solid #F4A261;border-radius:10px;padding:11px 14px;font-size:12px;color:#C96A00;margin-bottom:20px;line-height:19px;}
+.btn-primary{width:100%;padding:15px;background:#2E7D6B;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;}
+.btn-secondary{width:100%;padding:13px;background:#F0F4F2;color:#5A7068;border:none;border-radius:14px;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;}
+
+/* ONBOARDING COMMON */
+.ob-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:22px 24px 28px;color:#fff;flex-shrink:0;}
+.step-row{display:flex;gap:6px;margin-bottom:14px;}
+.step-pip{height:4px;border-radius:2px;background:rgba(255,255,255,0.3);flex:1;}
+.step-pip.done{background:rgba(255,255,255,0.7);}
+.step-pip.active{background:#fff;}
+.ob-badge{display:inline-block;background:rgba(255,255,255,0.2);border-radius:99px;padding:3px 11px;font-size:11px;margin-bottom:10px;}
+.ob-header h1{font-size:21px;font-weight:700;line-height:29px;}
+.ob-header p{font-size:13px;opacity:.8;margin-top:5px;}
+.ob-body{flex:1;padding:22px 20px;overflow-y:auto;}
+.field-label{font-size:12px;font-weight:700;color:#5A7068;letter-spacing:.4px;margin-bottom:9px;text-transform:uppercase;}
+.txt-input{width:100%;border:1.5px solid #D4E0DB;border-radius:12px;padding:13px 15px;font-size:14px;color:#1A2420;background:#F8FAF9;outline:none;margin-bottom:14px;}
+.txt-input.filled{border-color:#2E7D6B;background:#fff;}
+.chip-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;}
+.chip{padding:8px 13px;border-radius:99px;font-size:12px;font-weight:600;border:1.5px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
+.chip.sel{background:#2E7D6B;color:#fff;border-color:#2E7D6B;}
+.chip.example{background:#EEF7F4;border-color:#B2D8CF;color:#1B5E4F;}
+.ob-footer{padding:16px 20px 28px;flex-shrink:0;}
+.hint{font-size:11px;color:#A0B4AE;text-align:center;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<!-- PHONE 1: 면책 동의 -->
+<div class="phone">
+  <div class="status"><span>9:41</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 1 — 법적 면책 동의 (Step 1.1)</div>
+  <div class="disc-bg">
+    <div style="padding:40px 24px;color:#fff;text-align:center;">
+      <div style="font-size:56px;margin-bottom:16px;">🏃</div>
+      <div style="font-size:26px;font-weight:700;">RecoveryFit</div>
+      <div style="font-size:13px;opacity:.75;margin-top:6px;">AI 기반 부상 재활 운동 플랜</div>
+    </div>
+    <div class="disc-sheet">
+      <div class="handle"></div>
+      <div class="disc-icon">⚕️</div>
+      <h2>이용 전 꼭 확인하세요</h2>
+      <p>RecoveryFit은 <strong>의료기기가 아닙니다.</strong> 전문 의료인의 진단을 대체하지 않으며, 제공되는 운동 플랜은 일반적인 재활 가이드라인을 기반으로 합니다.</p>
+      <div class="warn-box">⚠️ 급성 통증·골절·수술 후 회복 중인 경우 반드시 전문의 상담 후 이용하세요.</div>
+      <button class="btn-primary">동의하고 시작</button>
+      <button class="btn-secondary">나중에 읽기</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHONE 2: 부상/통증 입력 -->
+<div class="phone">
+  <div class="status"><span>9:42</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 2 — 부상/통증 입력 (Step 1.2)</div>
+  <div class="ob-header">
+    <div class="step-row">
+      <div class="step-pip done"></div><div class="step-pip active"></div>
+      <div class="step-pip"></div><div class="step-pip"></div><div class="step-pip"></div><div class="step-pip"></div>
+    </div>
+    <div class="ob-badge">1 / 6 단계</div>
+    <h1>어디가 불편하신가요?</h1>
+    <p>부상 부위나 통증 상황을 자유롭게 알려주세요</p>
+  </div>
+  <div class="ob-body">
+    <div class="field-label">부상 / 통증 설명</div>
+    <textarea class="txt-input filled" rows="3" style="resize:none;">무릎 인대 나갔어요</textarea>
+    <div class="field-label">빠른 선택 예시</div>
+    <div class="chip-wrap">
+      <span class="chip example sel">무릎 인대 나갔어요</span>
+      <span class="chip example">허리 디스크 초기</span>
+      <span class="chip example">어깨 회전근개 통증</span>
+    </div>
+    <div style="background:#EEF7F4;border-radius:12px;padding:14px;border-left:3px solid #2E7D6B;">
+      <div style="font-size:12px;color:#2E7D6B;font-weight:700;margin-bottom:4px;">💡 Quick-Edit 안내</div>
+      <div style="font-size:12px;color:#5A7068;line-height:19px;">예시 칩을 탭하면 입력창에 자동 완성됩니다. 키보드로 세부 내용을 수정할 수도 있어요.</div>
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="btn-primary">다음</button>
+    <div class="hint">최소 5자 이상 입력 시 다음 단계 활성화</div>
+  </div>
+</div>
+
+</body>
+</html>
