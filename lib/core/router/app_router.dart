@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/daily_log.dart';
 import '../../data/models/user_profile.dart';
 import '../../data/models/workout_plan.dart';
+import '../../presentation/landing/landing_page.dart';
 import '../../presentation/onboarding/disclaimer_page.dart';
 import '../../presentation/onboarding/onboarding_page.dart';
 import '../../presentation/plan/generating_page.dart';
@@ -22,6 +23,7 @@ import '../../presentation/providers/providers.dart';
 
 class AppRoutes {
   AppRoutes._();
+  static const landing = '/landing';
   static const disclaimer = '/disclaimer';
   static const onboarding = '/onboarding';
   static const generating = '/generating';
@@ -63,9 +65,13 @@ final routerProvider = Provider<GoRouter>((ref) {
 
   return GoRouter(
     initialLocation:
-        storage.onboardingDone ? AppRoutes.home : AppRoutes.disclaimer,
+        storage.onboardingDone ? AppRoutes.home : AppRoutes.landing,
     routes: [
       // ── Standalone screens (no nav bar) ─────────────────────────────────
+      GoRoute(
+        path: AppRoutes.landing,
+        builder: (_, __) => const LandingPage(),
+      ),
       GoRoute(
         path: AppRoutes.disclaimer,
         builder: (_, __) => const DisclaimerPage(),

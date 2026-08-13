@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-11 | 통계 & 진척도 시각화</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+    background:#C8D8EC;
+    display:flex; justify-content:center; align-items:flex-start;
+    padding:32px 16px; gap:28px; flex-wrap:wrap; min-height:100vh;
+  }
+  .phone{
+    width:375px; height:812px; border-radius:52px;
+    box-shadow:0 32px 80px rgba(10,20,40,0.28), 0 0 0 2px #B0C4DC;
+    overflow:hidden; display:flex; flex-direction:column;
+    position:relative; flex-shrink:0;
+  }
+  .screen-tag{
+    position:absolute; top:0; left:0; right:0;
+    background:#0D1B2A; color:#00C9A7;
+    font-size:9px; font-weight:700; letter-spacing:1.4px;
+    text-align:center; padding:5px 8px; z-index:10; text-transform:uppercase;
+  }
+  .status-bar{
+    padding:20px 28px 8px; display:flex; justify-content:space-between;
+    font-size:11px; font-weight:700; color:#fff; flex-shrink:0;
+    background:linear-gradient(135deg,#0D1B2A,#1A3550);
+  }
+  .analytics-header{ background:linear-gradient(135deg,#0D1B2A,#1A3550); padding:4px 22px 22px; color:#fff; flex-shrink:0; }
+  .analytics-header h2{ font-size:21px; font-weight:800; margin-bottom:4px; }
+  .analytics-header p{ font-size:13px; color:rgba(255,255,255,0.70); }
+  .period-tabs{ display:flex; gap:0; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; margin-top:14px; }
+  .period-tab{ flex:1; padding:8px; text-align:center; font-size:13px; font-weight:700; color:rgba(255,255,255,.65); border-radius:9px; cursor:pointer; }
+  .period-tab.active{ background:#fff; color:#0D1B2A; }
+  .scroll-body{ flex:1; overflow-y:auto; padding:14px 16px 0; }
+  .kpi-row{ display:flex; gap:10px; margin-bottom:12px; }
+  .kpi-card{ flex:1; background:#fff; border-radius:16px; padding:14px; text-align:center; box-shadow:0 2px 10px rgba(0,201,167,0.07); }
+  .kv{ font-size:22px; font-weight:900; color:#00C9A7; }
+  .kl{ font-size:11px; color:#475569; margin-top:3px; }
+  .kd{ font-size:12px; font-weight:700; margin-top:4px; }
+  .kd.pos{ color:#10B981; }
+  .chart-card{ background:#fff; border-radius:16px; padding:16px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,201,167,0.07); }
+  .chart-title{ font-size:14px; font-weight:700; color:#0F172A; margin-bottom:3px; }
+  .chart-sub{ font-size:11px; color:#475569; margin-bottom:12px; }
+  .svg-chart{ width:100%; height:110px; }
+  .x-labels{ display:flex; justify-content:space-between; font-size:10px; color:#94A3B8; padding:0 4px; }
+  .bar-group{ display:flex; align-items:flex-end; gap:5px; height:90px; margin-bottom:6px; }
+  .bar-item{ flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .bar-fill{ width:100%; border-radius:6px 6px 0 0; min-height:4px; }
+  .bar-pct{ font-size:10px; font-weight:700; color:#00C9A7; }
+  .bar-label{ font-size:10px; color:#94A3B8; }
+  .vol-bars{ display:flex; align-items:flex-end; gap:6px; height:80px; margin-bottom:8px; }
+  .vol-bar{ flex:1; border-radius:6px 6px 0 0; background:linear-gradient(180deg,#00C9A7,#009E84); min-height:4px; }
+  .vol-labels{ display:flex; justify-content:space-between; font-size:10px; color:#94A3B8; }
+  .nav-bar{ display:flex; background:#fff; border-top:1px solid #EFF6FF; flex-shrink:0; }
+  .nav-item{ flex:1; padding:10px 0 14px; text-align:center; cursor:pointer; }
+  .nav-icon{ font-size:20px; }
+  .nav-lbl{ font-size:10px; color:#94A3B8; margin-top:2px; font-weight:600; }
+  .nav-item.active .nav-lbl{ color:#00C9A7; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     PHONE 1 : 통계 대시보드 — 주간 뷰
+══════════════════════════════════════════ -->
+<div class="phone">
+  <div class="screen-tag">SCR-11 · 통계 & 진척도 대시보드 — Step 7 주간 뷰</div>
+  <div class="status-bar"><span>10:22</span><span>●●● WiFi 🔋</span></div>
+
+  <div class="analytics-header">
+    <h2>📊 나의 진척도</h2>
+    <p>재활 운동 효과를 한눈에 확인하세요</p>
+    <div class="period-tabs">
+      <div class="period-tab active">주간</div>
+      <div class="period-tab">월간</div>
+    </div>
+  </div>
+
+  <div class="scroll-body">
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kv" style="color:#10B981;">5→3</div>
+        <div class="kl">주간 통증 점수</div>
+        <div class="kd pos">▼ 40% 감소</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kv">75%</div>
+        <div class="kl">주간 완료율</div>
+        <div class="kd pos">▲ +15%p</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">😌 통증 추이 (NRS 1~10)</div>
+      <div class="chart-sub">최근 7일 · 데이터 포인트를 탭하면 상세 정보 표시</div>
+      <svg class="svg-chart" viewBox="0 0 320 110" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="22" x2="320" y2="22" stroke="#F0FDF9" stroke-width="1"/>
+        <line x1="0" y1="55" x2="320" y2="55" stroke="#F0FDF9" stroke-width="1"/>
+        <line x1="0" y1="88" x2="320" y2="88" stroke="#F0FDF9" stroke-width="1"/>
+        <text x="4" y="20" fill="#94A3B8" font-size="9">10</text>
+        <text x="4" y="53" fill="#94A3B8" font-size="9">5</text>
+        <text x="4" y="86" fill="#94A3B8" font-size="9">1</text>
+        <path d="M 20,44 L 66,55 L 112,66 L 158,55 L 204,77 L 250,88 L 296,88 L 296,110 L 20,110 Z" fill="url(#areaG)"/>
+        <polyline points="20,44 66,55 112,66 158,55 204,77 250,88 296,88" fill="none" stroke="#00C9A7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="44" r="4.5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="66" cy="55" r="4.5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="112" cy="66" r="4.5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="158" cy="55" r="4.5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="204" cy="77" r="4.5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="250" cy="88" r="6" fill="#10B981" stroke="#fff" stroke-width="2.5"/>
+        <circle cx="296" cy="88" r="6" fill="#10B981" stroke="#fff" stroke-width="2.5"/>
+        <rect x="218" y="68" width="68" height="22" rx="6" fill="#0D1B2A"/>
+        <text x="252" y="83" fill="#00C9A7" font-size="11" font-weight="bold" text-anchor="middle">오늘 3점</text>
+      </svg>
+      <div class="x-labels">
+        <span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>오늘</span>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">✅ 주간 완료율</div>
+      <div class="chart-sub">각 운동 세션의 목표 달성 비율</div>
+      <div class="bar-group">
+        <div class="bar-item">
+          <div class="bar-pct">100%</div>
+          <div class="bar-fill" style="height:80px;background:#00C9A7;"></div>
+          <div class="bar-label">월</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct">80%</div>
+          <div class="bar-fill" style="height:64px;background:#33D4B8;"></div>
+          <div class="bar-label">화</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct">100%</div>
+          <div class="bar-fill" style="height:80px;background:#00C9A7;"></div>
+          <div class="bar-label">수</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#CBD5E1;">-</div>
+          <div class="bar-fill" style="height:4px;background:#DBEAFE;"></div>
+          <div class="bar-label" style="color:#CBD5E1;">목</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#F59E0B;">75%</div>
+          <div class="bar-fill" style="height:60px;background:#F59E0B;"></div>
+          <div class="bar-label">금</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#CBD5E1;">-</div>
+          <div class="bar-fill" style="height:4px;background:#DBEAFE;"></div>
+          <div class="bar-label" style="color:#CBD5E1;">토</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#CBD5E1;">-</div>
+          <div class="bar-fill" style="height:4px;background:#DBEAFE;"></div>
+          <div class="bar-label" style="color:#CBD5E1;">일</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">📈 주간 운동 볼륨 추이</div>
+      <div class="chart-sub">총 볼륨 = Σ (무게 × 횟수 × 세트) kg</div>
+      <div class="vol-bars">
+        <div class="vol-bar" style="height:28px;opacity:.5;"></div>
+        <div class="vol-bar" style="height:44px;opacity:.65;"></div>
+        <div class="vol-bar" style="height:54px;opacity:.8;"></div>
+        <div class="vol-bar" style="height:70px;background:linear-gradient(180deg,#F59E0B,#D97706);"></div>
+      </div>
+      <div class="vol-labels">
+        <span>1주 280</span><span>2주 420</span><span>3주 510</span>
+        <span style="color:#F59E0B;font-weight:700;">이번주 650</span>
+      </div>
+      <div style="text-align:right;font-size:12px;color:#10B981;font-weight:700;margin-top:8px;">▲ 주간 볼륨 +27% 성장</div>
+    </div>
+
+    <div style="height:10px;"></div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-lbl">홈</div></div>
+    <div class="nav-item active"><div class="nav-icon">📊</div><div class="nav-lbl" style="color:#00C9A7;">통계</div></div>
+    <div class="nav-item"><div class="nav-icon">⚙️</div><div class="nav-lbl">설정</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PHONE 2 : 월간 뷰 (탭 전환 후)
+══════════════════════════════════════════ -->
+<div class="phone">
+  <div class="screen-tag">SCR-11b · 통계 대시보드 — 월간 탭 전환 Quick-Edit</div>
+  <div class="status-bar"><span>10:23</span><span>●●● WiFi 🔋</span></div>
+
+  <div class="analytics-header">
+    <h2>📊 나의 진척도</h2>
+    <p>재활 운동 효과를 한눈에 확인하세요</p>
+    <div class="period-tabs">
+      <div class="period-tab">주간</div>
+      <div class="period-tab active">월간</div>
+    </div>
+  </div>
+
+  <div class="scroll-body">
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kv" style="color:#10B981;">7→3</div>
+        <div class="kl">월간 통증 변화</div>
+        <div class="kd pos">▼ 57% 감소</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kv">82%</div>
+        <div class="kl">월간 완료율</div>
+        <div class="kd pos">▲ +32%p</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">😌 월간 통증 추이 (4주)</div>
+      <div class="chart-sub">4주간 NRS 평균 통증 점수 변화</div>
+      <svg class="svg-chart" viewBox="0 0 320 110" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="monthG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="22" x2="320" y2="22" stroke="#F0FDF9" stroke-width="1"/>
+        <line x1="0" y1="55" x2="320" y2="55" stroke="#F0FDF9" stroke-width="1"/>
+        <line x1="0" y1="88" x2="320" y2="88" stroke="#F0FDF9" stroke-width="1"/>
+        <path d="M 40,33 L 120,44 L 200,66 L 280,88 L 280,110 L 40,110 Z" fill="url(#monthG)"/>
+        <polyline points="40,33 120,44 200,66 280,88" fill="none" stroke="#00C9A7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="33" r="6" fill="#EF4444" stroke="#fff" stroke-width="2.5"/>
+        <circle cx="120" cy="44" r="5" fill="#F59E0B" stroke="#fff" stroke-width="2"/>
+        <circle cx="200" cy="66" r="5" fill="#00C9A7" stroke="#fff" stroke-width="2"/>
+        <circle cx="280" cy="88" r="6" fill="#10B981" stroke="#fff" stroke-width="2.5"/>
+        <text x="30" y="26" fill="#EF4444" font-size="10" font-weight="bold">7점</text>
+        <text x="110" y="38" fill="#F59E0B" font-size="10" font-weight="bold">5점</text>
+        <text x="190" y="60" fill="#00C9A7" font-size="10" font-weight="bold">4점</text>
+        <text x="270" y="82" fill="#10B981" font-size="10" font-weight="bold">3점</text>
+      </svg>
+      <div class="x-labels">
+        <span>1주차</span><span>2주차</span><span>3주차</span><span>4주차</span>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">✅ 월간 주차별 완료율</div>
+      <div class="chart-sub">주차별 세션 달성 비율</div>
+      <div class="bar-group">
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#F59E0B;">60%</div>
+          <div class="bar-fill" style="height:48px;background:#F59E0B;"></div>
+          <div class="bar-label">1주차</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#33D4B8;">80%</div>
+          <div class="bar-fill" style="height:64px;background:#33D4B8;"></div>
+          <div class="bar-label">2주차</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct">88%</div>
+          <div class="bar-fill" style="height:70px;background:#00C9A7;"></div>
+          <div class="bar-label">3주차</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-pct" style="color:#10B981;">100%</div>
+          <div class="bar-fill" style="height:80px;background:#10B981;"></div>
+          <div class="bar-label">4주차</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">📈 월간 볼륨 성장 추이</div>
+      <div class="chart-sub">Σ (무게 × 횟수 × 세트) — 주차별 누적 볼륨</div>
+      <div class="vol-bars">
+        <div class="vol-bar" style="height:22px;opacity:.5;"></div>
+        <div class="vol-bar" style="height:40px;opacity:.65;"></div>
+        <div class="vol-bar" style="height:54px;opacity:.8;"></div>
+        <div class="vol-bar" style="height:70px;background:linear-gradient(180deg,#10B981,#059669);"></div>
+      </div>
+      <div class="vol-labels">
+        <span>1주 1.2k</span><span>2주 1.8k</span><span>3주 2.3k</span>
+        <span style="color:#10B981;font-weight:700;">4주 3.1k</span>
+      </div>
+      <div style="text-align:right;font-size:12px;color:#10B981;font-weight:700;margin-top:8px;">▲ 월간 볼륨 총 158% 성장</div>
+    </div>
+
+    <div style="height:10px;"></div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item"><div class="nav-icon">🏠</div><div class="nav-lbl">홈</div></div>
+    <div class="nav-item active"><div class="nav-icon">📊</div><div class="nav-lbl" style="color:#00C9A7;">통계</div></div>
+    <div class="nav-item"><div class="nav-icon">⚙️</div><div class="nav-lbl">설정</div></div>
+  </div>
+</div>
+
+</body>
+</html>

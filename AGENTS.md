@@ -18,12 +18,13 @@ Colors match `design/applied/*.html` mockups exactly:
 
 ### Navigation Flow (AppRoutes)
 ```
-/disclaimer → /onboarding → /generating → /home
-                                         ↕ 3-tab shell
-/session (pushed)         /home  /analytics  /settings
+/landing → /disclaimer → /onboarding → /generating → /home
+                                                     ↕ 3-tab shell
+/session (pushed)               /home  /analytics  /settings
 /session-complete
 /weekly-report
 ```
+- New users start at `/landing` (SCR-LANDING); existing users (`onboardingDone=true`) go directly to `/home`
 - Shell has 3 tabs only: 홈, 통계, 설정
 - Session screens use `context.push()` (not `go()`), so back button works
 
@@ -42,6 +43,7 @@ Colors match `design/applied/*.html` mockups exactly:
 5. EnvironmentStep — combined freq chips + location radio + equipment checkboxes
 
 ### Design/Applied HTML Mockups
+- LandingPage (`lib/presentation/landing/landing_page.dart`): SCR-LANDING spec from designer_output.md v1.2.0; dark navy #0D1B2A bg, mint #00C9A7 CTA, 3-column value points
 - ATM-5: Disclaimer + Injury Input (Onboarding 1.1, 1.2)
 - ATM-6: Pain Level + Short/Long Goals (1.3, 1.4, 1.5)
 - ATM-7: Environment+Equipment + AI Generating (1.6, Step 2)
