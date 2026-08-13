@@ -75,6 +75,7 @@ are not referenced in the router but still compile (kept for future reference).
 ## Commands
 ```bash
 flutter analyze          # Static analysis
+<<<<<<< HEAD
 flutter test             # Unit tests
 flutter build apk --debug  # Build debug APK
 ```
@@ -82,3 +83,7 @@ flutter build apk --debug  # Build debug APK
 ## CI Notes
 - `.github/workflows/validation.yml` runs `flutter analyze` + `flutter test` + `flutter build apk --debug`
 - Root `.gitignore` was generated from a Python template that included `lib/` — this silently excluded all Flutter source files from git tracking, causing CI to fail with "Target file 'lib/main.dart' not found". Fixed by removing the `lib/` line from `.gitignore` and staging all `lib/` files. Always check this if CI reports missing Flutter source files.
+=======
+flutter build apk --debug  # Build debug APK
+```
+>>>>>>> 9ef3b65 (AI Implement: 사용자가 앱을 사용하는 **전체 유저 인터랙션 기본 플로우(8단계)**를 먼저 정의하고, 지금까지 도출된 모)
