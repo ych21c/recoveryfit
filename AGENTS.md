@@ -81,4 +81,4 @@ flutter build apk --debug  # Build debug APK
 
 ## CI Notes
 - `.github/workflows/validation.yml` runs `flutter analyze` + `flutter test` + `flutter build apk --debug`
-- Previous CI failure "Target file 'lib/main.dart' not found" was due to missing lib/main.dart; fixed by creating the full Flutter project structure in this branch
+- Root `.gitignore` was generated from a Python template that included `lib/` — this silently excluded all Flutter source files from git tracking, causing CI to fail with "Target file 'lib/main.dart' not found". Fixed by removing the `lib/` line from `.gitignore` and staging all `lib/` files. Always check this if CI reports missing Flutter source files.
