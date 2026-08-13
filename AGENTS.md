@@ -75,5 +75,10 @@ are not referenced in the router but still compile (kept for future reference).
 ## Commands
 ```bash
 flutter analyze          # Static analysis
+flutter test             # Unit tests
 flutter build apk --debug  # Build debug APK
 ```
+
+## CI Notes
+- `.github/workflows/validation.yml` runs `flutter analyze` + `flutter test` + `flutter build apk --debug`
+- Previous CI failure "Target file 'lib/main.dart' not found" was due to missing lib/main.dart; fixed by creating the full Flutter project structure in this branch
