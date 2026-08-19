@@ -102,12 +102,19 @@ flutter build apk --debug  # Build debug APK
 
 ## Integration Test Notes
 - `integration_test` package must be listed under `dev_dependencies` in `pubspec.yaml` (`sdk: flutter`).
-- `RecoveryFitApp` is now **self-contained**: it includes `ProviderScope` and all async init (Hive adapters, boxes, SharedPreferences, notifications) in a static memoized `_initApp()` Future. Tests can call `tester.pumpWidget(const RecoveryFitApp())` directly without external setup.
-- `_initApp()` is guarded with `Hive.isAdapterRegistered()` and `Hive.isBoxOpen()` to be safe across multiple tests in the same process.
-- For **splash-screen checks** in integration tests, use `pump(500ms)` × 2 (not `pumpAndSettle`) so the async init has time to complete while the splash animation is still visible (2.2 s total).
-- For **landing-screen checks**, use `pumpAndSettle(Duration(seconds: 5))` — pumps 5 s at a time, advances past the 2.2 s splash animation, settles on landing (no perpetual animations there).
-- Multi-line `Text` widgets (e.g., `'부상 후에도\n운동할 수 있어요'`) must be matched with `find.textContaining()`, not `find.text()`.
-- The landing CTA is a custom `GestureDetector + AnimatedContainer` button, not an `ElevatedButton`; use `find.byType(GestureDetector)` to assert its presence.
+- `integration_test/scenario_test.dart` is written as a **plain widget test** (no `IntegrationTestWidgetsFlutterBinding`). This means it runs correctly with:
+  ```bash
+  flutter test --device-id flutter-tester integration_test/scenario_test.dart
+  ```
+  Without `--device-id`, Flutter picks the Linux device and tries to build a Linux app — which fails if GTK3 dev libraries are absent (see Linux notes below).
+- The test pumps individual screens via `MaterialApp.router(routerConfig: _makeRouter())` with a minimal inline `GoRouter`. It does NOT pump `RecoveryFitApp()` to avoid Hive initialisation requirements in the flutter-tester VM.
+- `StorageService` is initialised once in `setUpAll` via `SharedPreferences.setMockInitialValues({})` so `SplashScreen._navigate()` can read `onboardingDone` without error.
+- Viewport is set to `390×844` (phone size) with `tester.view.physicalSize` to prevent layout overflow errors that occur at the default 800×600 test surface.
+- For **splash-screen checks**: use `pump()` + `pump(Duration(milliseconds: 50))` — GoRouter needs at least two frames to build the initial route; do NOT advance past 2 200 ms or the animation completes and navigation fires.
+- For **landing-screen checks** after splash: advance `pump(Duration(milliseconds: 2500))` then `pumpAndSettle()` to complete the 2.2 s animation and settle the route transition.
+- `RichText` word-marks (splash wordmark 'RecoveryFit') require `find.text('RecoveryFit', findRichText: true)`; the landing header uses a plain `Text` widget and is found by the default `find.text('RecoveryFit')`.
+- Headline / sub-headline / disclaimer / value-prop labels are split into **separate `Text` widgets** (one per visual line) so `find.text('부상 후에도')` works with exact matching.
+- The landing CTA is a custom `GestureDetector + AnimatedContainer` button, not an `ElevatedButton`; use `find.text('무료로 시작하기')` to assert the button text and `find.byType(GestureDetector)` for its presence.
 - Onboarding Step 2 navigation: the "다음" `ElevatedButton` is disabled until injury text ≥ 5 chars; call `tester.enterText(find.byType(TextField).first, '...')` before tapping it.
 
 ## Linux Dev-Tool Setup (aarch64, Ubuntu 24.04)

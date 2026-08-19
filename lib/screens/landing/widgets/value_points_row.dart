@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../design_system/colors.dart';
 import '../../../design_system/typography.dart';
 
-/// Three value-proposition columns: icon (in mint glass tile) + label text.
+/// Three value-proposition columns: icon (in mint glass tile) + two-line label.
 /// Fixed data — landing page only.
 class ValuePointsRow extends StatelessWidget {
   const ValuePointsRow({super.key});
@@ -11,15 +11,18 @@ class ValuePointsRow extends StatelessWidget {
   static const _items = [
     _ValueItem(
       icon: Icons.health_and_safety_outlined,
-      label: '이중 안전\n검증',
+      line1: '이중 안전',
+      line2: '검증',
     ),
     _ValueItem(
       icon: Icons.psychology_outlined,
-      label: 'AI 개인화\n플랜',
+      line1: 'AI 개인화',
+      line2: '플랜',
     ),
     _ValueItem(
       icon: Icons.touch_app_outlined,
-      label: '터치 최소화\n인터페이스',
+      line1: '터치 최소화',
+      line2: '인터페이스',
     ),
   ];
 
@@ -35,8 +38,9 @@ class ValuePointsRow extends StatelessWidget {
 
 class _ValueItem {
   final IconData icon;
-  final String label;
-  const _ValueItem({required this.icon, required this.label});
+  final String line1;
+  final String line2;
+  const _ValueItem({required this.icon, required this.line1, required this.line2});
 }
 
 class _ValueItemWidget extends StatelessWidget {
@@ -46,6 +50,12 @@ class _ValueItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final labelStyle = AppTypography.bodyS.copyWith(
+      fontSize: 11,
+      fontWeight: FontWeight.w600,
+      color: AppColors.textSecondary,
+    );
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -66,15 +76,8 @@ class _ValueItemWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        Text(
-          item.label,
-          textAlign: TextAlign.center,
-          style: AppTypography.bodyS.copyWith(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textSecondary,
-          ),
-        ),
+        Text(item.line1, textAlign: TextAlign.center, style: labelStyle),
+        Text(item.line2, textAlign: TextAlign.center, style: labelStyle),
       ],
     );
   }
