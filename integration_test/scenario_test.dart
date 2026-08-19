@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'package:recovery_fit/app.dart';
-import 'package:recovery_fit/core/router/app_router.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

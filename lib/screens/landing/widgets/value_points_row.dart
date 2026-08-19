@@ -76,8 +76,11 @@ class _ValueItemWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        Text(item.line1, textAlign: TextAlign.center, style: labelStyle),
-        Text(item.line2, textAlign: TextAlign.center, style: labelStyle),
+        Text(
+          '${item.line1}\n${item.line2}',
+          textAlign: TextAlign.center,
+          style: labelStyle,
+        ),
       ],
     );
   }

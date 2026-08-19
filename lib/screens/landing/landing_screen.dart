@@ -88,20 +88,16 @@ class LandingScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Main headline
-                      const Text('부상 후에도', style: AppTypography.headlineL),
-                      const Text('운동할 수 있어요', style: AppTypography.headlineL),
+                      const Text(
+                        '부상 후에도\n운동할 수 있어요',
+                        style: AppTypography.headlineL,
+                      ),
 
                       const SizedBox(height: 12),
 
                       // Sub-headline
                       Text(
-                        'AI가 내 부상 상태를 분석하고',
-                        style: AppTypography.bodyL.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                      Text(
-                        '안전한 재활 플랜을 만들어드려요',
+                        'AI가 내 부상 상태를 분석하고\n안전한 재활 플랜을 만들어드려요',
                         style: AppTypography.bodyL.copyWith(
                           color: AppColors.textSecondary,
                         ),
