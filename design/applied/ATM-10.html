@@ -6,12 +6,10 @@
 <title>ATM-10 | 세션 종료 & 통증 피드백</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
 .phone{width:375px;background:#F8FAF9;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;position:relative;max-height:820px;}
 .status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
 .screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;flex-shrink:0;}
-
-/* 완료 화면 */
 .complete-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:28px 22px;overflow-y:auto;}
 .complete-icon{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#2E7D6B,#4CAF95);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:18px;box-shadow:0 8px 24px rgba(46,125,107,0.3);}
 .complete-title{font-size:22px;font-weight:800;color:#1A2420;margin-bottom:6px;}
@@ -28,8 +26,6 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
 .done-text{font-size:13px;color:#1A2420;font-weight:600;flex:1;}
 .done-vol{font-size:11px;color:#5A7068;}
 .end-btn{width:100%;padding:15px;background:#E74C3C;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;}
-
-/* 피드백 모달 오버레이 */
 .modal-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:flex-end;z-index:10;}
 .modal-sheet{background:#fff;border-radius:24px 24px 0 0;padding:24px 22px 36px;width:100%;}
 .modal-handle{width:40px;height:4px;background:#D4E0DB;border-radius:2px;margin:0 auto 18px;}
@@ -48,7 +44,6 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
 </head>
 <body>
 
-<!-- PHONE 1: 세션 완료 요약 화면 -->
 <div class="phone">
   <div class="status"><span>10:12</span><span>●●● WiFi 🔋</span></div>
   <div class="screen-label">SCREEN 9c — 세션 완료 요약 (Step 6 전)</div>
@@ -67,13 +62,16 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
       <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">무릎 관절 워밍업</div><div class="done-vol">2×10</div></div>
       <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">쿼드 스트레칭</div><div class="done-vol">3×30초</div></div>
       <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">레그 레이즈</div><div class="done-vol">3×12</div></div>
-      <div class="ex-done-item" style="opacity:.5;"><div style="width:22px;height:22px;border-radius:50%;background:#A0B4AE;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;">⏭</div><div class="done-text" style="color:#A0B4AE;">쿼드 스트레칭 (스킵)</div><div class="done-vol">-</div></div>
+      <div class="ex-done-item" style="opacity:.5;">
+        <div style="width:22px;height:22px;border-radius:50%;background:#A0B4AE;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;">⏭</div>
+        <div class="done-text" style="color:#A0B4AE;">쿼드 스트레칭 (스킵)</div>
+        <div class="done-vol">-</div>
+      </div>
     </div>
     <button class="end-btn">세션 종료 및 피드백</button>
   </div>
 </div>
 
-<!-- PHONE 2: 통증 피드백 모달 -->
 <div class="phone">
   <div class="status"><span>10:12</span><span>●●● WiFi 🔋</span></div>
   <div class="screen-label">SCREEN 10 — 통증 피드백 모달 (Step 6)</div>

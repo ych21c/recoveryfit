@@ -6,7 +6,7 @@
 <title>ATM-7 | 운동환경 설정 → AI 플랜 생성</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
 .phone{width:375px;background:#fff;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;}
 .status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;}
 .screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;}
@@ -38,8 +38,6 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
 .check-item.sel .check-box{background:#2E7D6B;border-color:#2E7D6B;}
 .btn-generate{width:100%;padding:16px;background:linear-gradient(135deg,#2E7D6B,#1B5E4F);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
 .ob-footer{padding:16px 20px 28px;}
-
-/* GENERATING SCREEN */
 .gen-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;background:#F8FAF9;}
 .gen-icon{width:80px;height:80px;border-radius:24px;background:linear-gradient(135deg,#2E7D6B,#1B5E4F);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:24px;box-shadow:0 8px 24px rgba(46,125,107,0.3);}
 .gen-title{font-size:20px;font-weight:700;color:#1A2420;margin-bottom:8px;text-align:center;}
@@ -60,8 +58,7 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
 .p-status.ing{color:#F4A261;}
 .prog-bar-wrap{width:100%;margin-top:24px;}
 .prog-bar-bg{width:100%;height:8px;background:#D4E0DB;border-radius:4px;overflow:hidden;}
-.prog-bar-fill{height:100%;width:65%;background:linear-gradient(90deg,#2E7D6B,#4CAF95);border-radius:4px;animation:prog 2s ease infinite alternate;}
-@keyframes prog{from{width:55%}to{width:75%}}
+.prog-bar-fill{height:100%;width:65%;background:linear-gradient(90deg,#2E7D6B,#4CAF95);border-radius:4px;}
 .prog-pct{text-align:right;font-size:12px;color:#2E7D6B;font-weight:700;margin-top:6px;}
 </style>
 </head>

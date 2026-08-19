@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-10 | 세션 종료 & 통증 피드백</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+.phone{width:375px;background:#F8FAF9;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;position:relative;max-height:820px;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;flex-shrink:0;}
+.complete-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:28px 22px;overflow-y:auto;}
+.complete-icon{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#2E7D6B,#4CAF95);display:flex;align-items:center;justify-content:center;font-size:40px;margin-bottom:18px;box-shadow:0 8px 24px rgba(46,125,107,0.3);}
+.complete-title{font-size:22px;font-weight:800;color:#1A2420;margin-bottom:6px;}
+.complete-sub{font-size:14px;color:#5A7068;margin-bottom:24px;text-align:center;}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-bottom:24px;}
+.summary-card{background:#fff;border-radius:14px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.summary-card .sv{font-size:22px;font-weight:800;color:#2E7D6B;}
+.summary-card .sl{font-size:11px;color:#5A7068;margin-top:3px;}
+.ex-done-list{width:100%;background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.ex-done-title{font-size:12px;font-weight:700;color:#5A7068;margin-bottom:10px;}
+.ex-done-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #F0F4F2;}
+.ex-done-item:last-child{border-bottom:none;}
+.done-check{width:22px;height:22px;border-radius:50%;background:#2E7D6B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.done-text{font-size:13px;color:#1A2420;font-weight:600;flex:1;}
+.done-vol{font-size:11px;color:#5A7068;}
+.end-btn{width:100%;padding:15px;background:#E74C3C;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;}
+.modal-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:flex-end;z-index:10;}
+.modal-sheet{background:#fff;border-radius:24px 24px 0 0;padding:24px 22px 36px;width:100%;}
+.modal-handle{width:40px;height:4px;background:#D4E0DB;border-radius:2px;margin:0 auto 18px;}
+.modal-icon{font-size:32px;margin-bottom:10px;text-align:center;}
+.modal-title{font-size:18px;font-weight:700;color:#1A2420;margin-bottom:4px;text-align:center;}
+.modal-sub{font-size:13px;color:#5A7068;text-align:center;margin-bottom:18px;}
+.modal-prefill-note{background:#EEF7F4;border-radius:10px;padding:8px 12px;font-size:12px;color:#2E7D6B;font-weight:600;text-align:center;margin-bottom:14px;}
+.pain-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:20px;}
+.p-chip{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;border:2px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
+.p-chip.low{background:#E8F5E9;border-color:#A5D6A7;color:#27AE60;}
+.p-chip.mid{background:#FFF8E1;border-color:#FFE082;color:#F39C12;}
+.p-chip.high{background:#FFEBEE;border-color:#EF9A9A;color:#E74C3C;}
+.p-chip.sel{box-shadow:0 0 0 3px rgba(46,125,107,0.4);border-color:#2E7D6B;transform:scale(1.08);}
+.save-btn{width:100%;padding:15px;background:#2E7D6B;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="status"><span>10:12</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 9c — 세션 완료 요약 (Step 6 전)</div>
+  <div class="complete-body">
+    <div class="complete-icon">🎉</div>
+    <div class="complete-title">운동 완료!</div>
+    <div class="complete-sub">오늘의 재활 루틴을 모두 마쳤어요 🎊</div>
+    <div class="summary-grid">
+      <div class="summary-card"><div class="sv">24분</div><div class="sl">총 운동 시간</div></div>
+      <div class="summary-card"><div class="sv">5세트</div><div class="sl">완료 세트 수</div></div>
+      <div class="summary-card"><div class="sv">420</div><div class="sl">총 볼륨 (kg)</div></div>
+      <div class="summary-card"><div class="sv">🔥 8일</div><div class="sl">연속 운동 기록</div></div>
+    </div>
+    <div class="ex-done-list">
+      <div class="ex-done-title">완료된 운동</div>
+      <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">무릎 관절 워밍업</div><div class="done-vol">2×10</div></div>
+      <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">쿼드 스트레칭</div><div class="done-vol">3×30초</div></div>
+      <div class="ex-done-item"><div class="done-check">✓</div><div class="done-text">레그 레이즈</div><div class="done-vol">3×12</div></div>
+      <div class="ex-done-item" style="opacity:.5;">
+        <div style="width:22px;height:22px;border-radius:50%;background:#A0B4AE;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;">⏭</div>
+        <div class="done-text" style="color:#A0B4AE;">쿼드 스트레칭 (스킵)</div>
+        <div class="done-vol">-</div>
+      </div>
+    </div>
+    <button class="end-btn">세션 종료 및 피드백</button>
+  </div>
+</div>
+
+<div class="phone">
+  <div class="status"><span>10:12</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 10 — 통증 피드백 모달 (Step 6)</div>
+  <div class="complete-body" style="opacity:.4;">
+    <div class="complete-icon">🎉</div>
+    <div class="complete-title">운동 완료!</div>
+    <div class="complete-sub">배경 화면</div>
+  </div>
+  <div class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-icon">🤔</div>
+      <div class="modal-title">오늘 통증은 어떠셨나요?</div>
+      <div class="modal-sub">운동 후 통증 변화를 알려주세요</div>
+      <div class="modal-prefill-note">📌 지난 세션 통증: 5점 (기본 선택됨)</div>
+      <div class="pain-chips">
+        <div class="p-chip low">1</div>
+        <div class="p-chip low">2</div>
+        <div class="p-chip low">3</div>
+        <div class="p-chip mid">4</div>
+        <div class="p-chip mid sel">5</div>
+        <div class="p-chip mid">6</div>
+        <div class="p-chip high">7</div>
+        <div class="p-chip high">8</div>
+        <div class="p-chip high">9</div>
+        <div class="p-chip high">10</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:#A0B4AE;margin-bottom:16px;padding:0 4px;">
+        <span style="color:#27AE60;">1 = 통증 없음</span>
+        <span style="color:#E74C3C;">10 = 극심한 통증</span>
+      </div>
+      <button class="save-btn">저장 및 종료 (원터치)</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

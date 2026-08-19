@@ -6,10 +6,10 @@
 <title>ATM-6 | 온보딩 Step 3~5: 통증수준 → 목표설정</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
 .phone{width:375px;background:#fff;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;}
+.screen-badge{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;}
 .status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
-.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;}
 .ob-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:22px 24px 28px;color:#fff;}
 .step-row{display:flex;gap:6px;margin-bottom:14px;}
 .step-pip{height:4px;border-radius:2px;background:rgba(255,255,255,0.3);flex:1;}
@@ -22,8 +22,6 @@ body{font-family:'Apple SD Gothic Neo',sans-serif;background:#E8F0EE;display:fle
 .field-label{font-size:12px;font-weight:700;color:#5A7068;letter-spacing:.4px;margin-bottom:10px;}
 .btn-primary{width:100%;padding:15px;background:#2E7D6B;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;}
 .ob-footer{padding:16px 20px 28px;}
-
-/* PAIN SLIDER */
 .pain-value{text-align:center;margin:10px 0;}
 .pain-num{font-size:52px;font-weight:800;color:#F39C12;}
 .pain-desc{font-size:13px;color:#5A7068;margin-top:2px;}
@@ -35,9 +33,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;heigh
 .num-chip{flex:1;min-width:28px;padding:8px 4px;text-align:center;border-radius:8px;font-size:13px;font-weight:600;border:1.5px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
 .num-chip.sel{background:#F39C12;color:#fff;border-color:#F39C12;}
 .pain-scale{display:flex;justify-content:space-between;font-size:11px;margin-top:6px;}
-.pain-scale span{display:flex;align-items:center;gap:3px;}
-
-/* GOAL CARDS */
 .goal-card{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1.5px solid #D4E0DB;border-radius:14px;margin-bottom:10px;cursor:pointer;background:#F8FAF9;}
 .goal-card.sel{border-color:#2E7D6B;background:#EEF7F4;}
 .goal-icon{width:46px;height:46px;border-radius:12px;background:#E0F0EB;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
@@ -55,7 +50,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;heigh
 <!-- PHONE 1: 통증 수준 선택 -->
 <div class="phone">
   <div class="status"><span>9:43</span><span>●●● WiFi 🔋</span></div>
-  <div class="screen-label">SCREEN 3 — 통증 수준 선택 (Step 1.3)</div>
+  <div class="screen-badge">SCREEN 3 — 통증 수준 선택 (Step 1.3)</div>
   <div class="ob-header">
     <div class="step-row">
       <div class="step-pip done"></div><div class="step-pip done"></div>
@@ -106,7 +101,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;heigh
 <!-- PHONE 2: 단기 목표 선택 -->
 <div class="phone">
   <div class="status"><span>9:44</span><span>●●● WiFi 🔋</span></div>
-  <div class="screen-label">SCREEN 4 — 단기 목표 선택 (Step 1.4)</div>
+  <div class="screen-badge">SCREEN 4 — 단기 목표 선택 (Step 1.4)</div>
   <div class="ob-header">
     <div class="step-row">
       <div class="step-pip done"></div><div class="step-pip done"></div>
@@ -154,7 +149,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;heigh
 <!-- PHONE 3: 장기 목표 선택 -->
 <div class="phone">
   <div class="status"><span>9:45</span><span>●●● WiFi 🔋</span></div>
-  <div class="screen-label">SCREEN 5 — 장기 목표 선택 (Step 1.5)</div>
+  <div class="screen-badge">SCREEN 5 — 장기 목표 선택 (Step 1.5)</div>
   <div class="ob-header">
     <div class="step-row">
       <div class="step-pip done"></div><div class="step-pip done"></div>

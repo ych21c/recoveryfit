@@ -18,12 +18,14 @@ Colors match `design/applied/*.html` mockups exactly:
 
 ### Navigation Flow (AppRoutes)
 ```
-/disclaimer → /onboarding → /generating → /home
-                                         ↕ 3-tab shell
+/ (Splash, 2.2 s) → /landing (new user) → /disclaimer → /onboarding → /generating → /home
+                   → /home    (returning)                              ↕ 3-tab shell
 /session (pushed)         /home  /analytics  /settings
 /session-complete
 /weekly-report
 ```
+- Splash checks `StorageService.onboardingDone`; new users go to /landing, returning to /home
+- Landing CTA navigates to /disclaimer; router redirect at /landing skips to /home when done
 - Shell has 3 tabs only: 홈, 통계, 설정
 - Session screens use `context.push()` (not `go()`), so back button works
 
@@ -72,10 +74,24 @@ dependencies {
 `checklist_page.dart`, `progress_page.dart`, `plan_page.dart`, `workout_detail_page.dart`
 are not referenced in the router but still compile (kept for future reference).
 
+### Start-Page Design System (`lib/design_system/`)
+Added for the splash + landing screens:
+- `AppColors` — primaryDark `#0D1B2A`, primaryMint `#00C9A7`; includes v1.2.0 alias tokens for backward compat
+- `AppTypography` — headlineL (Bold 28sp/1.35), bodyL, caption, button styles
+- `AppSpacing` — horizontalMargin 24, ctaBottomPad 32
+- `AppMotion` — durationFadeIn 600ms, durationHold 1200ms, durationFadeOut 400ms
+
+### Start-Page Screens (`lib/screens/`)
+- `splash/splash_screen.dart` — deep navy fullscreen, fade in/hold/out animation, routes based on `onboardingDone`
+- `splash/widgets/dot_loading_indicator.dart` — 3 mint dots with sequential bounce (stagger 200ms each)
+- `landing/landing_screen.dart` — fullscreen no-scroll, hero top 55%, content bottom-aligned
+- `landing/widgets/hero_visual.dart` — CustomPaint reproducing the ATM-5 SVG illustration + gradient overlay
+- `landing/widgets/value_points_row.dart` — 3-column icon+label row (shield/brain/touch icons)
+- `landing/widgets/cta_button.dart` — mint 56px button, scale+darken on press
+
 ## Commands
 ```bash
 flutter analyze          # Static analysis
-<<<<<<< HEAD
 flutter test             # Unit tests
 flutter build apk --debug  # Build debug APK
 ```
@@ -83,7 +99,3 @@ flutter build apk --debug  # Build debug APK
 ## CI Notes
 - `.github/workflows/validation.yml` runs `flutter analyze` + `flutter test` + `flutter build apk --debug`
 - Root `.gitignore` was generated from a Python template that included `lib/` — this silently excluded all Flutter source files from git tracking, causing CI to fail with "Target file 'lib/main.dart' not found". Fixed by removing the `lib/` line from `.gitignore` and staging all `lib/` files. Always check this if CI reports missing Flutter source files.
-=======
-flutter build apk --debug  # Build debug APK
-```
->>>>>>> 9ef3b65 (AI Implement: 사용자가 앱을 사용하는 **전체 유저 인터랙션 기본 플로우(8단계)**를 먼저 정의하고, 지금까지 도출된 모)

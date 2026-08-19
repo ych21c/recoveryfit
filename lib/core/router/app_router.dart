@@ -16,21 +16,24 @@ import '../../presentation/analytics/analytics_page.dart';
 import '../../presentation/weekly_report/weekly_report_page.dart';
 import '../../presentation/settings/settings_page.dart';
 import '../../presentation/settings/subscription_page.dart';
-import '../../presentation/providers/providers.dart';
+import '../../screens/splash/splash_screen.dart';
+import '../../screens/landing/landing_screen.dart';
 
 // ── Routes ────────────────────────────────────────────────────────────────────
 
 class AppRoutes {
   AppRoutes._();
+  static const splash     = '/';
+  static const landing    = '/landing';
   static const disclaimer = '/disclaimer';
   static const onboarding = '/onboarding';
   static const generating = '/generating';
-  static const home = '/home';
-  static const session = '/session';
+  static const home       = '/home';
+  static const session    = '/session';
   static const sessionComplete = '/session-complete';
-  static const analytics = '/analytics';
+  static const analytics  = '/analytics';
   static const weeklyReport = '/weekly-report';
-  static const settings = '/settings';
+  static const settings   = '/settings';
   static const subscription = '/settings/subscription';
 }
 
@@ -59,12 +62,19 @@ class AppRouter {
 // ── Router Provider ───────────────────────────────────────────────────────────
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final storage = ref.read(storageServiceProvider);
-
   return GoRouter(
-    initialLocation:
-        storage.onboardingDone ? AppRoutes.home : AppRoutes.disclaimer,
+    initialLocation: AppRoutes.splash,
     routes: [
+      // ── Start pages ──────────────────────────────────────────────────────
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (_, __) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.landing,
+        builder: (_, __) => const LandingScreen(),
+      ),
+
       // ── Standalone screens (no nav bar) ─────────────────────────────────
       GoRoute(
         path: AppRoutes.disclaimer,

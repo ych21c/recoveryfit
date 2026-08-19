@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM-8 | 메인 홈 대시보드</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+.phone{width:375px;background:#F8FAF9;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;max-height:820px;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;flex-shrink:0;}
+.home-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:20px 22px 28px;color:#fff;flex-shrink:0;}
+.home-header .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.home-header .greeting{font-size:13px;opacity:.8;}
+.home-header .date{font-size:20px;font-weight:700;margin-top:2px;}
+.notif-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.stats-row{display:flex;gap:10px;}
+.stat-pill{flex:1;background:rgba(255,255,255,0.18);border-radius:12px;padding:10px 12px;text-align:center;}
+.stat-pill .sv{font-size:18px;font-weight:700;}
+.stat-pill .sl{font-size:10px;opacity:.8;margin-top:2px;}
+.scroll-body{flex:1;overflow-y:auto;padding:16px 16px 0;}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.section-title{font-size:14px;font-weight:700;color:#1A2420;}
+.section-link{font-size:12px;color:#2E7D6B;font-weight:600;}
+.batch-btn{width:100%;padding:12px;background:#EEF7F4;border:1.5px solid #2E7D6B;border-radius:12px;color:#2E7D6B;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.ex-card{background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid transparent;}
+.ex-type{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ex-type.warmup{background:#EEF7F4;}
+.ex-type.rehab{background:#FFF8F0;}
+.ex-type.main{background:#EEF0FF;}
+.ex-info{flex:1;}
+.ex-info .ex-name{font-size:14px;font-weight:700;color:#1A2420;}
+.ex-info .ex-detail{font-size:12px;color:#5A7068;margin-top:2px;}
+.ex-tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;margin-top:4px;}
+.tag-warmup{background:#EEF7F4;color:#2E7D6B;}
+.tag-rehab{background:#FFF8F0;color:#C96A00;}
+.tag-main{background:#EEF0FF;color:#5C6BC0;}
+.ex-check{width:28px;height:28px;border-radius:50%;border:2px solid #D4E0DB;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ex-check.done{background:#2E7D6B;border-color:#2E7D6B;color:#fff;font-size:14px;}
+.week-bar-wrap{background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.week-label{font-size:12px;font-weight:700;color:#5A7068;margin-bottom:10px;}
+.week-bar-bg{height:8px;background:#D4E0DB;border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.week-bar-fill{height:100%;background:linear-gradient(90deg,#2E7D6B,#4CAF95);border-radius:4px;}
+.week-pct{font-size:11px;color:#2E7D6B;font-weight:700;text-align:right;}
+.day-dots{display:flex;gap:6px;justify-content:center;margin-top:10px;}
+.day-dot{width:34px;text-align:center;}
+.day-dot .dd{width:34px;height:34px;border-radius:50%;background:#F0F4F2;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#A0B4AE;margin-bottom:3px;}
+.day-dot .dd.done{background:#2E7D6B;color:#fff;}
+.day-dot .dd.today{background:#2E7D6B;color:#fff;box-shadow:0 0 0 3px rgba(46,125,107,0.3);}
+.day-dot .dl{font-size:10px;color:#A0B4AE;}
+.nav-bar{display:flex;background:#fff;border-top:1px solid #E8EEEC;flex-shrink:0;}
+.nav-item{flex:1;padding:10px 0 12px;text-align:center;cursor:pointer;}
+.nav-item .nav-icon{font-size:20px;}
+.nav-item .nav-label{font-size:10px;color:#A0B4AE;margin-top:2px;font-weight:600;}
+.swipe-hint{font-size:11px;color:#A0B4AE;text-align:center;padding:8px;background:#F8FAF9;}
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="status"><span>9:48</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 8 — 메인 홈 대시보드 (Step 3)</div>
+  <div class="home-header">
+    <div class="top-row">
+      <div>
+        <div class="greeting">안녕하세요 👋</div>
+        <div class="date">1월 31일 금요일</div>
+      </div>
+      <div class="notif-btn">🔔</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-pill"><div class="sv">통증 5→3</div><div class="sl">통증 점수 ▼</div></div>
+      <div class="stat-pill"><div class="sv">🔥 7일</div><div class="sl">연속 운동</div></div>
+      <div class="stat-pill"><div class="sv">75%</div><div class="sl">주간 달성률</div></div>
+    </div>
+  </div>
+  <div class="scroll-body">
+    <div class="week-bar-wrap">
+      <div class="week-label">이번 주 진척도 (3/4회 완료)</div>
+      <div class="week-bar-bg"><div class="week-bar-fill" style="width:75%;"></div></div>
+      <div class="week-pct">75%</div>
+      <div class="day-dots">
+        <div class="day-dot"><div class="dd done">✓</div><div class="dl">월</div></div>
+        <div class="day-dot"><div class="dd done">✓</div><div class="dl">화</div></div>
+        <div class="day-dot"><div class="dd done">✓</div><div class="dl">수</div></div>
+        <div class="day-dot"><div class="dd">-</div><div class="dl">목</div></div>
+        <div class="day-dot"><div class="dd today">●</div><div class="dl">금</div></div>
+        <div class="day-dot"><div class="dd">-</div><div class="dl">토</div></div>
+        <div class="day-dot"><div class="dd">-</div><div class="dl">일</div></div>
+      </div>
+    </div>
+    <div class="section-header">
+      <div class="section-title">오늘의 운동 (5개)</div>
+      <div class="section-link">전체 보기</div>
+    </div>
+    <button class="batch-btn">⚡ 오늘의 운동 일괄 완료</button>
+    <div class="ex-card">
+      <div class="ex-type warmup">🌡️</div>
+      <div class="ex-info">
+        <div class="ex-name">무릎 관절 워밍업</div>
+        <div class="ex-detail">2세트 × 10회</div>
+        <span class="ex-tag tag-warmup">준비운동</span>
+      </div>
+      <div class="ex-check done">✓</div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type rehab">🩹</div>
+      <div class="ex-info">
+        <div class="ex-name">쿼드 스트레칭</div>
+        <div class="ex-detail">3세트 × 30초 유지</div>
+        <span class="ex-tag tag-rehab">재활</span>
+      </div>
+      <div class="ex-check done">✓</div>
+    </div>
+    <div class="ex-card" style="border-color:#2E7D6B;box-shadow:0 0 0 2px rgba(46,125,107,0.15);">
+      <div class="ex-type rehab">🔄</div>
+      <div class="ex-info">
+        <div class="ex-name">레그 레이즈 (재활)</div>
+        <div class="ex-detail">3세트 × 12회</div>
+        <span class="ex-tag tag-rehab">재활/보조</span>
+      </div>
+      <div class="ex-check"></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type main">💪</div>
+      <div class="ex-info">
+        <div class="ex-name">월 스쿼트 (가벼운 무게)</div>
+        <div class="ex-detail">3세트 × 10회 · 추천 5kg</div>
+        <span class="ex-tag tag-main">메인</span>
+      </div>
+      <div class="ex-check"></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type main">🏃</div>
+      <div class="ex-info">
+        <div class="ex-name">스텝 업 (낮은 박스)</div>
+        <div class="ex-detail">3세트 × 8회</div>
+        <span class="ex-tag tag-main">메인</span>
+      </div>
+      <div class="ex-check"></div>
+    </div>
+    <div class="swipe-hint">← 카드 좌우 스와이프로 운동 스킵 →</div>
+    <div style="height:12px;"></div>
+  </div>
+  <div class="nav-bar">
+    <div class="nav-item active"><div class="nav-icon">🏠</div><div class="nav-label" style="color:#2E7D6B;">홈</div></div>
+    <div class="nav-item"><div class="nav-icon">📊</div><div class="nav-label">통계</div></div>
+    <div class="nav-item"><div class="nav-icon">⚙️</div><div class="nav-label">설정</div></div>
+  </div>
+</div>
+
+<div class="phone">
+  <div class="status"><span>9:48</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 8b — 홈 카드 스와이프 스킵 (Quick-Edit)</div>
+  <div class="home-header">
+    <div class="top-row">
+      <div><div class="greeting">Quick-Edit: 운동 스킵</div><div class="date">카드 스와이프 상태</div></div>
+      <div class="notif-btn">🔔</div>
+    </div>
+    <div style="font-size:12px;opacity:.8;margin-top:4px;">← 운동 카드를 좌로 밀면 스킵 버튼이 나타납니다</div>
+  </div>
+  <div class="scroll-body">
+    <button class="batch-btn">⚡ 오늘의 운동 일괄 완료</button>
+    <div class="ex-card">
+      <div class="ex-type warmup">🌡️</div>
+      <div class="ex-info"><div class="ex-name">무릎 관절 워밍업</div><div class="ex-detail">2세트 × 10회</div><span class="ex-tag tag-warmup">준비운동</span></div>
+      <div class="ex-check done">✓</div>
+    </div>
+    <div style="position:relative;margin-bottom:10px;border-radius:14px;overflow:hidden;">
+      <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:#E74C3C;display:flex;align-items:center;justify-content:center;border-radius:0 14px 14px 0;font-size:12px;font-weight:700;color:#fff;flex-direction:column;gap:2px;">
+        <span>🚫</span><span>스킵</span>
+      </div>
+      <div class="ex-card" style="margin-bottom:0;transform:translateX(-70px);border-radius:14px;border-color:#FEE2E2;background:#FEF9F9;">
+        <div class="ex-type rehab">🩹</div>
+        <div class="ex-info"><div class="ex-name">쿼드 스트레칭</div><div class="ex-detail">3세트 × 30초 유지</div><span class="ex-tag tag-rehab">재활</span></div>
+        <div class="ex-check"></div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type rehab">🔄</div>
+      <div class="ex-info"><div class="ex-name">레그 레이즈 (재활)</div><div class="ex-detail">3세트 × 12회</div><span class="ex-tag tag-rehab">재활/보조</span></div>
+      <div class="ex-check"></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type main">💪</div>
+      <div class="ex-info"><div class="ex-name">월 스쿼트</div><div class="ex-detail">3세트 × 10회</div><span class="ex-tag tag-main">메인</span></div>
+      <div class="ex-check"></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-type main">🏃</div>
+      <div class="ex-info"><div class="ex-name">스텝 업</div><div class="ex-detail">3세트 × 8회</div><span class="ex-tag tag-main">메인</span></div>
+      <div class="ex-check"></div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <div class="nav-item active"><div class="nav-icon">🏠</div><div class="nav-label" style="color:#2E7D6B;">홈</div></div>
+    <div class="nav-item"><div class="nav-icon">📊</div><div class="nav-label">통계</div></div>
+    <div class="nav-item"><div class="nav-icon">⚙️</div><div class="nav-label">설정</div></div>
+  </div>
+</div>
+
+</body>
+</html>
