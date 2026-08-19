@@ -124,23 +124,12 @@ class LandingScreen extends StatelessWidget {
 
                       // Medical disclaimer caption
                       Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              '의료기기 아님',
-                              textAlign: TextAlign.center,
-                              style: AppTypography.caption.copyWith(
-                                color: AppColors.textTertiary,
-                              ),
-                            ),
-                            Text(
-                              '전문의 상담을 대체하지 않습니다',
-                              textAlign: TextAlign.center,
-                              style: AppTypography.caption.copyWith(
-                                color: AppColors.textTertiary,
-                              ),
-                            ),
-                          ],
+                        child: Text(
+                          '의료기기 아님 · 전문의 상담을 대체하지 않습니다',
+                          textAlign: TextAlign.center,
+                          style: AppTypography.caption.copyWith(
+                            color: AppColors.textTertiary,
+                          ),
                         ),
                       ),
                     ],

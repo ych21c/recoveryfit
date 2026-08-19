@@ -9,7 +9,9 @@ void main() {
   group('시작 페이지 (Splash & Landing)', () {
     testWidgets('스플래시 화면 진입 및 로고 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle();
+      // Advance 1.5 s so init completes and splash is showing (animation hold
+      // phase: 600–1800 ms), but not yet past the 2200 ms navigation point.
+      await tester.pump(const Duration(milliseconds: 1500));
 
       // 스플래시 화면 백그라운드 확인 (딥 네이비)
       expect(
@@ -18,9 +20,9 @@ void main() {
         reason: '스플래시 화면 Scaffold가 존재해야 함',
       );
 
-      // 로고 텍스트 "RecoveryFit" 확인
+      // 로고 텍스트 "RecoveryFit" 확인 — wordmark uses RichText spans
       expect(
-        find.text('Recovery'),
+        find.textContaining('Recovery'),
         findsWidgets,
         reason: 'RecoveryFit 워드마크의 "Recovery" 부분이 표시되어야 함',
       );
@@ -35,7 +37,8 @@ void main() {
 
     testWidgets('스플래시 로딩 애니메이션 (도트 3개)', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle();
+      // Stay in splash window (same as test above).
+      await tester.pump(const Duration(milliseconds: 1500));
 
       // 로딩 도트는 SizedBox들의 조합이므로, 애니메이션 확인은 
       // 위젯 구조상 Container/SizedBox의 존재로 간접 검증
@@ -48,14 +51,13 @@ void main() {
 
     testWidgets('랜딩 화면 자동 전환 또는 수동 진입', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      
+
       // 초기 로딩 대기 (스플래시 → 랜딩 또는 디스클레이머로의 네비게이션)
       await tester.pumpAndSettle(const Duration(seconds: 3));
 
       // 랜딩 화면의 주요 텍스트 확인
       final mainHeadline = find.text('부상 후에도');
-      final subHeadline = find.text('AI가 내 부상 상태를 분석하고');
-      
+
       // 랜딩 화면에 진입했는지 확인
       // (스플래시 후 자동 진입 또는 사용자가 이미 온보딩 완료시 스킵)
       if (mainHeadline.evaluate().isNotEmpty) {
