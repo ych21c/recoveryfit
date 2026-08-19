@@ -11,10 +11,12 @@ void main() {
       '스플래시 화면이 로드되고 로고 · 슬로건 · 로딩 애니메이션이 표시됨',
       (tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
-        await tester.pumpAndSettle(const Duration(seconds: 1));
+        // Advance time into the splash animation without triggering navigation.
+        // Total splash animation = 2 200 ms; 500 ms keeps us firmly on splash.
+        await tester.pump(const Duration(milliseconds: 500));
 
-        // RecoveryFit 워드마크 (텍스트) 확인
-        expect(find.text('RecoveryFit'), findsWidgets);
+        // Splash wordmark is a RichText ('Recovery' + 'Fit') → use findRichText
+        expect(find.text('RecoveryFit', findRichText: true), findsWidgets);
 
         // 슬로건 "부상 후, 더 강하게" 확인
         expect(find.text('부상 후, 더 강하게'), findsOneWidget);
@@ -110,7 +112,7 @@ void main() {
       '스플래시 화면의 로딩 애니메이션 (도트 3개)이 표시됨',
       (tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
-        
+
         // 초기 상태에서 스플래시 화면이 표시됨
         await tester.pump(const Duration(milliseconds: 500));
 

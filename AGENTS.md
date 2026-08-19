@@ -56,14 +56,36 @@ Colors match `design/applied/*.html` mockups exactly:
 ## Build Notes
 
 ### Android Build (aarch64 host issue)
-This repo runs on an **aarch64** machine but the Android NDK is for **x86_64**.
-The NDK's clang requires `libz.so.1` (x86_64 version). Fix applied:
+This repo runs on an **aarch64** machine but the Android SDK/NDK binaries are **x86_64**.
+AAPT2 and Gradle tooling require x86_64 shared libraries. Complete fix:
+
+```bash
+# 1. zlib
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.3.dfsg+really1.3.1-1ubuntu1_amd64.deb" -o /tmp/zlib1g_amd64.deb
+dpkg-deb --extract /tmp/zlib1g_amd64.deb /tmp/zlib1g_amd64
+mkdir -p /lib/x86_64-linux-gnu
+cp /tmp/zlib1g_amd64/usr/lib/x86_64-linux-gnu/libz.so.1.3.1 /lib/x86_64-linux-gnu/
+ln -sf /lib/x86_64-linux-gnu/libz.so.1.3.1 /lib/x86_64-linux-gnu/libz.so.1
+
+# 2. glibc (ld-linux-x86-64.so.2, libc.so.6, libdl.so.2, libm.so.6, etc.)
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8_amd64.deb" -o /tmp/libc6_amd64.deb
+dpkg-deb --extract /tmp/libc6_amd64.deb /tmp/libc6_amd64
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /lib/x86_64-linux-gnu/
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/libc.so.6 /lib/x86_64-linux-gnu/
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/libpthread.so.0 /lib/x86_64-linux-gnu/
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/libm.so.6 /lib/x86_64-linux-gnu/
+cp /tmp/libc6_amd64/usr/lib/x86_64-linux-gnu/librt.so.1 /lib/x86_64-linux-gnu/
+mkdir -p /lib64
+ln -sf /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
+
+# 3. libgcc_s
+curl -sL "http://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libgcc-s1_14-20240412-0ubuntu1_amd64.deb" -o /tmp/libgcc_s1_amd64.deb
+dpkg-deb --extract /tmp/libgcc_s1_amd64.deb /tmp/libgcc_s1_amd64
+cp /tmp/libgcc_s1_amd64/usr/lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/
 ```
-dpkg-deb --extract zlib1g_amd64.deb /tmp/zlib1g_amd64
-cp /tmp/zlib1g_amd64/usr/lib/x86_64-linux-gnu/libz.so.1.3 /lib/x86_64-linux-gnu/
-ln -sf /lib/x86_64-linux-gnu/libz.so.1.3 /lib/x86_64-linux-gnu/libz.so.1
-```
-Also requires in `android/app/build.gradle.kts`:
+
+Also requires in `android/app/build.gradle.kts` (already present):
 ```kotlin
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
