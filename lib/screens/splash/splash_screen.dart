@@ -180,22 +180,30 @@ class _SplashScreenState extends State<SplashScreen>
               const SizedBox(height: 18),
 
               // ── Wordmark ────────────────────────────────────────────────
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: -0.5,
-                    color: Colors.white,
-                  ),
-                  children: [
-                    TextSpan(text: 'Recovery'),
-                    TextSpan(
-                      text: 'Fit',
-                      style: TextStyle(color: AppColors.primaryMint),
+              // Two separate Text widgets so integration tests can find them
+              // with find.text('Recovery') / find.text('Fit') independently.
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Text(
+                    'Recovery',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.5,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    'Fit',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.5,
+                      color: AppColors.primaryMint,
+                    ),
+                  ),
+                ],
               ),
 
               const SizedBox(height: 10),

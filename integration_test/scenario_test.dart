@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'package:recovery_fit/app.dart';
-import 'package:recovery_fit/core/router/app_router.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +10,9 @@ void main() {
   group('시작 페이지 (SplashScreen & LandingScreen) 검증', () {
     testWidgets('SplashScreen 진입 및 로고 표시 확인', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 3));
+      // pump once to render the initial SplashScreen frame without advancing
+      // past the animation timeline (avoids navigating away to LandingScreen).
+      await tester.pump();
 
       // SplashScreen의 RecoveryFit 워드마크 텍스트 찾기
       expect(find.text('Recovery'), findsWidgets);
@@ -37,7 +38,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400)); // fade-out
 
       // 다음 프레임에서 LandingScreen 진입 확인
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // LandingScreen의 주요 텍스트 확인
       expect(find.text('부상 후에도\n운동할 수 있어요'), findsOneWidget);
@@ -54,15 +55,16 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
-      // 메인 헤드라인 확인
-      expect(find.text('부상 후에도'), findsOneWidget);
-      expect(find.text('운동할 수 있어요'), findsOneWidget);
+      // 메인 헤드라인 확인 (단일 Text 위젯에 \n 포함)
+      expect(find.text('부상 후에도\n운동할 수 있어요'), findsOneWidget);
 
-      // 서브 헤드라인 확인
-      expect(find.text('AI가 내 부상 상태를 분석하고'), findsOneWidget);
-      expect(find.text('안전한 재활 플랜을 만들어드려요'), findsOneWidget);
+      // 서브 헤드라인 확인 (단일 Text 위젯에 \n 포함)
+      expect(
+        find.text('AI가 내 부상 상태를 분석하고\n안전한 재활 플랜을 만들어드려요'),
+        findsOneWidget,
+      );
 
       // 가치 포인트 라벨들 확인 (3종)
       expect(find.text('이중 안전\n검증'), findsOneWidget);
@@ -77,7 +79,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // "무료로 시작하기" CTA 버튼 찾기
       final ctaButton = find.text('무료로 시작하기');
@@ -88,7 +90,7 @@ void main() {
 
       // 버튼 터치
       await tester.tap(ctaButton);
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // 면책동의 화면으로 진입 확인 (DisclaimerPage)
       expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
@@ -102,7 +104,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // 보조 텍스트(면책사항) 확인
       expect(
@@ -118,7 +120,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // LandingScreen 상단 로고 확인 (텍스트로 확인 가능하면)
       expect(find.text('RecoveryFit'), findsWidgets);
@@ -131,13 +133,9 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
-      // 스크롤 가능성 확인 (풀스크린 단일 뷰포트라 불가능해야 함)
-      final listFinder = find.byType(ListView);
-      final scrollFinder = find.byType(SingleChildScrollView);
-      
-      // 기본 레이아웃은 Column/Stack을 사용하므로 ListView가 없거나 최소화되어야 함
+      // 기본 레이아웃은 Column/Stack을 사용하므로 ListView/SingleChildScrollView 없어야 함
       // (실제 구현에서는 SafeArea + Column 등으로 구성)
       expect(find.byType(Column), findsWidgets);
 
@@ -147,7 +145,7 @@ void main() {
 
     testWidgets('SplashScreen 배경색 검증 (딥 네이비)', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 3));
+      await tester.pumpAndSettle();
 
       // SplashScreen은 #0D1B2A (딥 네이비) 배경
       // Scaffold나 Container의 backgroundColor로 설정되어 있음
@@ -165,14 +163,14 @@ void main() {
       await tester.pump(const Duration(milliseconds: 600));
       await tester.pump(const Duration(milliseconds: 1200));
       await tester.pump(const Duration(milliseconds: 400));
-      await tester.pumpAndSettle(timeout: const Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       // 화면 아래쪽으로 드래그 시도
       await tester.drag(find.byType(Scaffold), const Offset(0, -100));
       await tester.pump();
 
-      // 주요 콘텐츠가 여전히 보이는지 확인
-      expect(find.text('부상 후에도'), findsOneWidget);
+      // 주요 콘텐츠가 여전히 보이는지 확인 (헤드라인은 단일 Text 위젯)
+      expect(find.text('부상 후에도\n운동할 수 있어요'), findsOneWidget);
       expect(find.text('무료로 시작하기'), findsOneWidget);
     });
   });
