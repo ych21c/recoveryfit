@@ -87,9 +87,14 @@ class LandingScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Main headline
+                      // Main headline — split into two Text widgets so each
+                      // line can be found independently by integration tests.
                       const Text(
-                        '부상 후에도\n운동할 수 있어요',
+                        '부상 후에도',
+                        style: AppTypography.headlineL,
+                      ),
+                      const Text(
+                        '운동할 수 있어요',
                         style: AppTypography.headlineL,
                       ),
 

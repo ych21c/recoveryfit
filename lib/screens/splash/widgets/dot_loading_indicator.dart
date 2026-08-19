@@ -96,13 +96,10 @@ class _AnimatedDotState extends State<_AnimatedDot>
           child: child,
         ),
       ),
-      child: Container(
-        width: 8,
-        height: 8,
-        decoration: const BoxDecoration(
-          color: AppColors.primaryMint,
-          shape: BoxShape.circle,
-        ),
+      child: const Icon(
+        Icons.circle,
+        color: AppColors.primaryMint,
+        size: 8,
       ),
     );
   }

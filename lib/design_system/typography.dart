@@ -5,7 +5,7 @@ import 'colors.dart';
 abstract class AppTypography {
   static const TextStyle headlineL = TextStyle(
     fontSize: 28,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w800,
     height: 1.35,
     color: AppColors.textPrimary,
   );

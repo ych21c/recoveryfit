@@ -14,9 +14,10 @@ void main() {
       '스플래시 화면 자동 전환: 로고와 로딩 애니메이션 표시 후 랜딩으로 이동',
       (tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
-        
-        // 로딩 완료 대기
-        await tester.pumpAndSettle(const Duration(seconds: 3));
+
+        // SplashScreen이 첫 프레임부터 표시됨 (FutureBuilder 없음)
+        // 점 애니메이션이 repeat()이므로 pumpAndSettle 사용 불가 → 시간 기반 pump
+        await tester.pump(const Duration(milliseconds: 500));
 
         // 스플래시 스크린이 보임 (로고 표시)
         expect(find.byType(SplashScreen), findsOneWidget);
@@ -140,15 +141,7 @@ void main() {
         final subHeadline = find.textContaining('AI가');
         expect(subHeadline, findsWidgets);
 
-        // TextStyle 검증은 위젯 트리 확인으로 진행
-        final headlineWidget = find.byWidgetPredicate(
-          (widget) =>
-              widget is Text &&
-              widget.data?.contains('부상 후에도') == true &&
-              widget.style?.fontSize == 28 &&
-              widget.style?.fontWeight == FontWeight.w800,
-        );
-        // 정확한 매칭 어려우므로 존재 확인만
+        // TextStyle 검증은 위젯 트리 확인으로 진행 (정확한 매칭 어려우므로 존재 확인만)
         expect(find.byType(Text), findsWidgets);
       },
     );

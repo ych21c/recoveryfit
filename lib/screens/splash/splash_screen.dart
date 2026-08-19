@@ -1,9 +1,15 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/router/app_router.dart';
+import '../../data/models/daily_log.dart';
+import '../../data/models/user_profile.dart';
+import '../../data/models/workout_plan.dart';
+import '../../data/services/notification_service.dart';
 import '../../data/services/storage_service.dart';
 import '../../design_system/colors.dart';
 import '../../design_system/motion.dart';
@@ -20,6 +26,61 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
   late final Animation<double> _opacity;
+
+  // Memoized across instances so re-entrant calls from multiple tests share
+  // the same Future and initialization only runs once per process lifetime.
+  static Future<void>? _initFuture;
+  static Future<void> _doInit() => _initFuture ??= _runInit();
+
+  static Future<void> _runInit() async {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    await Hive.initFlutter();
+
+    if (!Hive.isAdapterRegistered(UserProfileAdapter().typeId)) {
+      Hive.registerAdapter(UserProfileAdapter());
+    }
+    if (!Hive.isAdapterRegistered(WorkoutPlanAdapter().typeId)) {
+      Hive.registerAdapter(WorkoutPlanAdapter());
+    }
+    if (!Hive.isAdapterRegistered(PlannedExerciseAdapter().typeId)) {
+      Hive.registerAdapter(PlannedExerciseAdapter());
+    }
+    if (!Hive.isAdapterRegistered(WorkoutDayAdapter().typeId)) {
+      Hive.registerAdapter(WorkoutDayAdapter());
+    }
+    if (!Hive.isAdapterRegistered(WorkoutWeekAdapter().typeId)) {
+      Hive.registerAdapter(WorkoutWeekAdapter());
+    }
+    if (!Hive.isAdapterRegistered(DailyLogAdapter().typeId)) {
+      Hive.registerAdapter(DailyLogAdapter());
+    }
+    if (!Hive.isAdapterRegistered(ExerciseLogEntryAdapter().typeId)) {
+      Hive.registerAdapter(ExerciseLogEntryAdapter());
+    }
+
+    if (!Hive.isBoxOpen('user_profile')) {
+      await Hive.openBox<UserProfile>('user_profile');
+    }
+    if (!Hive.isBoxOpen('workout_plans')) {
+      await Hive.openBox<WorkoutPlan>('workout_plans');
+    }
+    if (!Hive.isBoxOpen('daily_logs')) {
+      await Hive.openBox<DailyLog>('daily_logs');
+    }
+    if (!Hive.isBoxOpen('settings')) {
+      await Hive.openBox('settings');
+    }
+
+    await StorageService.instance.init();
+
+    try {
+      await NotificationService.instance.init();
+    } catch (_) {}
+  }
 
   @override
   void initState() {
@@ -50,7 +111,16 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     ]).animate(_ctrl);
 
-    _ctrl.forward().then((_) => _navigate());
+    _runSequence();
+  }
+
+  // Starts init and animation concurrently; navigates when both finish.
+  Future<void> _runSequence() async {
+    final initFuture = _doInit();
+    await _ctrl.forward();
+    await initFuture;
+    if (!mounted) return;
+    _navigate();
   }
 
   void _navigate() {
