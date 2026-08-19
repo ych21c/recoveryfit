@@ -3,345 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATM-9 | 세션 상세 & 세트 기록 & Quick-Edit</title>
+<title>ATM-9 | 세션 상세 & 세트 기록</title>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-    background:#E2ECF8;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    padding:32px 16px;
-    gap:24px;
-    flex-wrap:wrap;
-    min-height:100vh;
-  }
-  .phone{
-    width:375px; height:812px;
-    background:#F8FAFC;
-    border-radius:50px;
-    box-shadow:0 28px 72px rgba(15,23,42,0.22),0 0 0 2px #CBD5E1;
-    overflow:hidden;
-    display:flex;flex-direction:column;
-    position:relative;flex-shrink:0;
-  }
-  .screen-tag{
-    position:absolute;top:0;left:0;right:0;
-    background:#1E3A5F;color:#93C5FD;
-    font-size:9px;font-weight:700;letter-spacing:1.2px;
-    text-align:center;padding:5px;z-index:10;
-  }
-  .status-bar{
-    padding:22px 28px 8px;
-    display:flex;justify-content:space-between;
-    font-size:11px;font-weight:700;
-    color:#fff;flex-shrink:0;
-    background:linear-gradient(135deg,#4F8EF7,#2B6FD9);
-  }
-
-  /* ── 세션 헤더 ── */
-  .sess-header{
-    background:linear-gradient(135deg,#4F8EF7,#2B6FD9);
-    padding:4px 20px 22px;color:#fff;flex-shrink:0;
-  }
-  .back-row{
-    font-size:13px;opacity:.8;margin-bottom:8px;cursor:pointer;
-    display:flex;align-items:center;gap:4px;
-  }
-  .sess-name{font-size:21px;font-weight:800;margin-bottom:8px;}
-  .sess-meta{
-    display:flex;flex-wrap:wrap;gap:10px;
-    font-size:12px;opacity:.8;
-  }
-  .sess-meta span{display:flex;align-items:center;gap:3px;}
-
-  /* ── 프리필 배너 ── */
-  .prefill-banner{
-    background:#EFF6FF;
-    border-bottom:1px solid #DBEAFE;
-    padding:8px 20px;
-    font-size:12px;color:#2B6FD9;font-weight:600;
-    display:flex;align-items:center;gap:6px;
-    flex-shrink:0;
-  }
-
-  /* ── 스크롤 바디 ── */
-  .scroll-body{flex:1;overflow-y:auto;padding:14px 16px;}
-
-  /* ── 가이드 박스 ── */
-  .guide-box{
-    background:#fff;border-radius:14px;
-    padding:14px 16px;margin-bottom:14px;
-    box-shadow:0 2px 8px rgba(79,142,247,.07);
-  }
-  .guide-title{
-    font-size:11px;font-weight:700;
-    color:#475569;letter-spacing:.6px;
-    text-transform:uppercase;margin-bottom:8px;
-  }
-  .guide-text{font-size:13px;color:#0F172A;line-height:21px;}
-
-  /* ── 세트 테이블 ── */
-  .set-header{
-    display:flex;padding:0 4px;margin-bottom:6px;
-  }
-  .col{font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.3px;}
-  .col-num{width:34px;}
-  .col-weight{flex:1;text-align:center;}
-  .col-reps{flex:1;text-align:center;}
-  .col-check{width:52px;text-align:center;}
-
-  .set-row{
-    display:flex;align-items:center;
-    padding:10px 4px;
-    border-radius:14px;margin-bottom:6px;
-    background:#fff;
-    box-shadow:0 1px 6px rgba(79,142,247,.07);
-  }
-  .set-row.done{background:#EFF6FF;}
-  .set-row.current{
-    background:#fff;
-    border:1.5px solid #4F8EF7;
-    box-shadow:0 0 0 2px rgba(79,142,247,.12);
-  }
-  .set-num{
-    width:34px;
-    font-size:13px;font-weight:700;color:#475569;
-  }
-  .set-num.active{color:#4F8EF7;}
-  .set-val{flex:1;text-align:center;}
-  .val-chip{
-    display:inline-block;
-    padding:7px 16px;border-radius:10px;
-    font-size:14px;font-weight:700;
-    background:#EFF6FF;color:#0F172A;
-    cursor:pointer;border:1.5px solid #DBEAFE;
-  }
-  .set-row.done .val-chip{
-    background:#DBEAFE;color:#1E40AF;border-color:#BFDBFE;
-  }
-  .set-row.current .val-chip{
-    background:#EFF6FF;color:#2B6FD9;border-color:#4F8EF7;
-  }
-  .set-check{width:52px;display:flex;justify-content:center;}
-  .check-circle{
-    width:38px;height:38px;border-radius:50%;
-    border:2px solid #DBEAFE;background:#fff;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;font-size:16px;
-  }
-  .check-circle.done{background:#10B981;border-color:#10B981;color:#fff;}
-  .check-circle.active{border-color:#4F8EF7;}
-
-  /* ── 버튼 ── */
-  .add-set-btn{
-    width:100%;padding:12px;
-    border:1.5px dashed #BFDBFE;border-radius:12px;
-    background:transparent;color:#4F8EF7;
-    font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;
-  }
-  .end-btn{
-    width:100%;padding:15px;background:#EF4444;color:#fff;
-    border:none;border-radius:16px;
-    font-size:15px;font-weight:700;cursor:pointer;margin-top:12px;
-  }
-
-  /* ── 타이머 바 ── */
-  .timer-bar{
-    position:absolute;bottom:0;left:0;right:0;
-    background:linear-gradient(135deg,#1E3A5F,#2B6FD9);
-    color:#fff;
-    padding:12px 20px;
-    display:flex;align-items:center;
-    justify-content:space-between;z-index:10;
-  }
-  .timer-count{font-size:26px;font-weight:900;}
-  .timer-lbl{font-size:11px;opacity:.8;margin-top:1px;}
-  .timer-skip{
-    background:rgba(255,255,255,.2);border:none;
-    color:#fff;padding:9px 16px;border-radius:10px;
-    font-size:12px;font-weight:700;cursor:pointer;
-  }
-  .timer-prog{
-    position:absolute;bottom:0;left:0;
-    height:3px;background:#7AAEF9;width:42%;
-  }
-
-  /* ── QuickEdit 오버레이 ── */
-  .qe-overlay{
-    position:absolute;bottom:0;left:0;right:0;
-    background:#fff;border-radius:28px 28px 0 0;
-    padding:22px 20px 36px;
-    box-shadow:0 -4px 28px rgba(0,0,0,.15);z-index:20;
-  }
-  .qe-handle{
-    width:40px;height:4px;border-radius:2px;
-    background:#DBEAFE;margin:0 auto 18px;
-  }
-  .qe-label{font-size:13px;font-weight:700;color:#475569;margin-bottom:4px;}
-  .qe-current{font-size:32px;font-weight:900;color:#4F8EF7;margin-bottom:18px;}
-  .qe-section{margin-bottom:14px;}
-  .qe-section-lbl{
-    font-size:11px;font-weight:700;color:#475569;
-    letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px;
-  }
-  .qe-chips{display:flex;gap:8px;}
-  .qe-chip{
-    flex:1;padding:12px 6px;
-    border-radius:12px;font-size:13px;font-weight:700;
-    text-align:center;cursor:pointer;
-    border:1.5px solid #DBEAFE;background:#EFF6FF;color:#0F172A;
-  }
-  .qe-chip.minus{color:#EF4444;border-color:#FECACA;background:#FFF5F5;}
-  .qe-chip.plus{color:#4F8EF7;border-color:#BFDBFE;background:#EFF6FF;}
-  .qe-confirm{
-    width:100%;padding:14px;
-    background:linear-gradient(135deg,#4F8EF7,#2B6FD9);
-    color:#fff;border:none;border-radius:14px;
-    font-size:14px;font-weight:700;cursor:pointer;
-    margin-top:4px;
-    box-shadow:0 4px 14px rgba(79,142,247,.3);
-  }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#E8F0EE;display:flex;justify-content:center;padding:24px 12px;gap:20px;flex-wrap:wrap;}
+.phone{width:375px;background:#F8FAF9;border-radius:44px;box-shadow:0 24px 64px rgba(0,0,0,0.18);overflow:hidden;border:2px solid #ccc;display:flex;flex-direction:column;max-height:820px;position:relative;}
+.status{background:#2E7D6B;color:#fff;padding:14px 24px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700;flex-shrink:0;}
+.screen-label{text-align:center;padding:6px;background:#1B5E4F;color:#a8d5c7;font-size:10px;font-weight:600;letter-spacing:1px;flex-shrink:0;}
+.sess-header{background:linear-gradient(135deg,#2E7D6B,#1B5E4F);padding:16px 20px 22px;color:#fff;flex-shrink:0;}
+.sess-header .back{font-size:13px;opacity:.8;margin-bottom:6px;cursor:pointer;}
+.sess-header h2{font-size:20px;font-weight:700;}
+.sess-header .meta{font-size:12px;opacity:.75;margin-top:4px;display:flex;gap:10px;}
+.prefill-banner{background:#EEF7F4;border-bottom:1px solid #C8E6DD;padding:8px 18px;font-size:12px;color:#2E7D6B;font-weight:600;display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.scroll-body{flex:1;overflow-y:auto;padding:14px 16px;}
+.set-header{display:flex;padding:0 4px;margin-bottom:6px;}
+.set-col{font-size:11px;font-weight:700;color:#A0B4AE;letter-spacing:.3px;}
+.set-col.c-set{width:36px;}
+.set-col.c-weight{flex:1;text-align:center;}
+.set-col.c-reps{flex:1;text-align:center;}
+.set-col.c-done{width:48px;text-align:center;}
+.set-row{display:flex;align-items:center;padding:10px 4px;border-radius:12px;margin-bottom:6px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.set-row.completed{background:#EEF7F4;}
+.set-num{width:36px;font-size:13px;font-weight:700;color:#5A7068;}
+.set-val{flex:1;text-align:center;}
+.val-chip{display:inline-block;padding:6px 14px;border-radius:8px;font-size:14px;font-weight:700;background:#F0F4F2;color:#1A2420;cursor:pointer;border:1.5px solid #D4E0DB;}
+.set-row.completed .val-chip{background:#D4EDE5;color:#1B5E4F;border-color:#B2D8CF;}
+.set-check{width:48px;display:flex;justify-content:center;}
+.check-btn{width:36px;height:36px;border-radius:50%;border:2px solid #D4E0DB;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;}
+.check-btn.done{background:#2E7D6B;border-color:#2E7D6B;color:#fff;}
+.add-set-btn{width:100%;padding:12px;border:1.5px dashed #D4E0DB;border-radius:12px;background:transparent;color:#2E7D6B;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;}
+.end-btn{width:100%;padding:14px;background:#E74C3C;color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-top:12px;}
+.timer-bar{position:absolute;bottom:0;left:0;right:0;background:#1B5E4F;color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:10;}
+.timer-left{display:flex;align-items:center;gap:10px;}
+.timer-count{font-size:24px;font-weight:800;}
+.timer-label{font-size:12px;opacity:.8;}
+.timer-skip{background:rgba(255,255,255,0.2);border:none;color:#fff;padding:8px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;}
+.qe-overlay{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:24px 24px 0 0;padding:20px 20px 32px;box-shadow:0 -4px 24px rgba(0,0,0,0.15);z-index:20;}
+.qe-handle{width:40px;height:4px;background:#D4E0DB;border-radius:2px;margin:0 auto 16px;}
+.qe-title{font-size:14px;font-weight:700;color:#1A2420;margin-bottom:4px;}
+.qe-current{font-size:26px;font-weight:800;color:#2E7D6B;margin-bottom:16px;}
+.qe-section{margin-bottom:14px;}
+.qe-section-label{font-size:11px;font-weight:700;color:#5A7068;margin-bottom:8px;letter-spacing:.3px;}
+.qe-chips{display:flex;gap:8px;}
+.qe-chip{flex:1;padding:11px 6px;border-radius:10px;font-size:13px;font-weight:700;text-align:center;border:1.5px solid #D4E0DB;background:#F0F4F2;color:#1A2420;cursor:pointer;}
+.qe-chip.minus{color:#E74C3C;border-color:#FCCACA;background:#FFF5F5;}
+.qe-chip.plus{color:#2E7D6B;border-color:#C8E6DD;background:#EEF7F4;}
+.qe-done{width:100%;padding:13px;background:#2E7D6B;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px;}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     PHONE 1: 세션 상세 (Pre-fill + 타이머 바)
-══════════════════════════════════════════ -->
 <div class="phone">
-  <div class="screen-tag">SCR-09 · 세션 상세 & 세트 기록 — Step 4+5 (Pre-fill 완료 + 타이머)</div>
-  <div class="status-bar"><span>9:55</span><span>●●● WiFi 🔋</span></div>
-
+  <div class="status"><span>9:52</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 9 — 세션 상세 (Step 4+5)</div>
   <div class="sess-header">
-    <div class="back-row">← 오늘의 운동</div>
-    <div class="sess-name">레그 레이즈 (재활)</div>
-    <div class="sess-meta">
-      <span>🩹 재활 / 보조</span>
+    <div class="back">← 오늘의 운동</div>
+    <h2>레그 레이즈 (재활)</h2>
+    <div class="meta">
+      <span>🩹 재활/보조</span>
       <span>⏱ 예상 8분</span>
       <span>📋 3세트</span>
     </div>
   </div>
-
-  <div class="prefill-banner">
-    ✨ 이전 세션 기록이 자동으로 채워졌습니다
-  </div>
-
+  <div class="prefill-banner">✨ 이전 세션 기록이 자동으로 채워졌습니다</div>
   <div class="scroll-body">
-    <div class="guide-box">
-      <div class="guide-title">운동 가이드</div>
-      <div class="guide-text">
-        • 바닥에 누워 무릎 부상 부위에 무리 없도록<br>
-        • 복근으로 다리를 들어올리고 천천히 내려요<br>
-        • 통증이 느껴지면 즉시 중단하세요
-      </div>
+    <div style="background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+      <div style="font-size:12px;color:#5A7068;margin-bottom:8px;font-weight:700;">운동 가이드</div>
+      <div style="font-size:13px;color:#1A2420;line-height:20px;">• 바닥에 누워 무릎 부상 부위에 무리가 가지 않게<br>• 복근으로 다리를 들어올리고 천천히 내려요<br>• 통증 시 즉시 중단하세요</div>
     </div>
-
     <div class="set-header">
-      <div class="col col-num">세트</div>
-      <div class="col col-weight">무게 (kg)</div>
-      <div class="col col-reps">횟수 (회)</div>
-      <div class="col col-check">완료</div>
+      <div class="set-col c-set">세트</div>
+      <div class="set-col c-weight">무게(kg)</div>
+      <div class="set-col c-reps">횟수(회)</div>
+      <div class="set-col c-done">완료</div>
     </div>
-
-    <div class="set-row done">
+    <div class="set-row completed">
       <div class="set-num">1</div>
       <div class="set-val"><span class="val-chip">0 kg</span></div>
       <div class="set-val"><span class="val-chip">12 회</span></div>
-      <div class="set-check"><div class="check-circle done">✓</div></div>
+      <div class="set-check"><div class="check-btn done">✓</div></div>
     </div>
-
-    <div class="set-row done">
+    <div class="set-row completed">
       <div class="set-num">2</div>
       <div class="set-val"><span class="val-chip">0 kg</span></div>
       <div class="set-val"><span class="val-chip">12 회</span></div>
-      <div class="set-check"><div class="check-circle done">✓</div></div>
+      <div class="set-check"><div class="check-btn done">✓</div></div>
     </div>
-
-    <div class="set-row current">
-      <div class="set-num active">3</div>
-      <div class="set-val"><span class="val-chip">0 kg</span></div>
-      <div class="set-val"><span class="val-chip">12 회</span></div>
-      <div class="set-check"><div class="check-circle active">○</div></div>
+    <div class="set-row" style="border:1.5px solid #2E7D6B;">
+      <div class="set-num" style="color:#2E7D6B;">3</div>
+      <div class="set-val"><span class="val-chip" style="border-color:#2E7D6B;background:#EEF7F4;color:#1B5E4F;">0 kg</span></div>
+      <div class="set-val"><span class="val-chip" style="border-color:#2E7D6B;background:#EEF7F4;color:#1B5E4F;">12 회</span></div>
+      <div class="set-check"><div class="check-btn">○</div></div>
     </div>
-
     <button class="add-set-btn">+ 세트 추가</button>
     <button class="end-btn">세션 종료</button>
-    <div style="height:72px;"></div>
+    <div style="height:60px;"></div>
   </div>
-
-  <!-- 타이머 바 -->
   <div class="timer-bar">
-    <div class="timer-prog"></div>
-    <div>
-      <div class="timer-count">0:25</div>
-      <div class="timer-lbl">휴식 타이머 중</div>
+    <div class="timer-left">
+      <div>
+        <div class="timer-count">0:25</div>
+        <div class="timer-label">휴식 타이머</div>
+      </div>
     </div>
     <button class="timer-skip">건너뛰기 ▶</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     PHONE 2: Quick-Edit 오버레이 (무게/횟수 수정)
-══════════════════════════════════════════ -->
 <div class="phone">
-  <div class="screen-tag">SCR-09b · 무게 & 횟수 Quick-Edit 오버레이 — Step 5.3</div>
-  <div class="status-bar"><span>9:57</span><span>●●● WiFi 🔋</span></div>
-
+  <div class="status"><span>9:53</span><span>●●● WiFi 🔋</span></div>
+  <div class="screen-label">SCREEN 9b — 무게/횟수 Quick-Edit (Step 5.3)</div>
   <div class="sess-header">
-    <div class="back-row">← 오늘의 운동</div>
-    <div class="sess-name">월 스쿼트 (메인)</div>
-    <div class="sess-meta">
-      <span>💪 메인 운동</span>
-      <span>⏱ 예상 12분</span>
-    </div>
+    <div class="back">← 오늘의 운동</div>
+    <h2>월 스쿼트 (메인)</h2>
+    <div class="meta"><span>💪 메인 운동</span><span>⏱ 예상 12분</span></div>
   </div>
-
-  <div class="prefill-banner">
-    ✨ 지난 세션: 5kg × 10회 × 3세트
-  </div>
-
+  <div class="prefill-banner">✨ 지난 세션: 5kg × 10회 × 3세트</div>
   <div class="scroll-body">
     <div class="set-header">
-      <div class="col col-num">세트</div>
-      <div class="col col-weight">무게 (kg)</div>
-      <div class="col col-reps">횟수 (회)</div>
-      <div class="col col-check">완료</div>
+      <div class="set-col c-set">세트</div>
+      <div class="set-col c-weight">무게(kg)</div>
+      <div class="set-col c-reps">횟수(회)</div>
+      <div class="set-col c-done">완료</div>
     </div>
-
-    <div class="set-row done">
+    <div class="set-row completed">
       <div class="set-num">1</div>
       <div class="set-val"><span class="val-chip">5 kg</span></div>
       <div class="set-val"><span class="val-chip">10 회</span></div>
-      <div class="set-check"><div class="check-circle done">✓</div></div>
+      <div class="set-check"><div class="check-btn done">✓</div></div>
     </div>
-
-    <div class="set-row current" style="opacity:.6;">
-      <div class="set-num active">2</div>
+    <div class="set-row" style="border:1.5px solid #F4A261;opacity:.5;">
+      <div class="set-num">2</div>
       <div class="set-val"><span class="val-chip">5 kg</span></div>
       <div class="set-val"><span class="val-chip">10 회</span></div>
-      <div class="set-check"><div class="check-circle active">○</div></div>
+      <div class="set-check"><div class="check-btn">○</div></div>
     </div>
-
-    <div class="set-row" style="opacity:.45;">
+    <div class="set-row" style="opacity:.5;">
       <div class="set-num">3</div>
       <div class="set-val"><span class="val-chip">5 kg</span></div>
       <div class="set-val"><span class="val-chip">10 회</span></div>
-      <div class="set-check"><div class="check-circle">○</div></div>
+      <div class="set-check"><div class="check-btn">○</div></div>
     </div>
-
-    <div style="height:340px;"></div>
+    <div style="height:280px;"></div>
   </div>
-
-  <!-- QuickEdit 오버레이 -->
   <div class="qe-overlay">
     <div class="qe-handle"></div>
-    <div class="qe-label">2세트 무게 수정</div>
+    <div class="qe-title">2세트 무게 수정</div>
     <div class="qe-current">5 kg</div>
-
     <div class="qe-section">
-      <div class="qe-section-lbl">무게 조절 (kg)</div>
+      <div class="qe-section-label">무게 (KG)</div>
       <div class="qe-chips">
         <div class="qe-chip minus">-5kg</div>
         <div class="qe-chip minus">-1kg</div>
@@ -349,115 +159,15 @@
         <div class="qe-chip plus">+5kg</div>
       </div>
     </div>
-
     <div class="qe-section">
-      <div class="qe-section-lbl">횟수 조절 (회)</div>
+      <div class="qe-section-label">횟수 (회)</div>
       <div class="qe-chips">
-        <div class="qe-chip minus" style="flex:none;width:90px;">-1회</div>
-        <div style="
-          flex:1;display:flex;align-items:center;
-          justify-content:center;
-          font-size:26px;font-weight:900;color:#0F172A;
-        ">10 회</div>
-        <div class="qe-chip plus" style="flex:none;width:90px;">+1회</div>
+        <div class="qe-chip minus" style="flex:none;width:80px;">-1회</div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#1A2420;">10 회</div>
+        <div class="qe-chip plus" style="flex:none;width:80px;">+1회</div>
       </div>
     </div>
-
-    <button class="qe-confirm">확인 · 적용</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════
-     PHONE 3: 세트 추가 / 삭제 Quick-Edit
-══════════════════════════════════════════ -->
-<div class="phone">
-  <div class="screen-tag">SCR-09c · 세트 추가 & 스와이프 삭제 — Step 5.2</div>
-  <div class="status-bar"><span>10:02</span><span>●●● WiFi 🔋</span></div>
-
-  <div class="sess-header">
-    <div class="back-row">← 오늘의 운동</div>
-    <div class="sess-name">스텝 업 (낮은 박스)</div>
-    <div class="sess-meta">
-      <span>💪 메인 운동</span>
-      <span>⏱ 예상 10분</span>
-      <span>📋 4세트</span>
-    </div>
-  </div>
-
-  <div class="prefill-banner">
-    ✨ 세트 추가됨: 이전 세트와 동일한 값으로 자동 생성
-  </div>
-
-  <div class="scroll-body">
-    <div class="set-header">
-      <div class="col col-num">세트</div>
-      <div class="col col-weight">무게 (kg)</div>
-      <div class="col col-reps">횟수 (회)</div>
-      <div class="col col-check">완료</div>
-    </div>
-
-    <div class="set-row done">
-      <div class="set-num">1</div>
-      <div class="set-val"><span class="val-chip">0 kg</span></div>
-      <div class="set-val"><span class="val-chip">8 회</span></div>
-      <div class="set-check"><div class="check-circle done">✓</div></div>
-    </div>
-
-    <div class="set-row done">
-      <div class="set-num">2</div>
-      <div class="set-val"><span class="val-chip">0 kg</span></div>
-      <div class="set-val"><span class="val-chip">8 회</span></div>
-      <div class="set-check"><div class="check-circle done">✓</div></div>
-    </div>
-
-    <!-- 스와이프 삭제 상태 -->
-    <div style="position:relative;margin-bottom:6px;border-radius:14px;overflow:hidden;">
-      <div style="
-        position:absolute;right:0;top:0;bottom:0;width:72px;
-        background:#EF4444;
-        display:flex;flex-direction:column;
-        align-items:center;justify-content:center;
-        color:#fff;font-size:11px;font-weight:700;gap:2px;
-        border-radius:0 14px 14px 0;
-      ">
-        <span style="font-size:16px;">🗑</span>
-        <span>삭제</span>
-      </div>
-      <div class="set-row current" style="
-        margin-bottom:0;transform:translateX(-64px);
-        border-radius:14px;
-      ">
-        <div class="set-num active">3</div>
-        <div class="set-val"><span class="val-chip">0 kg</span></div>
-        <div class="set-val"><span class="val-chip">8 회</span></div>
-        <div class="set-check"><div class="check-circle active">○</div></div>
-      </div>
-    </div>
-
-    <div class="set-row" style="
-      border:1.5px dashed #BFDBFE;background:#F0F9FF;
-    ">
-      <div class="set-num" style="color:#94A3B8;">4</div>
-      <div class="set-val">
-        <span class="val-chip" style="background:#F0F9FF;border-color:#BAE6FD;color:#0369A1;">0 kg</span>
-      </div>
-      <div class="set-val">
-        <span class="val-chip" style="background:#F0F9FF;border-color:#BAE6FD;color:#0369A1;">8 회</span>
-      </div>
-      <div class="set-check"><div class="check-circle" style="border-color:#BAE6FD;">○</div></div>
-    </div>
-
-    <div style="
-      display:flex;align-items:center;gap:6px;
-      font-size:11px;color:#0369A1;
-      padding:6px 4px;margin-bottom:8px;
-    ">
-      ✨ <span>세트 4 — 자동 추가됨 (세트 3과 동일한 값)</span>
-    </div>
-
-    <button class="add-set-btn">+ 세트 추가</button>
-    <button class="end-btn">세션 종료</button>
-    <div style="height:20px;"></div>
+    <button class="qe-done">확인</button>
   </div>
 </div>
 
