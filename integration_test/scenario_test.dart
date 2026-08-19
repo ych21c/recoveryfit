@@ -142,13 +142,8 @@ void main() {
       final materialApp = find.byType(MaterialApp);
       expect(materialApp, findsOneWidget);
 
-      // 스크롤 가능 여부 확인 (단일 뷰포트 구성이므로 스크롤 불필요)
-      // ListView/SingleChildScrollView 과다 사용 확인
-      final scrollViews = find.byType(ListView);
-      final singleChildScrolls = find.byType(SingleChildScrollView);
-      
-      // 랜딩은 스크롤 없음이 스펙이나, 내부 구조상 약간의 스크롤 허용 가능
-      // (엄격한 검증은 설계 변경 시 필요)
+      // 랜딩은 단일 뷰포트 구성 (스크롤 없음이 스펙).
+      // ListView/SingleChildScrollView 과다 사용은 별도 레이아웃 검사로 확인.
 
       // 핵심 요소 재확인
       expect(find.text('무료로 시작하기'), findsOneWidget);

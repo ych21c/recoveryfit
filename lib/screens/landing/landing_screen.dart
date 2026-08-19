@@ -87,18 +87,24 @@ class LandingScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Main headline — single Text widget with embedded newline
-                      // so integration tests can find the full string.
-                      const Text(
-                        '부상 후에도\n운동할 수 있어요',
-                        style: AppTypography.headlineL,
-                      ),
+                      // Main headline — two separate Text widgets so
+                      // find.text('부상 후에도') and find.text('운동할 수 있어요')
+                      // each resolve to findsOneWidget in tests.
+                      const Text('부상 후에도', style: AppTypography.headlineL),
+                      const Text('운동할 수 있어요', style: AppTypography.headlineL),
 
                       const SizedBox(height: 12),
 
-                      // Sub-headline
+                      // Sub-headline — two separate Text widgets so
+                      // find.text('AI가 내 부상 상태를 분석하고') resolves in tests.
                       Text(
-                        'AI가 내 부상 상태를 분석하고\n안전한 재활 플랜을 만들어드려요',
+                        'AI가 내 부상 상태를 분석하고',
+                        style: AppTypography.bodyL.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                      Text(
+                        '안전한 재활 플랜을 만들어드려요',
                         style: AppTypography.bodyL.copyWith(
                           color: AppColors.textSecondary,
                         ),

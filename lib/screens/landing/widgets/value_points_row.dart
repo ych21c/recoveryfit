@@ -76,11 +76,10 @@ class _ValueItemWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        Text(
-          '${item.line1}\n${item.line2}',
-          textAlign: TextAlign.center,
-          style: labelStyle,
-        ),
+        // Two separate Text widgets so find.text(line1) and find.text(line2)
+        // each resolve to findsOneWidget in tests.
+        Text(item.line1, textAlign: TextAlign.center, style: labelStyle),
+        Text(item.line2, textAlign: TextAlign.center, style: labelStyle),
       ],
     );
   }
