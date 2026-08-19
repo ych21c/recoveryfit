@@ -1,0 +1,167 @@
+# Design Spec — RecoveryFit 시작 페이지 (c052dd6b)
+
+## 1. JSON 스펙
+
+```json
+{
+  "screens": [
+    {
+      "id": "SplashScreen",
+      "req": "REQ-00-A",
+      "description": "앱 최초 진입 로딩 화면",
+      "background": "#0D1B2A",
+      "elements": ["logo_wordmark", "logo_symbol", "tagline", "loading_dots"],
+      "animation": "fadeIn 0.6s → hold 1.2s → fadeOut 0.4s",
+      "duration_min": 2000,
+      "duration_max": 5000,
+      "transitions": {
+        "new_user": "LandingScreen",
+        "returning_user": "HomeDashboardScreen"
+      }
+    },
+    {
+      "id": "LandingScreen",
+      "req": "REQ-00-B",
+      "description": "신규 사용자 최초 랜딩 — 단일 CTA 진입",
+      "layout": "fullscreen_no_scroll",
+      "background": "hero_illustration + gradient_overlay",
+      "elements": [
+        "header_logo",
+        "hero_image_zone",
+        "main_headline",
+        "sub_headline",
+        "value_props_3col",
+        "cta_button",
+        "disclaimer_text"
+      ],
+      "transitions": {
+        "cta_tap": "OnboardingDisclaimerScreen"
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "LogoWordmark",
+      "type": "text",
+      "content": "RecoveryFit",
+      "color": "#FFFFFF",
+      "font": "Bold 28sp"
+    },
+    {
+      "id": "LogoSymbol",
+      "type": "icon",
+      "icon": "recovery-loop",
+      "color": "#00C9A7",
+      "size": 48
+    },
+    {
+      "id": "Tagline",
+      "type": "text",
+      "content": "부상 후, 더 강하게",
+      "color": "#FFFFFF",
+      "font": "Regular 16sp",
+      "letter_spacing": "0.08em"
+    },
+    {
+      "id": "LoadingDots",
+      "type": "animation",
+      "dots": 3,
+      "color": "#00C9A7",
+      "animation": "bounce_sequential 0.4s infinite"
+    },
+    {
+      "id": "HeroGradientOverlay",
+      "type": "gradient",
+      "from": "transparent",
+      "to": "rgba(13,27,42,0.60)",
+      "direction": "top_to_bottom"
+    },
+    {
+      "id": "MainHeadline",
+      "type": "text",
+      "content": "부상 후에도\n운동할 수 있어요",
+      "color": "#FFFFFF",
+      "font": "Bold 28sp",
+      "line_height": 1.35
+    },
+    {
+      "id": "SubHeadline",
+      "type": "text",
+      "content": "AI가 내 부상 상태를 분석하고\n안전한 재활 플랜을 만들어드려요",
+      "color": "rgba(255,255,255,0.80)",
+      "font": "Regular 15sp",
+      "line_height": 1.5,
+      "margin_top": 12
+    },
+    {
+      "id": "ValueProps",
+      "type": "row_3col",
+      "items": [
+        { "icon": "shield-check", "color": "#00C9A7", "label": "이중 안전\n검증" },
+        { "icon": "brain", "color": "#00C9A7", "label": "AI 개인화\n플랜" },
+        { "icon": "touch", "color": "#00C9A7", "label": "터치 최소화\n인터페이스" }
+      ],
+      "icon_size": 24,
+      "text_style": "Regular 12sp rgba(255,255,255,0.70)"
+    },
+    {
+      "id": "CTAButton",
+      "type": "button",
+      "label": "무료로 시작하기",
+      "background": "#00C9A7",
+      "text_color": "#0D1B2A",
+      "font": "Bold 17sp",
+      "border_radius": 14,
+      "height": 56,
+      "margin_horizontal": 24,
+      "press_effect": "scale(0.97) brightness(0.9) 100ms"
+    },
+    {
+      "id": "DisclaimerText",
+      "type": "text",
+      "content": "의료기기 아님 · 전문의 상담을 대체하지 않습니다",
+      "color": "rgba(255,255,255,0.45)",
+      "font": "Regular 11sp",
+      "align": "center",
+      "margin_top": 12
+    }
+  ],
+  "design_tokens": {
+    "color": {
+      "primary_dark": "#0D1B2A",
+      "primary_mint": "#00C9A7",
+      "primary_mint_light": "#33D4B8",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "rgba(255,255,255,0.70)",
+      "text_tertiary": "rgba(255,255,255,0.45)",
+      "surface_overlay": "rgba(13,27,42,0.60)"
+    },
+    "typography": {
+      "headline_l": "Bold 28sp / 1.35",
+      "headline_m": "SemiBold 22sp / 1.4",
+      "body_l": "Regular 15sp / 1.5",
+      "body_s": "Regular 12sp / 1.4",
+      "caption": "Regular 11sp / 1.3",
+      "button": "Bold 17sp / letter-spacing 0.01em"
+    },
+    "motion": {
+      "duration_fast": "100ms",
+      "duration_normal": "200ms",
+      "duration_slow": "400ms",
+      "easing": "ease-in-out"
+    },
+    "radius": {
+      "button": "14px",
+      "card": "16px",
+      "pill": "99px"
+    },
+    "spacing": {
+      "screen_horizontal": "24px",
+      "cta_bottom_offset": "32px",
+      "section_gap": "24px"
+    }
+  }
+}
+```
+
+---
