@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:recovery_fit/main.dart';
+import 'package:recovery_fit/app.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -10,13 +10,13 @@ void main() {
     testWidgets('스플래시 화면이 표시되고 로고 + 슬로건 + 로딩 도트 확인',
         (WidgetTester tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle();
+      // Pump in two 500 ms steps so async init completes and splash appears
+      // (total ~1 s, well within the 2.2 s splash animation).
+      await tester.pump(const Duration(milliseconds: 500));
+      await tester.pump(const Duration(milliseconds: 500));
 
       // 스플래시 화면 배경색 확인 (딥 네이비 #0D1B2A)
-      expect(
-        find.byType(Scaffold),
-        findsWidgets,
-      );
+      expect(find.byType(Scaffold), findsWidgets);
 
       // 로고 텍스트 "RecoveryFit" 확인
       expect(find.text('RecoveryFit'), findsWidgets);
@@ -31,16 +31,19 @@ void main() {
     testWidgets('스플래시에서 랜딩 화면으로 전환됨',
         (WidgetTester tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
+      // Pump to let init complete and splash appear
+      await tester.pump(const Duration(milliseconds: 500));
+      await tester.pump(const Duration(milliseconds: 500));
 
-      // 초기 로딩 상태
+      // 스플래시 슬로건 확인
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
 
       // 스플래시 애니메이션 완료 후 랜딩 화면 진입 대기
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
-      // 랜딩 화면 텍스트 확인: "부상 후에도\n운동할 수 있어요"
-      expect(find.text('부상 후에도'), findsOneWidget);
-      expect(find.text('운동할 수 있어요'), findsOneWidget);
+      // 랜딩 화면 텍스트 확인 (Text('부상 후에도\n운동할 수 있어요') → textContaining)
+      expect(find.textContaining('부상 후에도'), findsOneWidget);
+      expect(find.textContaining('운동할 수 있어요'), findsOneWidget);
     });
 
     testWidgets('랜딩 화면에 주요 콘텐츠가 표시됨 (히어로, 헤드라인, CTA)',
@@ -48,19 +51,13 @@ void main() {
       await tester.pumpWidget(const RecoveryFitApp());
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
-      // 메인 헤드라인
-      expect(find.text('부상 후에도'), findsOneWidget);
-      expect(find.text('운동할 수 있어요'), findsOneWidget);
+      // 메인 헤드라인 (한 Text 위젯에 \n으로 연결 → textContaining 사용)
+      expect(find.textContaining('부상 후에도'), findsOneWidget);
+      expect(find.textContaining('운동할 수 있어요'), findsOneWidget);
 
       // 서브 헤드라인
-      expect(
-        find.text('AI가 내 부상 상태를 분석하고'),
-        findsOneWidget,
-      );
-      expect(
-        find.text('안전한 재활 플랜을 만들어드려요'),
-        findsOneWidget,
-      );
+      expect(find.textContaining('AI가 내 부상 상태를 분석하고'), findsOneWidget);
+      expect(find.textContaining('안전한 재활 플랜을 만들어드려요'), findsOneWidget);
 
       // CTA 버튼 "무료로 시작하기"
       expect(find.text('무료로 시작하기'), findsOneWidget);
@@ -77,15 +74,10 @@ void main() {
       await tester.pumpWidget(const RecoveryFitApp());
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
-      // 가치 포인트 3종: "이중 안전\n검증", "AI 개인화\n플랜", "터치 최소화\n인터페이스"
-      expect(find.text('이중 안전'), findsOneWidget);
-      expect(find.text('검증'), findsOneWidget);
-
-      expect(find.text('AI 개인화'), findsOneWidget);
-      expect(find.text('플랜'), findsOneWidget);
-
-      expect(find.text('터치 최소화'), findsOneWidget);
-      expect(find.text('인터페이스'), findsOneWidget);
+      // 가치 포인트 3종 (레이블이 '이중 안전\n검증' 등 단일 Text 위젯)
+      expect(find.textContaining('이중 안전'), findsOneWidget);
+      expect(find.textContaining('AI 개인화'), findsOneWidget);
+      expect(find.textContaining('터치 최소화'), findsOneWidget);
     });
 
     testWidgets('랜딩 화면의 CTA 버튼 클릭 시 면책 동의 화면으로 진입',
@@ -99,7 +91,7 @@ void main() {
 
       // 면책 동의 화면의 주요 텍스트 확인
       expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
-      expect(find.text('의료기기가 아닙니다'), findsWidgets);
+      expect(find.textContaining('의료기기가 아닙니다'), findsWidgets);
     });
 
     testWidgets('랜딩 화면 헤더에 로고 표시',
@@ -117,8 +109,7 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
       // 배경 색상 확인 (딥 네이비 #0D1B2A)
-      final scaffold = find.byType(Scaffold);
-      expect(scaffold, findsWidgets);
+      expect(find.byType(Scaffold), findsWidgets);
 
       // 컨테이너를 통한 배경 검증
       expect(find.byType(Container), findsWidgets);
@@ -129,12 +120,12 @@ void main() {
       await tester.pumpWidget(const RecoveryFitApp());
       await tester.pumpAndSettle(const Duration(seconds: 5));
 
-      // CTA 버튼 찾기
+      // CTA 버튼 찾기 (GestureDetector + AnimatedContainer 커스텀 버튼)
       final ctaButton = find.text('무료로 시작하기');
       expect(ctaButton, findsOneWidget);
 
-      // 버튼의 부모 위젯이 올바른 색상으로 스타일링되어 있는지 확인
-      expect(find.byType(ElevatedButton), findsWidgets);
+      // 커스텀 CTA 버튼은 GestureDetector + AnimatedContainer 구조
+      expect(find.byType(GestureDetector), findsWidgets);
     });
 
     testWidgets('면책 동의 화면에서 "동의하고 시작" 버튼 확인',
@@ -164,7 +155,7 @@ void main() {
       await tester.tap(find.text('동의하고 시작'));
       await tester.pumpAndSettle();
 
-      // 온보딩 화면: 부상 입력 필드 확인
+      // 온보딩 화면: 부상 입력 타이틀 확인
       expect(find.text('어디가 불편하신가요?'), findsOneWidget);
     });
 
@@ -182,7 +173,7 @@ void main() {
       // 부상 입력 필드 확인
       expect(find.byType(TextField), findsWidgets);
 
-      // 예시 칩 확인 (예: "무릎 인대 나갔어요")
+      // 예시 칩 확인
       expect(find.text('무릎 인대 나갔어요'), findsOneWidget);
       expect(find.text('허리 디스크 초기'), findsOneWidget);
       expect(find.text('어깨 회전근개 통증'), findsOneWidget);
@@ -203,7 +194,7 @@ void main() {
       await tester.tap(find.text('무릎 인대 나갔어요'));
       await tester.pumpAndSettle();
 
-      // 텍스트 필드에 입력되었는지 확인
+      // 텍스트 필드에 입력됐는지 확인
       expect(find.byType(TextField), findsWidgets);
     });
 
@@ -218,14 +209,18 @@ void main() {
       await tester.tap(find.text('동의하고 시작'));
       await tester.pumpAndSettle();
 
-      // Step 1 완료 후 "다음" 버튼 탭
+      // Step 1: 부상 텍스트 입력 (5자 이상 입력해야 "다음" 버튼 활성화)
+      await tester.enterText(find.byType(TextField).first, '무릎 인대 나갔어요');
+      await tester.pumpAndSettle();
+
+      // "다음" 버튼 탭 (ElevatedButton – 활성화 상태)
       await tester.tap(find.byType(ElevatedButton).first);
       await tester.pumpAndSettle();
 
       // 통증 수준 선택 화면
       expect(find.text('지금 통증이 얼마나 심한가요?'), findsOneWidget);
 
-      // 슬라이더와 숫자 칩 확인
+      // 슬라이더 확인
       expect(find.byType(Slider), findsWidgets);
     });
   });

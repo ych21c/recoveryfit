@@ -99,3 +99,21 @@ flutter build apk --debug  # Build debug APK
 ## CI Notes
 - `.github/workflows/validation.yml` runs `flutter analyze` + `flutter test` + `flutter build apk --debug`
 - Root `.gitignore` was generated from a Python template that included `lib/` — this silently excluded all Flutter source files from git tracking, causing CI to fail with "Target file 'lib/main.dart' not found". Fixed by removing the `lib/` line from `.gitignore` and staging all `lib/` files. Always check this if CI reports missing Flutter source files.
+
+## Integration Test Notes
+- `integration_test` package must be listed under `dev_dependencies` in `pubspec.yaml` (`sdk: flutter`).
+- `RecoveryFitApp` is now **self-contained**: it includes `ProviderScope` and all async init (Hive adapters, boxes, SharedPreferences, notifications) in a static memoized `_initApp()` Future. Tests can call `tester.pumpWidget(const RecoveryFitApp())` directly without external setup.
+- `_initApp()` is guarded with `Hive.isAdapterRegistered()` and `Hive.isBoxOpen()` to be safe across multiple tests in the same process.
+- For **splash-screen checks** in integration tests, use `pump(500ms)` × 2 (not `pumpAndSettle`) so the async init has time to complete while the splash animation is still visible (2.2 s total).
+- For **landing-screen checks**, use `pumpAndSettle(Duration(seconds: 5))` — pumps 5 s at a time, advances past the 2.2 s splash animation, settles on landing (no perpetual animations there).
+- Multi-line `Text` widgets (e.g., `'부상 후에도\n운동할 수 있어요'`) must be matched with `find.textContaining()`, not `find.text()`.
+- The landing CTA is a custom `GestureDetector + AnimatedContainer` button, not an `ElevatedButton`; use `find.byType(GestureDetector)` to assert its presence.
+- Onboarding Step 2 navigation: the "다음" `ElevatedButton` is disabled until injury text ≥ 5 chars; call `tester.enterText(find.byType(TextField).first, '...')` before tapping it.
+
+## Linux Dev-Tool Setup (aarch64, Ubuntu 24.04)
+The `apt` package manager on this host has broken amd64/aarch64 cross-configuration; use manual binary installs:
+- **cmake**: download `cmake-X.Y.Z-linux-aarch64.sh` from github.com/Kitware/CMake/releases, run with `--prefix=/usr/local`.
+- **ninja**: download `ninja-linux-aarch64.zip` from github.com/ninja-build/ninja/releases.
+- **clang/clang++**: download `clang+llvm-X.Y.Z-aarch64-linux-gnu.tar.xz` from github.com/llvm/llvm-project/releases, extract with `--strip-components=1` to `/usr/local`.
+- **pkg-config**: build from source (`pkg-config-0.29.2.tar.gz` from pkgconfig.freedesktop.org, `./configure --with-internal-glib --prefix=/usr/local`).
+- GTK3 dev libraries still unavailable on this host — Linux integration-test builds may still fail; use Android target for integration tests in CI.
