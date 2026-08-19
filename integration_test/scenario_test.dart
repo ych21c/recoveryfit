@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:recovery_fit/app.dart';
+import 'package:recovery_fit/screens/landing/widgets/cta_button.dart';
+import 'package:recovery_fit/screens/splash/widgets/dot_loading_indicator.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -9,21 +11,23 @@ void main() {
   group('시작 페이지 (SplashScreen & LandingScreen)', () {
     testWidgets('스플래시 화면 표시 — 로고, 슬로건, 로딩 도트', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle(const Duration(seconds: 3));
+      // pump 2s: 앱 초기화 완료 후 스플래시 화면이 보이는 동안 (2.2s 애니메이션 이전)
+      await tester.pump(const Duration(seconds: 2));
 
       // 스플래시 화면이 표시됨
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
-      expect(find.byIcon(Icons.circle), findsWidgets);
+      expect(find.byType(DotLoadingIndicator), findsOneWidget);
     });
 
     testWidgets('스플래시 → 랜딩 전환 — 신규 사용자 경로', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
       
-      // 스플래시 애니메이션 대기
+      // 스플래시 애니메이션 대기 (2.2s) 후 랜딩 전환
       await tester.pumpAndSettle(const Duration(seconds: 4));
 
-      // 랜딩 화면의 메인 헤드라인 확인
-      expect(find.text('부상 후에도\n운동할 수 있어요'), findsOneWidget);
+      // 랜딩 화면의 메인 헤드라인 확인 (두 줄로 분리된 Text 위젯)
+      expect(find.text('부상 후에도'), findsOneWidget);
+      expect(find.text('운동할 수 있어요'), findsOneWidget);
     });
 
     testWidgets('랜딩 화면 — 히어로 텍스트와 CTA 버튼 렌더링', (tester) async {
@@ -82,15 +86,18 @@ void main() {
       await tester.pumpWidget(const RecoveryFitApp());
       await tester.pumpAndSettle(const Duration(seconds: 4));
 
-      final ctaButton = find.byType(ElevatedButton);
+      // CtaButton (커스텀 GestureDetector 기반 버튼) 존재 확인
+      final ctaButton = find.byType(CtaButton);
       expect(ctaButton, findsWidgets);
 
-      // 버튼 영역 탭 (다운 상태)
-      await tester.tapDown(find.text('무료로 시작하기'));
+      // 버튼 영역 포인터 다운 (스케일/밝기 피드백 트리거)
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.text('무료로 시작하기')),
+      );
       await tester.pump(const Duration(milliseconds: 50));
 
-      // 탭 해제
-      await tester.tapUp(find.text('무료로 시작하기'));
+      // 포인터 업 → onTap 콜백 실행 → 화면 전환
+      await gesture.up();
       await tester.pump(const Duration(milliseconds: 100));
 
       // 이후 화면 전환 확인
