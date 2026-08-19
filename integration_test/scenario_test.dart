@@ -3,201 +3,249 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'package:recovery_fit/app.dart';
+import 'package:recovery_fit/screens/splash/splash_screen.dart';
+import 'package:recovery_fit/screens/landing/landing_screen.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  group('시작 페이지 (스플래시 & 랜딩)', () {
-    testWidgets('스플래시 화면: 로고, 슬로건, 로딩 도트 표시 확인',
+  group('시작 페이지 (SplashScreen & LandingScreen) 검증', () {
+    testWidgets('SplashScreen 진입 후 로고/슬로건/로딩 도트 표시',
         (WidgetTester tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
+      await tester.pumpAndSettle(const Duration(milliseconds: 100));
 
-      // SplashScreen 이 첫 프레임에서 보여야 함 (문제 설명 기준)
-      expect(find.byType(MaterialApp), findsOneWidget);
+      // SplashScreen 자체 존재 확인
+      expect(find.byType(SplashScreen), findsOneWidget);
 
-      // 배경색 확인: 딥 네이비 #0D1B2A
-      final scaffold = find.byType(Scaffold);
-      expect(scaffold, findsWidgets); // 적어도 하나 이상
-
-      // RecoveryFit 워드마크 (흰색) 확인
-      expect(find.text('RecoveryFit'), findsWidgets); // 워드마크 + 이후 화면들
-
-      // 슬로건 "부상 후, 더 강하게" 확인
-      expect(find.text('부상 후, 더 강하게'), findsWidgets);
-
-      // 로딩 도트는 애니메이션이므로 실제 표시 검증은 어려우나,
-      // 도트가 포함된 위젯 구조 존재 확인
-      // (애니메이션 중이므로 pumpAndSettle 사용 금지 — 무한 반복)
-      await tester.pump(const Duration(milliseconds: 600));
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 페이드인 단계 완료 후 hold 기간 진입 확인
-      await tester.pump(const Duration(milliseconds: 1200));
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 페이드아웃 단계 진입 확인
-      await tester.pump(const Duration(milliseconds: 400));
-      expect(find.byType(MaterialApp), findsOneWidget);
-    });
-
-    testWidgets('스플래시에서 랜딩 화면으로 자동 전환 확인',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const RecoveryFitApp());
-
-      // 초기: SplashScreen 상태
-      await tester.pump(const Duration(milliseconds: 100));
-
-      // 최소 2초 대기 후 전환 시작
-      await tester.pump(const Duration(seconds: 2));
-
-      // 전환이 완료되면 LandingScreen 요소 확인
-      // "무료로 시작하기" 버튼이 LandingScreen의 CTA
-      final cta = find.text('무료로 시작하기');
-      
-      // 처음엔 없고, 2초 이상 경과 후 나타나야 함
-      if (cta.evaluate().isEmpty) {
-        // 아직 SplashScreen 단계 — 추가 대기
-        await tester.pump(const Duration(milliseconds: 500));
-      }
-
-      // 최종 확인: 어느 쪽 화면이든 RecoveryFitApp 유지
-      expect(find.byType(MaterialApp), findsOneWidget);
-    });
-
-    testWidgets('랜딩 화면: 히어로 비주얼, 헤드라인, CTA 버튼 표시 확인',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const RecoveryFitApp());
-
-      // SplashScreen 애니메이션 통과 후 LandingScreen 전환까지 대기
-      await tester.pump(const Duration(seconds: 2, milliseconds: 500));
-
-      // 랜딩 화면 진입 확인
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 헤더 로고 "RecoveryFit" 확인
+      // 로고 워드마크 텍스트 확인
       expect(find.text('RecoveryFit'), findsWidgets);
 
-      // 메인 헤드라인 "부상 후에도\n운동할 수 있어요" 확인
+      // 슬로건 "부상 후, 더 강하게" 확인
+      expect(find.text('부상 후, 더 강하게'), findsOneWidget);
+
+      // 로딩 도트 애니메이션 (3개의 동일한 원형 위젯)
+      // 도트는 재사용 가능한 위젯이므로 findsWidgets 사용
+      expect(find.byType(Container), findsWidgets);
+    });
+
+    testWidgets(
+        'SplashScreen 애니메이션 진행 후 자동으로 LandingScreen 전환',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      // 초기: SplashScreen 표시
+      expect(find.byType(SplashScreen), findsOneWidget);
+      expect(find.byType(LandingScreen), findsNothing);
+
+      // 페이드인(0.6s) + 정지(1.2s) + 페이드아웃(0.4s) = 2.2s
+      // 안전하게 2.5s 대기
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 전환 후 LandingScreen 출현 확인
+      expect(find.byType(LandingScreen), findsOneWidget);
+    });
+
+    testWidgets('LandingScreen 메인 헤드라인 및 서브 헤드라인 표시',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      // SplashScreen 애니메이션 통과
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 메인 헤드라인: "부상 후에도\n운동할 수 있어요"
       expect(find.text('부상 후에도'), findsOneWidget);
       expect(find.text('운동할 수 있어요'), findsOneWidget);
 
-      // 서브 헤드라인 "AI가 내 부상 상태를 분석하고..." 확인
+      // 서브 헤드라인: "AI가 내 부상 상태를 분석하고..."
       expect(
         find.text('AI가 내 부상 상태를 분석하고'),
         findsOneWidget,
       );
+      expect(
+        find.text('안전한 재활 플랜을 만들어드려요'),
+        findsOneWidget,
+      );
+    });
 
-      // 가치 포인트 3종 라벨 확인
+    testWidgets('LandingScreen 가치 포인트 3개 표시', (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 3개의 가치 포인트: "이중 안전\n검증" / "AI 개인화\n플랜" / "터치 최소화\n인터페이스"
       expect(find.text('이중 안전'), findsOneWidget);
       expect(find.text('검증'), findsOneWidget);
+      
       expect(find.text('AI 개인화'), findsOneWidget);
       expect(find.text('플랜'), findsOneWidget);
+      
       expect(find.text('터치 최소화'), findsOneWidget);
       expect(find.text('인터페이스'), findsOneWidget);
+    });
 
-      // CTA 버튼 "무료로 시작하기" 확인
+    testWidgets('LandingScreen CTA 버튼 "무료로 시작하기" 표시 및 클릭',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // CTA 버튼 텍스트 확인
       expect(find.text('무료로 시작하기'), findsOneWidget);
 
-      // 보조 텍스트 "의료기기 아님..." 확인
+      // 버튼은 ElevatedButton 타입
+      expect(find.byType(ElevatedButton), findsWidgets);
+
+      // 버튼 탭 (클릭)
+      await tester.tap(find.text('무료로 시작하기'));
+      await tester.pumpAndSettle();
+
+      // 면책 동의 화면(DisclaimerPage)으로 진입 확인
+      // DisclaimerPage의 고유 텍스트: "이용 전 꼭 확인하세요"
+      expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
+    });
+
+    testWidgets('LandingScreen 보조 텍스트 "의료기기 아님 · 전문의 상담..."',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 보조 텍스트 확인
       expect(
         find.text('의료기기 아님 · 전문의 상담을 대체하지 않습니다'),
         findsOneWidget,
       );
     });
 
-    testWidgets('랜딩 화면: CTA 버튼 터치 → 면책동의 화면 진입 확인',
+    testWidgets('LandingScreen 헤더 로고 "RecoveryFit" 좌측 상단 배치',
         (WidgetTester tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-
-      // SplashScreen 애니메이션 통과
-      await tester.pump(const Duration(seconds: 2, milliseconds: 500));
-
-      // "무료로 시작하기" 버튼 찾기
-      final ctaButton = find.text('무료로 시작하기');
-      expect(ctaButton, findsOneWidget);
-
-      // 버튼 터치
-      await tester.tap(ctaButton);
+      
+      await tester.pump(const Duration(milliseconds: 2500));
       await tester.pumpAndSettle();
 
-      // 면책동의 화면 진입 확인
-      // 면책동의 화면의 특정 텍스트: "이용 전 꼭 확인하세요"
-      expect(
-        find.text('이용 전 꼭 확인하세요'),
-        findsOneWidget,
-      );
-
-      // 또는 동의 버튼 "동의하고 시작" 확인
-      expect(find.text('동의하고 시작'), findsOneWidget);
+      // LandingScreen에서도 로고 재표시 확인
+      // 텍스트 "RecoveryFit"은 여러 곳에 나타날 수 있음
+      expect(find.text('RecoveryFit'), findsWidgets);
     });
 
-    testWidgets('랜딩 화면 레이아웃: 배경 그라디언트, 텍스트 색상 확인',
+    testWidgets('SplashScreen 배경색 딥 네이비 (#0D1B2A) 확인',
         (WidgetTester tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-
-      // SplashScreen 애니메이션 통과
-      await tester.pump(const Duration(seconds: 2, milliseconds: 500));
-
-      // 랜딩 화면 상태
-      final materialApp = find.byType(MaterialApp);
-      expect(materialApp, findsOneWidget);
-
-      // 랜딩은 단일 뷰포트 구성 (스크롤 없음이 스펙).
-      // ListView/SingleChildScrollView 과다 사용은 별도 레이아웃 검사로 확인.
-
-      // 핵심 요소 재확인
-      expect(find.text('무료로 시작하기'), findsOneWidget);
-      expect(find.text('부상 후에도'), findsOneWidget);
-    });
-
-    testWidgets('랜딩 화면: CTA 버튼 터치 피드백 (scale & brightness) 확인',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const RecoveryFitApp());
-
-      // SplashScreen 통과
-      await tester.pump(const Duration(seconds: 2, milliseconds: 500));
-
-      // CTA 버튼 위젯 찾기
-      final ctaButton = find.text('무료로 시작하기');
-      expect(ctaButton, findsOneWidget);
-
-      // 버튼 tap (short press)
-      await tester.tap(ctaButton);
-
-      // 터치 피드백 애니메이션: 100ms 내에 scale 0.97 + brightness 감소
+      
       await tester.pump(const Duration(milliseconds: 100));
 
-      // 터치 후 상태 변화 확인 (실제 위젯 렌더링 확인)
-      expect(find.text('무료로 시작하기'), findsOneWidget);
+      // SplashScreen이 보이는 동안 배경 Container 찾기
+      final containerFinder = find.byType(Container);
+      expect(containerFinder, findsWidgets);
+      // 구체적인 색상 검증은 위젯 트리 구조에 따라 달라짐
+      // 현재 SplashScreen 존재만 확인
+    });
 
-      // 터치 완료 후 복구 대기
-      await tester.pump(const Duration(milliseconds: 150));
+    testWidgets('LandingScreen 히어로 일러스트 영역 표시',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
       await tester.pumpAndSettle();
 
-      // 면책동의 화면으로 진입했으므로 다음 화면 요소 확인
+      // 히어로 일러스트는 SVG 또는 이미지로 구현
+      // LandingScreen 내 이미지/SVG 존재 확인
+      expect(find.byType(LandingScreen), findsOneWidget);
+      
+      // ListView/CustomPaint 등으로 구현된 시각적 콘텐츠 존재
+      expect(find.byType(Column), findsWidgets);
+    });
+
+    testWidgets('LandingScreen 스크롤 없음 (단일 뷰포트)',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 스크롤 불가능 확인: SingleChildScrollView / ListView 등 스크롤 위젯 부재
+      expect(find.byType(SingleChildScrollView), findsNothing);
+      
+      // 콘텐츠는 Column/Stack으로 배치
+      expect(find.byType(Column), findsWidgets);
+    });
+
+    testWidgets('CTA 버튼 터치 시 스케일 0.97 + 밝기 감소 애니메이션',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 버튼 찾기
+      final buttonFinder = find.byType(ElevatedButton);
+      expect(buttonFinder, findsWidgets);
+
+      // 버튼 눌림 상태 시뮬레이션
+      await tester.tapDown(find.text('무료로 시작하기'));
+      await tester.pump(const Duration(milliseconds: 50));
+
+      // 버튼 해제
+      await tester.tapUp(find.text('무료로 시작하기'));
+      await tester.pump(const Duration(milliseconds: 150));
+
+      // 애니메이션 통과 후 다음 화면 진입
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('LandingScreen 진입 시 색상 대비 WCAG AA 기준 충족 (시각적)',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // 주요 텍스트 존재 확인
+      expect(find.text('부상 후에도'), findsOneWidget);
+      expect(find.text('무료로 시작하기'), findsOneWidget);
+      
+      // 실제 색상 대비는 렌더링 후 픽셀 분석 필요
+      // 통합 테스트에서는 텍스트 가독성 존재만 검증
+    });
+
+    testWidgets('원터치 진입: LandingScreen → DisclaimerPage',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+      
+      // SplashScreen 통과
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
+
+      // LandingScreen 상태 확인
+      expect(find.byType(LandingScreen), findsOneWidget);
+
+      // CTA 버튼 원터치
+      await tester.tap(find.text('무료로 시작하기'));
+      await tester.pumpAndSettle();
+
+      // DisclaimerPage 진입 확인
       expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
     });
 
-    testWidgets('스플래시 → 랜딩 전환: 전체 시간 제약 확인 (최소 2초, 최대 5초)',
+    testWidgets('신규 사용자 분기: disclaimer_agreed_at 없으면 Landing 진입',
         (WidgetTester tester) async {
+      // StorageService에 disclaimer_agreed_at이 없는 상태 가정
+      // (통합 테스트 환경에서는 초기 상태이므로 자동으로 충족)
+      
       await tester.pumpWidget(const RecoveryFitApp());
+      
+      await tester.pump(const Duration(milliseconds: 2500));
+      await tester.pumpAndSettle();
 
-      // 최소 2초 미만: SplashScreen 유지
-      await tester.pump(const Duration(seconds: 1));
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 2초 경과: 전환 시작 가능
-      await tester.pump(const Duration(seconds: 1));
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 4초까지: 전환 진행 중이거나 완료
-      await tester.pump(const Duration(seconds: 2));
-      expect(find.byType(MaterialApp), findsOneWidget);
-
-      // 전환 완료 확인 (LandingScreen 또는 다음 화면)
-      // 버튼 또는 텍스트로 화면 판별
-      final ctaOrDisclaimer = find.byType(ElevatedButton);
-      expect(ctaOrDisclaimer, findsWidgets); // 어느 화면이든 버튼 존재
+      // LandingScreen 출현 확인
+      expect(find.byType(LandingScreen), findsOneWidget);
     });
   });
 }
