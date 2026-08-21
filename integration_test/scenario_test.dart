@@ -13,9 +13,10 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
 
-        // 스플래시 화면의 핵심 요소 확인
-        expect(find.text('Recovery'), findsOneWidget);
-        expect(find.text('Fit'), findsOneWidget);
+        // 스플래시 화면의 핵심 요소 확인 — 로고는 하나의 Text.rich(Recovery+Fit)
+        // 위젯이라 전체 문구가 "RecoveryFit"이므로 부분 일치로 확인.
+        expect(find.textContaining('Recovery'), findsOneWidget);
+        expect(find.textContaining('Fit'), findsOneWidget);
         expect(find.text('부상 후, 더 강하게'), findsOneWidget);
         
         // 로딩 도트 확인 (3개)
@@ -77,7 +78,10 @@ void main() {
         expect(find.textContaining('이중 안전'), findsOneWidget);
         expect(find.textContaining('검증'), findsOneWidget);
         expect(find.textContaining('AI 개인화'), findsOneWidget);
-        expect(find.textContaining('플랜'), findsOneWidget);
+        // '플랜'은 서브 헤드라인("...재활 플랜을 만들어드려요")에도 부분
+        // 매치되어 findsOneWidget이 2개를 찾는다 — 라벨 위젯 자체는 전체
+        // 텍스트가 정확히 "플랜"이므로 완전 일치로 좁힌다.
+        expect(find.text('플랜'), findsOneWidget);
         expect(find.textContaining('터치 최소화'), findsOneWidget);
         expect(find.textContaining('인터페이스'), findsOneWidget);
       },
@@ -165,9 +169,9 @@ void main() {
       (WidgetTester tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
 
-        // 초기 스플래시 화면에서 로고 확인
-        expect(find.text('Recovery'), findsOneWidget);
-        expect(find.text('Fit'), findsOneWidget);
+        // 초기 스플래시 화면에서 로고 확인 (Text.rich라 부분 일치로 확인)
+        expect(find.textContaining('Recovery'), findsOneWidget);
+        expect(find.textContaining('Fit'), findsOneWidget);
 
         // 랜딩 화면으로 이동 후에도 헤더 로고 확인
         for (var i = 0; i < 15; i++) {
