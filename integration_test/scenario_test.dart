@@ -159,7 +159,8 @@ void main() {
         
         // 면책 동의 화면 확인
         expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
-        expect(find.textContaining('의료기기'), findsWidgets);
+        // 면책 문구는 순수 RichText(TextSpan)라 findRichText 없이는 안 잡힘
+        expect(find.textContaining('의료기기', findRichText: true), findsWidgets);
       },
     );
 
