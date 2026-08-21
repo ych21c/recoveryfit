@@ -10,7 +10,10 @@ void main() {
   group('시작 페이지 (SplashScreen & LandingScreen)', () {
     testWidgets('스플래시 화면이 표시되고 로딩 애니메이션이 재생된다', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle(const Duration(milliseconds: 500));
+      // pumpAndSettle은 스플래시의 2.2s 페이드 애니메이션이 끝날 때까지 계속
+      // 프레임을 진행시켜 랜딩 화면으로 자동 전환까지 삼켜버리므로 여기선 쓰지
+      // 않는다 — 스플래시 최초 프레임만 확인.
+      await tester.pump();
 
       // 스플래시 화면의 핵심 요소 확인
       expect(find.textContaining('Recovery'), findsWidgets);
