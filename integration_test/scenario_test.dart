@@ -103,9 +103,9 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400));
       await tester.pump(const Duration(milliseconds: 500));
 
-      // 보조 텍스트 확인
-      expect(find.text('의료기기 아님'), findsOneWidget);
-      expect(find.text('전문의 상담을 대체하지 않습니다'), findsOneWidget);
+      // 보조 텍스트 확인 (한 Text 위젯 안의 전체 문구 일부이므로 부분 일치로 확인)
+      expect(find.textContaining('의료기기 아님'), findsOneWidget);
+      expect(find.textContaining('전문의 상담을 대체하지 않습니다'), findsOneWidget);
     });
 
     testWidgets('랜딩 페이지: 헤더 로고 (RecoveryFit 소형) 표시', (tester) async {
