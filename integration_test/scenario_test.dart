@@ -111,9 +111,9 @@ void main() {
         await tester.pump(const Duration(milliseconds: 600));
       }
 
-      // 면책 텍스트 확인
-      expect(find.text('의료기기 아님'), findsOneWidget);
-      expect(find.text('전문의 상담을 대체하지 않습니다'), findsOneWidget);
+      // 면책 텍스트 확인 (한 Text 위젯 안의 전체 문구 일부이므로 부분 일치로 확인)
+      expect(find.textContaining('의료기기 아님'), findsOneWidget);
+      expect(find.textContaining('전문의 상담을 대체하지 않습니다'), findsOneWidget);
     });
 
     testWidgets('랜딩 페이지의 CTA 버튼 탭 시 다음 화면(면책동의)으로 진입', (
@@ -193,8 +193,10 @@ void main() {
       // 랜딩 페이지의 메인 콘텐츠가 표시됨
       expect(find.text('부상 후에도'), findsOneWidget);
 
-      // 페이지 구조: Column/SingleChildScrollView 등 레이아웃 위젯 존재
-      expect(find.byType(SingleChildScrollView), findsWidgets);
+      // 히어로 영역의 정확한 픽셀 비율은 위젯 테스트로 측정하기 부적절하고,
+      // 실제 레이아웃은 Scaffold > LayoutBuilder > Stack > Column 구조라
+      // SingleChildScrollView가 없다 — 아래쪽 "스크롤 없는 단일 뷰포트 구성"
+      // 시나리오와도 상충되는 잘못된 가정이었다. 메인 콘텐츠 표시 확인으로 충분.
     });
 
     testWidgets('스플래시 애니메이션 중 로딩 도트 확인', (tester) async {
