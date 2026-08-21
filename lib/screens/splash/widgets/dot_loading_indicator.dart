@@ -96,10 +96,9 @@ class _AnimatedDotState extends State<_AnimatedDot>
           child: child,
         ),
       ),
-      child: const Icon(
-        Icons.circle,
-        color: AppColors.primaryMint,
-        size: 8,
+      child: const CircleAvatar(
+        radius: 4,
+        backgroundColor: AppColors.primaryMint,
       ),
     );
   }
