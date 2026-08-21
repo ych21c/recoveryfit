@@ -133,8 +133,10 @@ void main() {
           findsOneWidget,
         );
         expect(
-          find.text('의료기기가 아닙니다'),
-          findsWidgets, // 여러 번 나타날 수 있음
+          find.textContaining('의료기기가 아닙니다', findRichText: true),
+          // 원문이 Text.rich가 아니라 순수 RichText(TextSpan) 위젯이라
+          // findRichText: true 없이는 find.text*()가 아예 못 찾는다.
+          findsWidgets,
         );
       },
     );
