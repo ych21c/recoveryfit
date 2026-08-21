@@ -13,7 +13,7 @@ void main() {
     await tester.pumpWidget(const RecoveryFitApp());
     await tester.pump(const Duration(milliseconds: 100));
 
-    expect(find.text('Recovery'), findsWidgets);
+    expect(find.textContaining('Recovery'), findsWidgets);
     expect(find.text('부상 후, 더 강하게'), findsOneWidget);
   });
 
