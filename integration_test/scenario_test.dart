@@ -180,9 +180,10 @@ void main() {
         }
       }
       
-      // 다음 화면의 주요 요소 확인 (면책 동의 화면)
+      // 다음 화면의 주요 요소 확인 (면책 동의 화면) — 이 문구는 순수
+      // RichText(TextSpan) 조각이라 findRichText: true 없이는 안 잡힌다.
       expect(
-        find.textContaining('의료기기'),
+        find.textContaining('의료기기', findRichText: true),
         findsWidgets,
         reason: '면책 동의 화면으로 진입했는지 확인',
       );
