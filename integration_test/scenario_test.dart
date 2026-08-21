@@ -12,9 +12,10 @@ void main() {
     testWidgets('스플래시 화면 로드 후 로고와 로딩 애니메이션 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
       
-      // 스플래시 화면의 RecoveryFit 로고 확인
-      expect(find.text('Recovery'), findsWidgets);
-      expect(find.text('Fit'), findsWidgets);
+      // 스플래시 화면의 RecoveryFit 로고 확인 — 워드마크는 단일 Text.rich(두
+      // TextSpan 'Recovery'+'Fit')라 findRichText 없이는 find.text가 아예
+      // 안 잡힌다(Text.data가 null이라 textSpan 쪽은 findRichText로만 검사됨).
+      expect(find.textContaining('RecoveryFit', findRichText: true), findsWidgets);
       
       // 슬로건 확인
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
@@ -124,7 +125,11 @@ void main() {
       
       // 면책 동의 화면 진입 확인
       expect(find.textContaining('이용 전'), findsWidgets);
-      expect(find.text('의료기기가 아닙니다'), findsOneWidget);
+      // 이 문구는 RichText(TextSpan 3개로 이어붙인 한 문단) 안에 있어서
+      // findRichText 없이는 안 잡히고, 문단 전체가 아니라 가운데 TextSpan
+      // 하나만 담고 있으므로 exact match(find.text)가 아니라 substring
+      // match(find.textContaining)여야 한다.
+      expect(find.textContaining('의료기기가 아닙니다', findRichText: true), findsOneWidget);
       
       // 동의 버튼
       expect(find.text('동의하고 시작'), findsOneWidget);
