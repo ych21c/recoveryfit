@@ -41,6 +41,10 @@ void main() {
       // 페이드아웃 애니메이션 진행 (0.4s) + 추가 여유
       await tester.pump(const Duration(milliseconds: 500));
 
+      // 남은 비동기 초기화(Hive/알림 서비스) 체인이 끝날 때까지 정착 대기 —
+      // 다른 시나리오들과 동일한 패턴(pump 후 pumpAndSettle)으로 통일.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
+
       // LandingScreen으로 전환되었는지 확인
       // LandingScreen의 핵심 텍스트: "무료로 시작하기" 버튼 라벨
       expect(find.text('무료로 시작하기'), findsOneWidget);
@@ -51,6 +55,7 @@ void main() {
 
       // SplashScreen 애니메이션 완료 후 LandingScreen 대기
       await tester.pump(const Duration(milliseconds: 3000));
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 헤더 로고 확인
       expect(find.text('RecoveryFit'), findsWidgets);
