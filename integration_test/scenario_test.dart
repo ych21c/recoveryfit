@@ -15,7 +15,7 @@ void main() {
       await tester.pump();
 
       // 스플래시 화면 진입 확인: RecoveryFit 로고 텍스트
-      expect(find.text('Recovery'), findsWidgets);
+      expect(find.textContaining('Recovery'), findsWidgets); // wordmark renders as one Text.rich('RecoveryFit')
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
 
       // 로딩 도트 애니메이션 확인
