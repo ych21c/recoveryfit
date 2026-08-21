@@ -44,6 +44,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 랜딩 화면의 메인 헤드라인 확인
       final landingFinder = find.text('부상 후에도');
@@ -59,6 +62,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 메인 헤드라인: "부상 후에도\n운동할 수 있어요" (2줄)
       expect(find.text('부상 후에도'), findsWidgets);
@@ -76,6 +82,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 가치 포인트 라벨 확인
       expect(find.text('이중 안전'), findsWidgets);
@@ -93,6 +102,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // "무료로 시작하기" 버튼 찾기
       final ctaFinder = find.text('무료로 시작하기');
@@ -110,6 +122,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 보조 텍스트: "의료기기 아님 · 전문의 상담을 대체하지 않습니다"
       expect(find.textContaining('의료기기 아님'), findsWidgets);
@@ -123,6 +138,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // CTA 버튼 탭
       await tester.tap(find.text('무료로 시작하기'));
@@ -130,7 +148,7 @@ void main() {
 
       // 면책동의 화면의 텍스트 확인
       expect(find.text('이용 전 꼭 확인하세요'), findsWidgets);
-      expect(find.textContaining('의료기기가 아닙니다'), findsWidgets);
+      expect(find.textContaining('의료기기가 아닙니다', findRichText: true), findsWidgets);
     });
 
     testWidgets('랜딩 화면의 히어로 이미지 영역이 상단 55% 영역에 표시됨', (tester) async {
@@ -140,6 +158,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 히어로 영역에는 SVG 또는 Container가 있음 — 메인 콘텐츠가 하단부에 있는지 확인
       expect(find.textContaining('부상 후에도'), findsWidgets);
@@ -154,6 +175,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 헤더 로고 텍스트 확인
       expect(find.text('RecoveryFit'), findsWidgets);
@@ -166,6 +190,9 @@ void main() {
       for (var i = 0; i < 5; i++) {
         await tester.pump(const Duration(milliseconds: 500));
       }
+      // 스플래시의 반복 로딩 도트 애니메이션은 이 시점엔 이미 dispose됐으므로
+      // pumpAndSettle이 무한 대기하지 않고 남은 전환/리빌드 프레임만 안전하게 플러시한다.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       final ctaFinder = find.text('무료로 시작하기');
       expect(ctaFinder, findsWidgets);
