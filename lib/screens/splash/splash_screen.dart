@@ -180,30 +180,31 @@ class _SplashScreenState extends State<SplashScreen>
               const SizedBox(height: 18),
 
               // ── Wordmark ────────────────────────────────────────────────
-              // Two separate Text widgets (not Text.rich) so find.text('Recovery')
-              // and find.text('Fit') each match one widget individually.
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Recovery',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.5,
-                      color: Colors.white,
+              // Single Text.rich so find.text('RecoveryFit') works in tests;
+              // toPlainText() == 'RecoveryFit' satisfies the matcher.
+              Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: 'Recovery',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.5,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'Fit',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.5,
-                      color: AppColors.primaryMint,
+                    TextSpan(
+                      text: 'Fit',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.5,
+                        color: AppColors.primaryMint,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
 
               const SizedBox(height: 10),
