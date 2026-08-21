@@ -12,9 +12,9 @@ void main() {
     testWidgets('스플래시 스크린 표시 후 랜딩으로 자동 전환', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
       
-      // 1. 스플래시 화면 로고 확인
-      expect(find.text('Recovery'), findsOneWidget);
-      expect(find.text('Fit'), findsOneWidget);
+      // 1. 스플래시 화면 로고 확인 — 워드마크는 단일 Text.rich(두 TextSpan
+      // 'Recovery'+'Fit')라 findRichText 없이는 find.text가 안 잡힌다.
+      expect(find.textContaining('RecoveryFit', findRichText: true), findsOneWidget);
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
       
       // 2. 로딩 도트 애니메이션 진행
@@ -87,9 +87,10 @@ void main() {
       await tester.tap(find.text('무료로 시작하기'));
       await tester.pumpAndSettle(const Duration(milliseconds: 500));
       
-      // 면책 동의 화면으로 전환 확인
+      // 면책 동의 화면으로 전환 확인 — 이 문구는 RichText(TextSpan 3개) 안
+      // 가운데 조각이라 findRichText + textContaining이 필요하다.
       expect(find.text('이용 전 꼭 확인하세요'), findsOneWidget);
-      expect(find.text('의료기기가 아닙니다'), findsWidgets);
+      expect(find.textContaining('의료기기가 아닙니다', findRichText: true), findsWidgets);
     });
 
     testWidgets('랜딩 화면 보조 텍스트 "의료기기 아님" 표시', (tester) async {
