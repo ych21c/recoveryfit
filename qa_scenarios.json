@@ -1453,6 +1453,18 @@
       "status": "automated_pass",
       "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
       "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면 로드 후 로고와 로딩 애니메이션 표시",
+      "status": "fail",
+      "note": "생성된 테스트(integration_test/scenario_test.dart)가 실행됐지만 실패했습니다:\n면책동의 화면으로 이동\n══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════\nThe following TestFailure was thrown running a test:\nExpected: exactly one matching candidate\n  Actual: _TextWidgetFinder:<Found 0 widgets with text \"의료기기가 아닙니다\": []>\n   Which: means none were found but one was expected\n\nWhen the exception was thrown, this was the stack:\n#4      main.<anonymous closure>.<anonymous closure> (file:///workspace/c052dd6b-qa-clone/integration_test/scenario_test.dart:127:7)\n<asynchronous suspension>\n#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)\n<asynchronous suspension>\n#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)\n<asynchronous suspension>\n<asynchronous suspension>\n(elided one frame from package:stack_trace)\n\nThis was caught by the test expectation on the following line:\n  file:///workspace/c052dd6b-qa-clone/integration_test/scenario_test.dart line 127\nThe test description was:\n  랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동\n════════════════════════════════════════════════════════════════════════════════════════════════════\n00:13 +4 -2: 시작 페이지 (Splash & Landing) 랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동 [E]\n  Test failed. See exception logs above.\n  The test description was: 랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동\n  \n00:13 +4 -2: 시작 페이지 (Splash & Landing) 랜딩 화면 — 로고가 좌상단 및 헤더 위치에 표시\n00:16 +5 -2: (tearDownAll)\n00:16 +5 -2: Some tests failed.",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동",
+      "status": "fail",
+      "note": "생성된 테스트(integration_test/scenario_test.dart)가 실행됐지만 실패했습니다:\n면책동의 화면으로 이동\n══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════\nThe following TestFailure was thrown running a test:\nExpected: exactly one matching candidate\n  Actual: _TextWidgetFinder:<Found 0 widgets with text \"의료기기가 아닙니다\": []>\n   Which: means none were found but one was expected\n\nWhen the exception was thrown, this was the stack:\n#4      main.<anonymous closure>.<anonymous closure> (file:///workspace/c052dd6b-qa-clone/integration_test/scenario_test.dart:127:7)\n<asynchronous suspension>\n#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)\n<asynchronous suspension>\n#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)\n<asynchronous suspension>\n<asynchronous suspension>\n(elided one frame from package:stack_trace)\n\nThis was caught by the test expectation on the following line:\n  file:///workspace/c052dd6b-qa-clone/integration_test/scenario_test.dart line 127\nThe test description was:\n  랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동\n════════════════════════════════════════════════════════════════════════════════════════════════════\n00:13 +4 -2: 시작 페이지 (Splash & Landing) 랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동 [E]\n  Test failed. See exception logs above.\n  The test description was: 랜딩 화면 — [무료로 시작하기] 탭하면 면책동의 화면으로 이동\n  \n00:13 +4 -2: 시작 페이지 (Splash & Landing) 랜딩 화면 — 로고가 좌상단 및 헤더 위치에 표시\n00:16 +5 -2: (tearDownAll)\n00:16 +5 -2: Some tests failed.",
+      "group": "시작 페이지 (Splash & Landing)"
     }
   ]
 }
