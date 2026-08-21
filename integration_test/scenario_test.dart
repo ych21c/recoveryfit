@@ -13,7 +13,7 @@ void main() {
       await tester.pumpWidget(const RecoveryFitApp());
 
       // Verify splash screen is visible
-      expect(find.text('Recovery'), findsWidgets); // "RecoveryFit" split or partial
+      expect(find.textContaining('Recovery'), findsWidgets); // wordmark renders as one Text.rich('RecoveryFit')
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
 
       // Verify loading dots exist (3 animated dots)
