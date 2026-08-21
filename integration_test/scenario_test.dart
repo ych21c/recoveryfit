@@ -36,6 +36,8 @@ void main() {
       await tester.pump(const Duration(milliseconds: 500));
       await tester.pump(const Duration(milliseconds: 500));
       await tester.pump(const Duration(milliseconds: 500));
+      // 남은 비동기 초기화(Hive/알림 서비스) 체인이 끝날 때까지 정착 대기.
+      await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
       // 랜딩 화면의 고유 CTA 텍스트로 확인
       expect(find.text('무료로 시작하기'), findsOneWidget);
@@ -112,9 +114,9 @@ void main() {
         if (find.text('무료로 시작하기').evaluate().isNotEmpty) break;
       }
 
-      // 보조 텍스트는 여러 줄일 수 있으므로 각 부분 검증
-      expect(find.text('의료기기 아님'), findsOneWidget);
-      expect(find.text('전문의 상담을 대체하지 않습니다'), findsOneWidget);
+      // 보조 텍스트는 한 Text 위젯 안의 전체 문구 일부이므로 부분 일치로 확인
+      expect(find.textContaining('의료기기 아님'), findsOneWidget);
+      expect(find.textContaining('전문의 상담을 대체하지 않습니다'), findsOneWidget);
     });
 
     testWidgets('랜딩 화면: 로고 좌측 상단 배치 확인',
