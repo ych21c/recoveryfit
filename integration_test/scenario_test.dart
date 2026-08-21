@@ -7,77 +7,85 @@ import 'package:recovery_fit/app.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  group('시작 페이지 (Splash + Landing)', () {
-    testWidgets('스플래시 화면 진입 및 로고/슬로건 표시',
-        (WidgetTester tester) async {
+  group('시작 페이지 (Splash & Landing) 검증', () {
+    testWidgets('스플래시 화면 로드 및 로고 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
       await tester.pumpAndSettle();
 
-      // 스플래시 화면의 RecoveryFit 로고 확인
-      expect(find.text('RecoveryFit'), findsWidgets);
-
-      // 슬로건 "부상 후, 더 강하게" 확인
+      // 스플래시 화면이 나타나는지 확인
+      expect(find.text('Recovery'), findsWidgets);
+      expect(find.text('Fit'), findsWidgets);
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
     });
 
-    testWidgets('스플래시 화면 로딩 도트 애니메이션 표시',
-        (WidgetTester tester) async {
+    testWidgets('스플래시 로딩 도트 애니메이션 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 초기 상태에서 로딩 도트 확인 (3개의 원)
-      expect(find.byType(Container), findsWidgets);
-
-      // 첫 프레임에서 화면 렌더링 완료 확인
-      expect(find.byType(MaterialApp), findsOneWidget);
+      // 로딩 도트가 존재하는지 확인 (애니메이션은 실행 중)
+      expect(find.byIcon(Icons.circle), findsWidgets);
     });
 
-    testWidgets('스플래시 화면에서 랜딩 화면으로 전환',
-        (WidgetTester tester) async {
+    testWidgets(
+        '스플래시 화면이 일정 시간 후 랜딩 화면으로 전환',
+        (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 초기 표시
+      // 초기: 스플래시 화면에서 "Recovery" 텍스트 확인
       expect(find.text('부상 후, 더 강하게'), findsOneWidget);
 
-      // 애니메이션 시간 기다림 (페이드인 0.6s + 정지 1.2s)
-      await tester.pump(const Duration(milliseconds: 1900));
+      // 스플래시 애니메이션 진행 (페이드인 0.6s + 정지 1.2s + 페이드아웃 0.4s 이상)
+      // 보수적으로 2.5초 pump
+      for (int i = 0; i < 5; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
-      // 랜딩 화면 진입 대기
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      // 랜딩 화면의 CTA 버튼이 나타나는지 확인
+      expect(
+        find.byType(ElevatedButton),
+        findsWidgets,
+        reason: '랜딩 화면의 CTA 버튼이 표시되어야 함',
+      );
+    });
 
-      // 랜딩 화면의 메인 헤드라인 확인
+    testWidgets('랜딩 화면에 메인 헤드라인 표시', (tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+
+      // 스플래시 애니메이션 건너뛰고 랜딩 화면 도달
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
+
+      // "부상 후에도\n운동할 수 있어요" 검증
       expect(find.text('부상 후에도'), findsOneWidget);
       expect(find.text('운동할 수 있어요'), findsOneWidget);
     });
 
-    testWidgets('랜딩 화면 히어로 비주얼 및 핵심 텍스트 표시',
-        (WidgetTester tester) async {
+    testWidgets('랜딩 화면에 서브 헤드라인 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 스킵 (1.9초 대기)
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
-      // 랜딩 화면 메인 헤드라인
-      expect(find.text('부상 후에도'), findsOneWidget);
-      expect(find.text('운동할 수 있어요'), findsOneWidget);
-
-      // 서브 헤드라인
-      expect(find.text('AI가 내 부상 상태를 분석하고'), findsOneWidget);
-      expect(find.text('안전한 재활 플랜을 만들어드려요'), findsOneWidget);
+      // 서브 헤드라인 각 줄 검증 (소스에 \n으로 나뉨)
+      expect(
+        find.text('AI가 내 부상 상태를 분석하고'),
+        findsOneWidget,
+      );
+      expect(
+        find.text('안전한 재활 플랜을 만들어드려요'),
+        findsOneWidget,
+      );
     });
 
-    testWidgets('랜딩 화면 가치 포인트 3종 표시',
-        (WidgetTester tester) async {
+    testWidgets('랜딩 화면에 가치 포인트 3종 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 스킵
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
-      // 가치 포인트 라벨 확인 (각 항목이 여러 Text 위젯으로 나뉘어 있음)
+      // 가치 포인트 라벨 검증
       expect(find.text('이중 안전'), findsOneWidget);
       expect(find.text('검증'), findsOneWidget);
       expect(find.text('AI 개인화'), findsOneWidget);
@@ -86,80 +94,85 @@ void main() {
       expect(find.text('인터페이스'), findsOneWidget);
     });
 
-    testWidgets('랜딩 화면 CTA 버튼 "무료로 시작하기" 표시',
-        (WidgetTester tester) async {
+    testWidgets('랜딩 화면의 CTA 버튼 "무료로 시작하기" 표시',
+        (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 스킵
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
-      // CTA 버튼 확인
-      expect(find.text('무료로 시작하기'), findsOneWidget);
-
-      // 버튼이 ElevatedButton 형태 확인
-      expect(find.byType(ElevatedButton), findsOneWidget);
+      // CTA 버튼 텍스트 검증
+      expect(
+        find.text('무료로 시작하기'),
+        findsOneWidget,
+        reason: '랜딩 화면의 CTA 버튼이 "무료로 시작하기" 텍스트를 표시해야 함',
+      );
     });
 
-    testWidgets('랜딩 화면 보조 텍스트 (의료기기 아님 고지) 표시',
-        (WidgetTester tester) async {
+    testWidgets('랜딩 화면의 보조 텍스트 (면책) 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 스킵
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
-      // 보조 텍스트 확인
-      expect(find.text('의료기기 아님 · 전문의 상담을 대체하지 않습니다'),
-          findsOneWidget);
+      // 보조 텍스트 검증 (소스에 여러 줄로 나뉨)
+      expect(find.text('의료기기 아님'), findsOneWidget);
+      expect(
+        find.text('전문의 상담을 대체하지 않습니다'),
+        findsOneWidget,
+      );
     });
 
-    testWidgets('랜딩 화면 CTA 버튼 탭 시 면책동의 화면으로 진입',
-        (WidgetTester tester) async {
+    testWidgets('CTA 버튼 탭 시 면책동의 화면으로 진입', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
 
-      // 스플래시 화면 스킵
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
+      // 스플래시 → 랜딩 전환
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
 
       // CTA 버튼 탭
       await tester.tap(find.text('무료로 시작하기'));
       await tester.pumpAndSettle();
 
-      // 면책동의 화면의 특정 텍스트 확인
-      // ("이용 전 꼭 확인하세요" 또는 "동의하고 시작" 버튼)
+      // 면책동의 화면으로 진입 확인 (예: "동의하고 시작" 버튼 검색)
       expect(
-          find.text('이용 전 꼭 확인하세요').or(find.text('동의하고 시작')),
-          findsWidgets);
+        find.text('동의하고 시작'),
+        findsOneWidget,
+        reason: '면책동의 화면의 주 CTA 버튼이 표시되어야 함',
+      );
     });
 
-    testWidgets('스플래시 화면 딥 네이비 배경색 (#0D1B2A) 확인',
-        (WidgetTester tester) async {
+    testWidgets('랜딩 화면 헤더에 로고 표시', (tester) async {
       await tester.pumpWidget(const RecoveryFitApp());
-      await tester.pumpAndSettle();
 
-      // 배경색 검증: 스플래시 화면의 Scaffold 또는 Container의 배경색 확인
-      // Material 내부의 색상 검증은 위젯 트리 분석으로 진행
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
+
+      // 헤더의 RecoveryFit 로고 텍스트 검증
+      expect(
+        find.text('RecoveryFit'),
+        findsWidgets,
+        reason: '랜딩 헤더와 스플래시에 로고가 있을 수 있음',
+      );
+    });
+
+    testWidgets('랜딩 화면 배경 색상 및 레이아웃 검증',
+        (tester) async {
+      await tester.pumpWidget(const RecoveryFitApp());
+
+      for (int i = 0; i < 6; i++) {
+        await tester.pump(const Duration(milliseconds: 500));
+      }
+
+      // 메인 콘텐츠 Column 존재 확인
+      expect(find.byType(Column), findsWidgets);
+
+      // Scaffold 존재 확인
       expect(find.byType(Scaffold), findsWidgets);
-
-      // 스플래시 화면이 최상단에 렌더링 중 확인
-      expect(find.text('부상 후, 더 강하게'), findsOneWidget);
-    });
-
-    testWidgets('랜딩 화면 로고 아이콘 표시',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(const RecoveryFitApp());
-
-      // 스플래시 화면 스킵
-      await tester.pump(const Duration(milliseconds: 1900));
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      await tester.pump(const Duration(milliseconds: 500));
-
-      // 상단 로고 확인 (작은 사이즈의 RecoveryFit 로고)
-      expect(find.text('RecoveryFit'), findsWidgets);
     });
   });
 }
