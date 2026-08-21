@@ -40,10 +40,18 @@ class _HeroPainter extends CustomPainter {
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), bgPaint);
 
-    // ── 2. Scale to reference frame (cover) ─────────────────────────────────
+    // ── 2. Scale to reference frame (contain, centered) ─────────────────────
+    // HTML mock's <svg width="375" height="260"> isn't stretched by its flex
+    // parent — it renders at its own aspect ratio and gets centered, with the
+    // container's gradient showing around it. math.max() (cover) was wrong
+    // here: on a real phone the hero zone is much taller-than-wide relative to
+    // the 375×225 reference, so cover-fit blew the scale up ~2× past what's
+    // needed to fill the width alone, pushing the side icon boxes (heart-rate
+    // at x 42-94, AI at x 282-334) entirely off-screen — reproduced from a
+    // QA Test Lab screenshot where only the centered graph panel was visible.
     final scaleX = size.width / _refW;
     final scaleY = size.height / _refH;
-    final scale = math.max(scaleX, scaleY);
+    final scale = math.min(scaleX, scaleY);
     final offX = (size.width - _refW * scale) / 2;
     final offY = (size.height - _refH * scale) / 2;
 
