@@ -11,7 +11,12 @@ void main() {
       '스플래시 화면이 표시되고 도트 애니메이션이 보임',
       (tester) async {
         await tester.pumpWidget(const RecoveryFitApp());
-        await tester.pumpAndSettle(const Duration(milliseconds: 500));
+        // 스플래시 화면 자체를 검증하는 시나리오라 pumpAndSettle을 쓰면 안 된다 —
+        // 로딩 도트가 반복 애니메이션이라 SplashScreen이 화면에서 사라질 때까지
+        // (즉 랜딩으로 넘어갈 때까지) 절대 settle되지 않아서, pumpAndSettle이
+        // 결국 랜딩 화면까지 넘어간 뒤에야 반환되어 스플래시 콘텐츠를 놓친다.
+        // 첫 프레임만 그려서 초기 상태를 바로 확인한다.
+        await tester.pump();
 
         // 스플래시 화면의 핵심 콘텐츠 확인
         expect(find.text('RecoveryFit'), findsWidgets);
@@ -36,6 +41,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
         // 랜딩 화면의 핵심 텍스트 찾기
         expect(find.textContaining('부상 후에도'), findsOneWidget);
@@ -53,6 +59,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
         // CTA 버튼 확인
         expect(find.text('무료로 시작하기'), findsOneWidget);
@@ -68,6 +75,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
         // 가치 포인트 텍스트 확인
         expect(find.textContaining('이중 안전'), findsOneWidget);
@@ -85,6 +93,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
         // 의료 면책 텍스트 확인
         expect(
@@ -107,6 +116,7 @@ void main() {
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
         await tester.pump(const Duration(milliseconds: 500));
+        await tester.pumpAndSettle(const Duration(milliseconds: 500));
 
         // CTA 버튼 탭
         await tester.tap(find.text('무료로 시작하기'));
