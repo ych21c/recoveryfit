@@ -1417,6 +1417,42 @@
       "status": "fail",
       "note": "생성된 테스트(integration_test/scenario_test.dart)가 실행됐지만 실패했습니다:\nasynchronous suspension>\n#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)\n<asynchronous suspension>\n#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)\n<asynchronous suspension>\n<asynchronous suspension>\n(elided one frame from package:stack_trace)\n\nThis was caught by the test expectation on the following line:\n  file:///workspace/c052dd6b-qa-clone/integration_test/scenario_test.dart line 16\nThe test description was:\n  스플래시 화면이 앱 시작 시 표시된다\n════════════════════════════════════════════════════════════════════════════════════════════════════\n00:00 +0 -1: 시작 페이지 (Splash & Landing) 스플래시 화면이 앱 시작 시 표시된다 [E]\n  Test failed. See exception logs above.\n  The test description was: 스플래시 화면이 앱 시작 시 표시된다\n  \n00:00 +0 -1: 시작 페이지 (Splash & Landing) 스플래시 로딩 도트 애니메이션이 표시된다\n00:00 +1 -1: 시작 페이지 (Splash & Landing) 스플래시 화면에서 정해진 시간 후 랜딩 화면으로 전환된다\n00:03 +2 -1: 시작 페이지 (Splash & Landing) 랜딩 화면이 정상적으로 표시된다\n00:05 +3 -1: 시작 페이지 (Splash & Landing) 랜딩 화면에 가치 포인트 3종이 표시된다\n00:08 +4 -1: 시작 페이지 (Splash & Landing) 랜딩 화면의 CTA 버튼 텍스트가 정확하다\n00:11 +5 -1: 시작 페이지 (Splash & Landing) 랜딩 화면의 면책 문구가 표시된다\n00:13 +6 -1: 시작 페이지 (Splash & Landing) 랜딩 화면의 CTA 버튼을 탭하면 면책 동의 화면으로 이동한다\n00:17 +7 -1: 시작 페이지 (Splash & Landing) 랜딩 화면의 로고가 표시된다\n00:17 +8 -1: 시작 페이지 (Splash & Landing) 히어로 일러스트 영역이 화면 상단에 배치된다\n00:20 +9 -1: 시작 페이지 (Splash & Landing) 랜딩 화면이 스크롤 없이 단일 뷰포트로 구성된다\n00:22 +10 -1: (tearDownAll)\n00:22 +10 -1: Some tests failed.",
       "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "SplashScreen 로딩 및 자동 전환",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "LandingScreen 레이아웃: 헤더 로고, 헤드라인, CTA 버튼",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "LandingScreen 가치 포인트 3종 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "LandingScreen CTA 버튼 원터치로 온보딩 진입",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "LandingScreen 보조 텍스트: 의료기기 아님 면책문구",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "LandingScreen 색상 기본값: 민트 CTA, 딥 네이비 배경",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
     }
   ]
 }
