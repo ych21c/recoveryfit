@@ -1581,6 +1581,66 @@
       "status": "automated_pass",
       "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
       "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면이 앱 진입 직후 표시됨",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면에서 로딩 도트 애니메이션 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시에서 랜딩 화면으로 자동 전환",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 히어로 이미지 영역이 상단 55% 차지",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 RecoveryFit 로고가 좌측 상단에 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 주요 헤드라인과 서브 헤드라인이 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 가치 포인트 3종 아이콘과 레이블이 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 ",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 면책 텍스트가 하단에 표시",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면의 CTA 버튼을 탭하면 다음 화면으로 전환",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
     }
   ]
 }
