@@ -3,32 +3,32 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
-import 'data/services/storage_service.dart';
 
-class RecoveryFitApp extends ConsumerWidget {
+/// Top-level entry widget.
+/// Platform initialization is handled by SplashScreen concurrently with its
+/// animation, so the router (and SplashScreen) are visible on the very first
+/// frame — which allows integration tests to find SplashScreen immediately
+/// after pumpWidget.
+class RecoveryFitApp extends StatelessWidget {
   const RecoveryFitApp({super.key});
 
   @override
+  Widget build(BuildContext context) {
+    return const ProviderScope(child: _AppRouter());
+  }
+}
+
+class _AppRouter extends ConsumerWidget {
+  const _AppRouter();
+
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Ensure StorageService is initialized before router
-    return FutureBuilder(
-      future: StorageService.instance.init(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          return const MaterialApp(
-            home: Scaffold(
-              body: Center(child: CircularProgressIndicator()),
-            ),
-          );
-        }
-        final router = ref.watch(routerProvider);
-        return MaterialApp.router(
-          title: 'RecoveryFit',
-          theme: AppTheme.light,
-          routerConfig: router,
-          debugShowCheckedModeBanner: false,
-        );
-      },
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      title: 'RecoveryFit',
+      theme: AppTheme.light,
+      routerConfig: router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
