@@ -1,0 +1,68 @@
+PACKAGE_NAME = "com.recoveryfit.recovery_fit"
+
+# 최신 빌드 파일 찾기 헬퍼
+def latest_file(pattern)
+  files = Dir.glob(pattern).sort_by { |f| File.mtime(f) }
+  UI.user_error!("No file found matching: #{pattern}") if files.empty?
+  files.last
+end
+
+# ──────────────────────────────────────────
+# iOS — TestFlight 업로드
+# ──────────────────────────────────────────
+lane :upload_ios do |options|
+  env = options[:env] || "prod"
+
+  ipa_path = options[:ipa] || latest_file("build/ios/ipa/Runner-#{env}-*.ipa")
+  UI.message("IPA: #{ipa_path}")
+
+  api_key = app_store_connect_api_key(
+    key_id:        ENV["ASC_KEY_ID"],
+    issuer_id:     ENV["ASC_ISSUER_ID"],
+    key_filepath:  ENV["ASC_KEY_FILEPATH"],
+    duration:      1200,
+    in_house:      false,
+  )
+
+  upload_to_testflight(
+    api_key:              api_key,
+    ipa:                  ipa_path,
+    skip_waiting_for_build_processing: true,
+  )
+
+  UI.success("iOS 업로드 완료: #{File.basename(ipa_path)}")
+end
+
+# ──────────────────────────────────────────
+# Android — Play Console 업로드
+# ──────────────────────────────────────────
+lane :upload_android do |options|
+  env   = options[:env]   || "prod"
+  track = options[:track] || "internal"
+
+  aab_path = options[:aab] || latest_file("build/app/outputs/bundle/release/app-#{env}-*.aab")
+  UI.message("AAB: #{aab_path}")
+
+  upload_to_play_store(
+    package_name:         PACKAGE_NAME,
+    json_key:             ENV["GOOGLE_PLAY_JSON_KEY"],
+    aab:                  aab_path,
+    track:                track,
+    release_status:       "draft",
+    skip_upload_apk:      true,
+    skip_upload_metadata: true,
+    skip_upload_changelogs: true,
+    skip_upload_images:   true,
+    skip_upload_screenshots: true,
+  )
+
+  UI.success("Android 업로드 완료: #{File.basename(aab_path)} → #{track}")
+end
+
+# ──────────────────────────────────────────
+# 양쪽 동시 업로드
+# ──────────────────────────────────────────
+lane :upload_all do |options|
+  upload_ios(options)
+  upload_android(options)
+end

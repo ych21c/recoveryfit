@@ -156,6 +156,14 @@ ENV/
 env.bak/
 venv.bak/
 
+# fastlane secrets
+fastlane/.env
+fastlane/credentials/
+fastlane/report.xml
+
+# macOS
+.DS_Store
+
 # Spyder project settings
 .spyderproject
 .spyproject
