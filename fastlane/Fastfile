@@ -1,4 +1,4 @@
-PACKAGE_NAME = "com.recoveryfit.recovery_fit"
+PACKAGE_NAME = "com.myownchild.recoveryfit"
 
 # 최신 빌드 파일 찾기 헬퍼
 def latest_file(pattern)
