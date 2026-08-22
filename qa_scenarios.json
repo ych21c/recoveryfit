@@ -1527,6 +1527,60 @@
       "status": "automated_pass",
       "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
       "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면 표시 및 애니메이션 재생",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면에서 랜딩 화면으로 자동 전환",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에 모든 핵심 요소가 표시됨",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 가치 포인트 3종이 표시됨",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면의 CTA 버튼 탭시 온보딩으로 진입",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면 배경이 딥 네이비 색상",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "스플래시 화면의 로고 심볼이 표시됨",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면에서 스크롤 없이 모든 요소가 한 화면에 표시됨",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
+    },
+    {
+      "title": "랜딩 화면의 CTA 버튼이 민트색 배경을 가짐",
+      "status": "automated_pass",
+      "note": "integration_test/scenario_test.dart 실행 테스트 통과 + Firebase Test Lab Robo 테스트로 자동 확인됨",
+      "group": "시작 페이지 (Splash & Landing)"
     }
   ]
 }
