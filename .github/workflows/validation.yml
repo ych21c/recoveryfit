@@ -11,7 +11,4 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
-<<<<<<< HEAD
       - run: flutter build apk --debug
-=======
->>>>>>> 9ef3b65 (AI Implement: 사용자가 앱을 사용하는 **전체 유저 인터랙션 기본 플로우(8단계)**를 먼저 정의하고, 지금까지 도출된 모)
